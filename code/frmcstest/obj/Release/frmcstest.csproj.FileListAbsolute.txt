@@ -1,0 +1,9 @@
+D:\Devlop\身份证阅读器二次开发软件说明\ewm\frmcstest\bin\Release\frmcstest.exe.config
+D:\Devlop\身份证阅读器二次开发软件说明\ewm\frmcstest\bin\Release\frmcstest.exe
+D:\Devlop\身份证阅读器二次开发软件说明\ewm\frmcstest\bin\Release\frmcstest.pdb
+D:\Devlop\身份证阅读器二次开发软件说明\ewm\frmcstest\obj\Release\frmcstest.csprojResolveAssemblyReference.cache
+D:\Devlop\身份证阅读器二次开发软件说明\ewm\frmcstest\obj\Release\frmcstest.Form1.resources
+D:\Devlop\身份证阅读器二次开发软件说明\ewm\frmcstest\obj\Release\frmcstest.Properties.Resources.resources
+D:\Devlop\身份证阅读器二次开发软件说明\ewm\frmcstest\obj\Release\frmcstest.csproj.GenerateResource.Cache
+D:\Devlop\身份证阅读器二次开发软件说明\ewm\frmcstest\obj\Release\frmcstest.exe
+D:\Devlop\身份证阅读器二次开发软件说明\ewm\frmcstest\obj\Release\frmcstest.pdb

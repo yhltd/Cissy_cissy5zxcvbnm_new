@@ -1,0 +1,87 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="CissyModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+  <EntityContainer Name="CissyModelStoreContainer">
+    <EntitySet Name="Account" EntityType="CissyModel.Store.Account" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Finance" EntityType="CissyModel.Store.Finance" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Product" EntityType="CissyModel.Store.Product" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Sale" EntityType="CissyModel.Store.Sale" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Sales" EntityType="CissyModel.Store.Sales" store:Type="Tables" Schema="dbo" />
+  </EntityContainer>
+  <EntityType Name="Account">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="account" Type="varchar" MaxLength="255" />
+    <Property Name="pwd" Type="varchar" MaxLength="255" />
+    <Property Name="user" Type="varchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="Finance">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="varchar" MaxLength="255" />
+    <Property Name="rate" Type="float" />
+    <Property Name="storageCost" Type="money" />
+    <Property Name="advertisementCost" Type="money" />
+    <Property Name="commission" Type="float" />
+    <Property Name="returnCost" Type="money" />
+  </EntityType>
+  <EntityType Name="Product">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="no" Type="varchar" MaxLength="1000" />
+    <Property Name="num" Type="varchar" MaxLength="1000" />
+    <Property Name="name" Type="varchar" MaxLength="255" />
+    <Property Name="buyer" Type="varchar" MaxLength="255" />
+    <Property Name="sale" Type="varchar" MaxLength="255" />
+    <Property Name="grouping" Type="varchar" MaxLength="255" />
+    <Property Name="color" Type="varchar" MaxLength="255" />
+    <Property Name="cost" Type="money" />
+    <Property Name="freight" Type="money" />
+    <Property Name="length" Type="float" />
+    <Property Name="width" Type="float" />
+    <Property Name="high" Type="float" />
+    <Property Name="weight" Type="float" />
+    <Property Name="pack" Type="varchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="Sale">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="asin" Type="varchar" MaxLength="255" />
+    <Property Name="sunSKU" Type="varchar" MaxLength="255" />
+    <Property Name="fatherSKU" Type="varchar" MaxLength="255" />
+    <Property Name="name" Type="varchar" MaxLength="255" />
+    <Property Name="smallGroup" Type="varchar" MaxLength="255" />
+    <Property Name="saler" Type="varchar" MaxLength="255" />
+    <Property Name="type" Type="varchar" MaxLength="255" />
+    <Property Name="account" Type="varchar" MaxLength="255" />
+    <Property Name="star" Type="float" />
+    <Property Name="brokerage" Type="money" />
+  </EntityType>
+  <EntityType Name="Sales">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="sunSKU" Type="varchar" MaxLength="255" />
+    <Property Name="account" Type="varchar" MaxLength="255" />
+    <Property Name="saleDate" Type="datetime" />
+    <Property Name="type" Type="varchar" MaxLength="255" />
+    <Property Name="quantity" Type="int" />
+    <Property Name="fulfillment" Type="varchar" MaxLength="255" />
+    <Property Name="city" Type="varchar" MaxLength="255" />
+    <Property Name="state" Type="varchar" MaxLength="255" />
+    <Property Name="sales" Type="money" />
+    <Property Name="total" Type="money" />
+    <Property Name="cost" Type="money" />
+    <Property Name="rate" Type="float" />
+    <Property Name="commission" Type="float" />
+    <Property Name="returnCost" Type="money" />
+  </EntityType>
+</Schema>

@@ -1,0 +1,8 @@
+D:\Devlop\身份证阅读器二次开发软件说明\ewm\SDZdb\bin\Debug\SDZdb.dll
+D:\Devlop\身份证阅读器二次开发软件说明\ewm\SDZdb\bin\Debug\SDZdb.pdb
+D:\Devlop\身份证阅读器二次开发软件说明\ewm\SDZdb\obj\Debug\SDZdb.dll
+D:\Devlop\身份证阅读器二次开发软件说明\ewm\SDZdb\obj\Debug\SDZdb.pdb
+D:\yho117\2020.6.18\Cissy_cissy5zxcvbnm\code\SDZdb\bin\Debug\SDZdb.dll
+D:\yho117\2020.6.18\Cissy_cissy5zxcvbnm\code\SDZdb\bin\Debug\SDZdb.pdb
+D:\yho117\2020.6.18\Cissy_cissy5zxcvbnm\code\SDZdb\obj\Debug\SDZdb.dll
+D:\yho117\2020.6.18\Cissy_cissy5zxcvbnm\code\SDZdb\obj\Debug\SDZdb.pdb

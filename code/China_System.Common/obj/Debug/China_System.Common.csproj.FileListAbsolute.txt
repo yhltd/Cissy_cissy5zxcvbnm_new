@@ -1,0 +1,54 @@
+C:\mysteap\work_office\Pepsico\A_M Deeper commercial DBMS\AM_DeepercommercialDBMS\China_System.Common\bin\Debug\China_System.Common.dll
+C:\mysteap\work_office\Pepsico\A_M Deeper commercial DBMS\AM_DeepercommercialDBMS\China_System.Common\bin\Debug\China_System.Common.pdb
+C:\mysteap\work_office\Pepsico\A_M Deeper commercial DBMS\AM_DeepercommercialDBMS\China_System.Common\bin\Debug\Microsoft.Office.Interop.Excel.dll
+C:\mysteap\work_office\Pepsico\A_M Deeper commercial DBMS\AM_DeepercommercialDBMS\China_System.Common\bin\Debug\office.dll
+C:\mysteap\work_office\Pepsico\A_M Deeper commercial DBMS\AM_DeepercommercialDBMS\China_System.Common\bin\Debug\Microsoft.Vbe.Interop.dll
+C:\mysteap\work_office\Pepsico\A_M Deeper commercial DBMS\AM_DeepercommercialDBMS\China_System.Common\bin\Debug\office.xml
+C:\mysteap\work_office\Pepsico\A_M Deeper commercial DBMS\AM_DeepercommercialDBMS\China_System.Common\bin\Debug\Microsoft.Office.Interop.Excel.xml
+C:\mysteap\work_office\Pepsico\A_M Deeper commercial DBMS\AM_DeepercommercialDBMS\China_System.Common\obj\Debug\ResolveAssemblyReference.cache
+C:\mysteap\work_office\Pepsico\A_M Deeper commercial DBMS\AM_DeepercommercialDBMS\China_System.Common\obj\Debug\China_System.Common.dll
+C:\mysteap\work_office\Pepsico\A_M Deeper commercial DBMS\AM_DeepercommercialDBMS\China_System.Common\obj\Debug\China_System.Common.pdb
+D:\Dev Project\mysteap\work_office\AM_DeepercommercialDBMS\China_System.Common\bin\Debug\China_System.Common.dll
+D:\Dev Project\mysteap\work_office\AM_DeepercommercialDBMS\China_System.Common\bin\Debug\China_System.Common.pdb
+D:\Dev Project\mysteap\work_office\AM_DeepercommercialDBMS\China_System.Common\bin\Debug\office.dll
+D:\Dev Project\mysteap\work_office\AM_DeepercommercialDBMS\China_System.Common\bin\Debug\Microsoft.Vbe.Interop.dll
+D:\Dev Project\mysteap\work_office\AM_DeepercommercialDBMS\China_System.Common\bin\Debug\Microsoft.Office.Interop.Excel.xml
+D:\Dev Project\mysteap\work_office\AM_DeepercommercialDBMS\China_System.Common\bin\Debug\office.xml
+D:\Dev Project\mysteap\work_office\AM_DeepercommercialDBMS\China_System.Common\obj\Debug\China_System.Common.csprojResolveAssemblyReference.cache
+D:\Dev Project\mysteap\work_office\AM_DeepercommercialDBMS\China_System.Common\obj\Debug\China_System.Common.dll
+D:\Dev Project\mysteap\work_office\AM_DeepercommercialDBMS\China_System.Common\obj\Debug\China_System.Common.pdb
+D:\Devlop\身份证阅读器二次开发软件说明\ewm\China_System.Common\bin\Debug\China_System.Common.dll
+D:\Devlop\身份证阅读器二次开发软件说明\ewm\China_System.Common\bin\Debug\China_System.Common.pdb
+D:\Devlop\身份证阅读器二次开发软件说明\ewm\China_System.Common\bin\Debug\SDZdb.dll
+D:\Devlop\身份证阅读器二次开发软件说明\ewm\China_System.Common\bin\Debug\SDZdb.pdb
+D:\Devlop\身份证阅读器二次开发软件说明\ewm\China_System.Common\obj\Debug\China_System.Common.csprojResolveAssemblyReference.cache
+D:\Devlop\身份证阅读器二次开发软件说明\ewm\China_System.Common\obj\Debug\China_System.Common.dll
+D:\Devlop\身份证阅读器二次开发软件说明\ewm\China_System.Common\obj\Debug\China_System.Common.pdb
+D:\yho117\案例\asp picture\ewm\China_System.Common\bin\Debug\China_System.Common.dll
+D:\yho117\案例\asp picture\ewm\China_System.Common\bin\Debug\China_System.Common.pdb
+D:\yho117\案例\asp picture\ewm\China_System.Common\bin\Debug\SDZdb.dll
+D:\yho117\案例\asp picture\ewm\China_System.Common\bin\Debug\SDZdb.pdb
+D:\yho117\案例\asp picture\ewm\China_System.Common\obj\Debug\China_System.Common.csprojResolveAssemblyReference.cache
+D:\yho117\案例\asp picture\ewm\China_System.Common\obj\Debug\China_System.Common.dll
+D:\yho117\案例\asp picture\ewm\China_System.Common\obj\Debug\China_System.Common.pdb
+D:\yho117\2020.6.18\Cissy_cissy5zxcvbnm\code\China_System.Common\bin\Debug\China_System.Common.dll
+D:\yho117\2020.6.18\Cissy_cissy5zxcvbnm\code\China_System.Common\bin\Debug\China_System.Common.pdb
+D:\yho117\2020.6.18\Cissy_cissy5zxcvbnm\code\China_System.Common\bin\Debug\SDZdb.dll
+D:\yho117\2020.6.18\Cissy_cissy5zxcvbnm\code\China_System.Common\bin\Debug\SDZdb.pdb
+D:\yho117\2020.6.18\Cissy_cissy5zxcvbnm\code\China_System.Common\obj\Debug\China_System.Common.csprojResolveAssemblyReference.cache
+D:\yho117\2020.6.18\Cissy_cissy5zxcvbnm\code\China_System.Common\obj\Debug\China_System.Common.dll
+D:\yho117\2020.6.18\Cissy_cissy5zxcvbnm\code\China_System.Common\obj\Debug\China_System.Common.pdb
+D:\yho117\Cissy_cissy5zxcvbnm\code\China_System.Common\bin\Debug\China_System.Common.dll
+D:\yho117\Cissy_cissy5zxcvbnm\code\China_System.Common\bin\Debug\China_System.Common.pdb
+D:\yho117\Cissy_cissy5zxcvbnm\code\China_System.Common\bin\Debug\SDZdb.dll
+D:\yho117\Cissy_cissy5zxcvbnm\code\China_System.Common\bin\Debug\SDZdb.pdb
+D:\yho117\Cissy_cissy5zxcvbnm\code\China_System.Common\obj\Debug\China_System.Common.csprojResolveAssemblyReference.cache
+D:\yho117\Cissy_cissy5zxcvbnm\code\China_System.Common\obj\Debug\China_System.Common.dll
+D:\yho117\Cissy_cissy5zxcvbnm\code\China_System.Common\obj\Debug\China_System.Common.pdb
+D:\git_version\Cissy_cissy5zxcvbnm_new\code\China_System.Common\bin\Debug\China_System.Common.dll
+D:\git_version\Cissy_cissy5zxcvbnm_new\code\China_System.Common\bin\Debug\China_System.Common.pdb
+D:\git_version\Cissy_cissy5zxcvbnm_new\code\China_System.Common\bin\Debug\SDZdb.dll
+D:\git_version\Cissy_cissy5zxcvbnm_new\code\China_System.Common\bin\Debug\SDZdb.pdb
+D:\git_version\Cissy_cissy5zxcvbnm_new\code\China_System.Common\obj\Debug\China_System.Common.csprojResolveAssemblyReference.cache
+D:\git_version\Cissy_cissy5zxcvbnm_new\code\China_System.Common\obj\Debug\China_System.Common.dll
+D:\git_version\Cissy_cissy5zxcvbnm_new\code\China_System.Common\obj\Debug\China_System.Common.pdb

@@ -1,0 +1,14 @@
+D:\Devlop\身份证阅读器二次开发软件说明\ewm\China_System.Common\obj\Release\China_System.Common.csprojResolveAssemblyReference.cache
+D:\Devlop\身份证阅读器二次开发软件说明\ewm\China_System.Common\bin\Release\China_System.Common.dll
+D:\Devlop\身份证阅读器二次开发软件说明\ewm\China_System.Common\bin\Release\China_System.Common.pdb
+D:\Devlop\身份证阅读器二次开发软件说明\ewm\China_System.Common\bin\Release\SDZdb.dll
+D:\Devlop\身份证阅读器二次开发软件说明\ewm\China_System.Common\bin\Release\SDZdb.pdb
+D:\Devlop\身份证阅读器二次开发软件说明\ewm\China_System.Common\obj\Release\China_System.Common.dll
+D:\Devlop\身份证阅读器二次开发软件说明\ewm\China_System.Common\obj\Release\China_System.Common.pdb
+D:\yho117\Cissy_cissy5zxcvbnm\code\China_System.Common\bin\Release\China_System.Common.dll
+D:\yho117\Cissy_cissy5zxcvbnm\code\China_System.Common\bin\Release\China_System.Common.pdb
+D:\yho117\Cissy_cissy5zxcvbnm\code\China_System.Common\bin\Release\SDZdb.dll
+D:\yho117\Cissy_cissy5zxcvbnm\code\China_System.Common\bin\Release\SDZdb.pdb
+D:\yho117\Cissy_cissy5zxcvbnm\code\China_System.Common\obj\Release\China_System.Common.csprojResolveAssemblyReference.cache
+D:\yho117\Cissy_cissy5zxcvbnm\code\China_System.Common\obj\Release\China_System.Common.dll
+D:\yho117\Cissy_cissy5zxcvbnm\code\China_System.Common\obj\Release\China_System.Common.pdb

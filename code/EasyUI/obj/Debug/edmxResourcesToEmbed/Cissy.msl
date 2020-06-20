@@ -1,0 +1,87 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="CissyModelStoreContainer" CdmEntityContainer="CissyEntities">
+    <EntitySetMapping Name="Account">
+      <EntityTypeMapping TypeName="CissyModel.Account">
+        <MappingFragment StoreEntitySet="Account">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="account1" ColumnName="account" />
+          <ScalarProperty Name="pwd" ColumnName="pwd" />
+          <ScalarProperty Name="user" ColumnName="user" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Finance">
+      <EntityTypeMapping TypeName="CissyModel.Finance">
+        <MappingFragment StoreEntitySet="Finance">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="rate" ColumnName="rate" />
+          <ScalarProperty Name="storageCost" ColumnName="storageCost" />
+          <ScalarProperty Name="advertisementCost" ColumnName="advertisementCost" />
+          <ScalarProperty Name="commission" ColumnName="commission" />
+          <ScalarProperty Name="returnCost" ColumnName="returnCost" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Product">
+      <EntityTypeMapping TypeName="CissyModel.Product">
+        <MappingFragment StoreEntitySet="Product">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="no" ColumnName="no" />
+          <ScalarProperty Name="num" ColumnName="num" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="buyer" ColumnName="buyer" />
+          <ScalarProperty Name="sale" ColumnName="sale" />
+          <ScalarProperty Name="grouping" ColumnName="grouping" />
+          <ScalarProperty Name="color" ColumnName="color" />
+          <ScalarProperty Name="cost" ColumnName="cost" />
+          <ScalarProperty Name="freight" ColumnName="freight" />
+          <ScalarProperty Name="length" ColumnName="length" />
+          <ScalarProperty Name="width" ColumnName="width" />
+          <ScalarProperty Name="high" ColumnName="high" />
+          <ScalarProperty Name="weight" ColumnName="weight" />
+          <ScalarProperty Name="pack" ColumnName="pack" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Sale">
+      <EntityTypeMapping TypeName="CissyModel.Sale">
+        <MappingFragment StoreEntitySet="Sale">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="asin" ColumnName="asin" />
+          <ScalarProperty Name="sunSKU" ColumnName="sunSKU" />
+          <ScalarProperty Name="fatherSKU" ColumnName="fatherSKU" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="smallGroup" ColumnName="smallGroup" />
+          <ScalarProperty Name="saler" ColumnName="saler" />
+          <ScalarProperty Name="type" ColumnName="type" />
+          <ScalarProperty Name="account" ColumnName="account" />
+          <ScalarProperty Name="star" ColumnName="star" />
+          <ScalarProperty Name="brokerage" ColumnName="brokerage" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Sales">
+      <EntityTypeMapping TypeName="CissyModel.Sales">
+        <MappingFragment StoreEntitySet="Sales">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="sunSKU" ColumnName="sunSKU" />
+          <ScalarProperty Name="account" ColumnName="account" />
+          <ScalarProperty Name="saleDate" ColumnName="saleDate" />
+          <ScalarProperty Name="type" ColumnName="type" />
+          <ScalarProperty Name="quantity" ColumnName="quantity" />
+          <ScalarProperty Name="fulfillment" ColumnName="fulfillment" />
+          <ScalarProperty Name="city" ColumnName="city" />
+          <ScalarProperty Name="state" ColumnName="state" />
+          <ScalarProperty Name="sales1" ColumnName="sales" />
+          <ScalarProperty Name="total" ColumnName="total" />
+          <ScalarProperty Name="cost" ColumnName="cost" />
+          <ScalarProperty Name="rate" ColumnName="rate" />
+          <ScalarProperty Name="commission" ColumnName="commission" />
+          <ScalarProperty Name="returnCost" ColumnName="returnCost" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

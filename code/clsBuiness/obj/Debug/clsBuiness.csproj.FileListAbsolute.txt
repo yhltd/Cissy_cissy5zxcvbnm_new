@@ -1,0 +1,37 @@
+D:\Devlop\身份证阅读器二次开发软件说明\ewm\clsBuiness\bin\Debug\clsBuiness.dll
+D:\Devlop\身份证阅读器二次开发软件说明\ewm\clsBuiness\bin\Debug\clsBuiness.pdb
+D:\Devlop\身份证阅读器二次开发软件说明\ewm\clsBuiness\bin\Debug\SDZdb.dll
+D:\Devlop\身份证阅读器二次开发软件说明\ewm\clsBuiness\bin\Debug\SDZdb.pdb
+D:\Devlop\身份证阅读器二次开发软件说明\ewm\clsBuiness\obj\Debug\clsBuiness.csprojResolveAssemblyReference.cache
+D:\Devlop\身份证阅读器二次开发软件说明\ewm\clsBuiness\obj\Debug\clsBuiness.dll
+D:\Devlop\身份证阅读器二次开发软件说明\ewm\clsBuiness\obj\Debug\clsBuiness.pdb
+D:\yho117\案例\asp picture\ewm\clsBuiness\obj\Debug\clsBuiness.csprojResolveAssemblyReference.cache
+D:\yho117\案例\asp picture\ewm\clsBuiness\obj\Debug\clsBuiness.dll
+D:\yho117\案例\asp picture\ewm\clsBuiness\obj\Debug\clsBuiness.pdb
+D:\yho117\2020.6.18\Cissy_cissy5zxcvbnm\code\clsBuiness\obj\Debug\clsBuiness.csprojResolveAssemblyReference.cache
+D:\yho117\2020.6.18\Cissy_cissy5zxcvbnm\code\clsBuiness\obj\Debug\clsBuiness.dll
+D:\yho117\2020.6.18\Cissy_cissy5zxcvbnm\code\clsBuiness\obj\Debug\clsBuiness.pdb
+D:\yho117\2020.6.18\Cissy_cissy5zxcvbnm\code\clsBuiness\bin\Debug\clsBuiness.dll
+D:\yho117\2020.6.18\Cissy_cissy5zxcvbnm\code\clsBuiness\bin\Debug\clsBuiness.pdb
+D:\yho117\2020.6.18\Cissy_cissy5zxcvbnm\code\clsBuiness\bin\Debug\China_System.Common.dll
+D:\yho117\2020.6.18\Cissy_cissy5zxcvbnm\code\clsBuiness\bin\Debug\SDZdb.dll
+D:\yho117\2020.6.18\Cissy_cissy5zxcvbnm\code\clsBuiness\bin\Debug\China_System.Common.pdb
+D:\yho117\2020.6.18\Cissy_cissy5zxcvbnm\code\clsBuiness\bin\Debug\SDZdb.pdb
+D:\yho117\Cissy_cissy5zxcvbnm\code\clsBuiness\bin\Debug\clsBuiness.dll
+D:\yho117\Cissy_cissy5zxcvbnm\code\clsBuiness\bin\Debug\clsBuiness.pdb
+D:\yho117\Cissy_cissy5zxcvbnm\code\clsBuiness\bin\Debug\China_System.Common.dll
+D:\yho117\Cissy_cissy5zxcvbnm\code\clsBuiness\bin\Debug\SDZdb.dll
+D:\yho117\Cissy_cissy5zxcvbnm\code\clsBuiness\bin\Debug\China_System.Common.pdb
+D:\yho117\Cissy_cissy5zxcvbnm\code\clsBuiness\bin\Debug\SDZdb.pdb
+D:\yho117\Cissy_cissy5zxcvbnm\code\clsBuiness\obj\Debug\clsBuiness.csprojResolveAssemblyReference.cache
+D:\yho117\Cissy_cissy5zxcvbnm\code\clsBuiness\obj\Debug\clsBuiness.dll
+D:\yho117\Cissy_cissy5zxcvbnm\code\clsBuiness\obj\Debug\clsBuiness.pdb
+D:\git_version\Cissy_cissy5zxcvbnm_new\code\clsBuiness\bin\Debug\clsBuiness.dll
+D:\git_version\Cissy_cissy5zxcvbnm_new\code\clsBuiness\bin\Debug\clsBuiness.pdb
+D:\git_version\Cissy_cissy5zxcvbnm_new\code\clsBuiness\bin\Debug\China_System.Common.dll
+D:\git_version\Cissy_cissy5zxcvbnm_new\code\clsBuiness\bin\Debug\SDZdb.dll
+D:\git_version\Cissy_cissy5zxcvbnm_new\code\clsBuiness\bin\Debug\China_System.Common.pdb
+D:\git_version\Cissy_cissy5zxcvbnm_new\code\clsBuiness\bin\Debug\SDZdb.pdb
+D:\git_version\Cissy_cissy5zxcvbnm_new\code\clsBuiness\obj\Debug\clsBuiness.csprojResolveAssemblyReference.cache
+D:\git_version\Cissy_cissy5zxcvbnm_new\code\clsBuiness\obj\Debug\clsBuiness.dll
+D:\git_version\Cissy_cissy5zxcvbnm_new\code\clsBuiness\obj\Debug\clsBuiness.pdb

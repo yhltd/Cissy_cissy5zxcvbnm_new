@@ -1,0 +1,121 @@
+﻿<%--<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="00caiwubiao5.aspx.cs" Inherits="EasyUI._0caiwubiao5" %>--%>
+<%@ Page Language="C#" AutoEventWireup="true" Inherits="EasyUI._0caiwubiao5"  EnableEventValidation = "false"  CodeBehind="00caiwubiao5.aspx.cs" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <link href="/EasyUiDataGrid/themes/default/easyui.css" rel="stylesheet" type="text/css" />
+    <link href="/EasyUiDataGrid/themes/icon.css" rel="stylesheet" type="text/css" />
+    <script src="/EasyUiDataGrid/jquery-1.4.2.min.js" type="text/javascript"></script>
+    <script src="/EasyUiDataGrid/jquery.easyui.min.js" type="text/javascript"></script>
+    <script src="/EasyUiDataGrid/locale/easyui-lang-zh_CN.js" type="text/javascript"></script>
+    <script src="/dataPage/caiwubiao5.js" type="text/javascript"></script>
+    <style type="text/css">
+        #Button2 {
+            height: 35px;
+            width: 115px;
+        }
+    </style>
+</head>
+<body class="easyui-layout" style="overflow-y: hidden" scroll="no">
+    <div region="center" style="width: 500px; height: 300px; padding: 1px;overflow-y: hidden">
+        <div id="grid" >
+        </div>
+    </div>
+
+    <div id="Dlg-Edit" title="编辑窗口" style="width: 800px; height: 400px;">
+        <div style="padding: 20px 20px 40px 40px;">
+            <form method="post">
+            <table>
+                <tr>
+                    <td>
+                        销售账户：
+                    </td>
+                    <td>
+                        <input name="account" class="easyui-validatebox" required="true" style="width: 150px;" />
+                    </td>
+                    <td>
+                        子sku：
+                    </td>
+                    <td>
+                        <input name="sunSKU" class="easyui-validatebox" required="true" style="width: 150px;" />
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td>
+                        产品名称：
+                    </td>
+                    <td>
+                        <input name="name" class="easyui-validatebox"  style="width: 150px;" />
+                    </td>
+                    <td>
+                        冗余时间：
+                    </td>
+                    <td>
+                        <input name="redundancy" class="easyui-validatebox"  style="width: 150px;" />
+                    </td>
+                </tr>
+            </table>
+            </form>
+        </div>
+    </div>
+   <div id="search-window" title="查询窗口" style="width: 350px; height: 200px;">
+        <div style="padding: 20px 20px 40px 80px;">
+            <form method="post">
+            <table>
+                <tr>
+                    <td>
+                        子sku：
+                    </td>
+                    <td>
+                        <input name="s_title" id="s_title" style="width: 150px;" />
+                    </td>
+                </tr>
+            </table>
+            </form>
+        </div>
+        <div style="text-align: center; padding: 5px;">
+            <a href="javascript:void(0)" onclick="SearchOK()" id="btn-search" icon="icon-ok">确定</a>
+            <a href="javascript:void(0)" onclick="closeSearchWindow()" id="btn-search-cancel" icon="icon-cancel">
+                取消</a>
+        </div>
+    </div>
+    <div id="excelWin" title="从excel导入" style="width: 350px; height: 200px;">
+        <div style="padding: 20px 20px 40px 80px;">
+            <form id="Form1" method="post" runat="server">
+            <table>
+                <tr>
+                    <asp:FileUpload ID="fileId" runat="server" Width="433px" />
+                    <asp:Button ID="Button1" runat="server" Text="上传" OnClientClick="return check()" OnClick="Export_Click" />
+                </tr>
+            </table>
+            </form>
+        </div>
+        <%--<div style="text-align: center; padding: 5px;">
+            <a href="javascript:void(0)" onclick="CloseExcelWindow()" id="btn-excel-canel" icon="icon-cancel">
+                取消</a>
+        </div>--%>
+    </div>
+
+    <div id="excelWin1" title="导出预览" style="width: 715px; height: 259px;">
+        
+        <div style="padding: 20px 20px 40px 80px; text-align: center">
+                <form id="Form2" method="post" action="">
+                <input type="button" id="Button2" runat="server" value="下载表格" onserverclick="Export_Click1"/>&nbsp;<asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource1" style="margin-left: 119px; margin-top: 24px" Width="344px">
+                        <Columns>
+                            <asp:BoundField DataField="销售账户" HeaderText="销售账户" SortExpression="销售账户" />
+                            <asp:BoundField DataField="产品名称" HeaderText="产品名称" SortExpression="产品名称" />
+                            <asp:BoundField DataField="子sku" HeaderText="子sku" SortExpression="子sku" />
+                            <asp:BoundField DataField="冗余时间（天数）" HeaderText="冗余时间（天数）" SortExpression="冗余时间（天数）" />
+                        </Columns>
+                    </asp:GridView>
+                    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:CissyConnectionString %>" SelectCommand="select account as '销售账户',name as '产品名称',sunSKU as '子sku',redundancy as '冗余时间（天数）' from 	Sale"></asp:SqlDataSource>
+                </form>
+
+        </div>
+    </div>
+
+</body>
+</html>
