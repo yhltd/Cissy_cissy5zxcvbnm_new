@@ -145,6 +145,7 @@
     <Content Include="bin\System.Net.Http.WebRequest.dll" />
     <Content Include="bin\System.Web.Http.dll" />
     <Content Include="bin\System.Web.Http.WebHost.dll" />
+    <Content Include="CQU_CHM_ShowImage.aspx" />
     <Content Include="css\default.css" />
     <Content Include="css\framework-font.css" />
     <Content Include="css\framework-login.css" />
@@ -764,6 +765,7 @@
     <Content Include="excel\js\vfs_fonts.js" />
     <Content Include="file\1.jpg" />
     <Content Include="file\2.jpg" />
+    <Content Include="frmShejibuyulu.aspx" />
     <Content Include="images\blocks.gif" />
     <Content Include="images\CategorizeMenu.png" />
     <Content Include="images\directory.png" />
@@ -901,6 +903,10 @@
     <Content Include="js\main.js" />
     <Content Include="js\menu.js" />
     <Content Include="Login.aspx" />
+    <Content Include="Myadmin\js\jquery-1.7.1.min.js" />
+    <Content Include="Myadmin\js\jquery-1.8.3.min.js" />
+    <Content Include="Myadmin\js\json2.js" />
+    <Content Include="Myadmin\js\nav.js" />
     <Content Include="NO_index.aspx" />
     <Content Include="obj\Debug\EasyUI.csproj.FileListAbsolute.txt" />
     <Content Include="obj\Debug\EasyUI.dll" />
@@ -935,6 +941,7 @@
     <Content Include="Scripts\modernizr-2.5.3.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="test.aspx" />
+    <Content Include="ViewImage.aspx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -1108,12 +1115,26 @@
     <Compile Include="a123.aspx.designer.cs">
       <DependentUpon>a123.aspx</DependentUpon>
     </Compile>
+    <Compile Include="CQU_CHM_ShowImage.aspx.cs">
+      <DependentUpon>CQU_CHM_ShowImage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CQU_CHM_ShowImage.aspx.designer.cs">
+      <DependentUpon>CQU_CHM_ShowImage.aspx</DependentUpon>
+    </Compile>
     <Compile Include="excel.aspx.cs">
       <DependentUpon>excel.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="excel.aspx.designer.cs">
       <DependentUpon>excel.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="frmShejibuyulu.aspx.cs">
+      <DependentUpon>frmShejibuyulu.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="frmShejibuyulu.aspx.designer.cs">
+      <DependentUpon>frmShejibuyulu.aspx</DependentUpon>
     </Compile>
     <Compile Include="index.aspx.cs">
       <DependentUpon>index.aspx</DependentUpon>
@@ -1163,6 +1184,13 @@
     </Compile>
     <Compile Include="00xiaoshoubiao1.aspx.designer.cs">
       <DependentUpon>00xiaoshoubiao1.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ViewImage.aspx.cs">
+      <DependentUpon>ViewImage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ViewImage.aspx.designer.cs">
+      <DependentUpon>ViewImage.aspx</DependentUpon>
     </Compile>
     <Content Include="App_Code\SqlHelper.cs" />
     <Content Include="App_Code\Json4EasyUI.cs" />

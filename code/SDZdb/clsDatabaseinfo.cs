@@ -84,4 +84,16 @@ namespace SDZdb
         public string FHavePicture { get; set; }
 
     }
+    public class clt_detail_info
+    {
+        public string Order_id { get; set; }//=FItemID
+
+        public string no { get; set; }//=FItemID
+        public string num { get; set; }//=FItemID
+        public string img { get; set; }//=FItemID
+        public string FFileName { get; set; }//=FItemID
+        public byte[] imagebytes { get; set; }
+        public string image_path { get; set; }//=FItemID
+
+    }
 }

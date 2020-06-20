@@ -240,7 +240,8 @@ namespace clsBuiness
                         {
 
                             //ConStr = System.Web.Configuration.WebConfigurationManager.AppSettings[cookie1["servename"].ToString()];
-                            ConStr = System.Web.Configuration.WebConfigurationManager.AppSettings[HttpUtility.UrlDecode(cookie1["servename"].ToString()).ToString()];
+                            ConStr = System.Web.Configuration.WebConfigurationManager.AppSettings[HttpUtility.UrlDecode("CissyConnectionString").ToString()];
+                            ConStr = "Provider=SQLOLEDB;server=yhocn.cn,1433;uid=sa;pwd=Lyh07910_001;database=Cissy";
 
                             ConStrPIC = ConStr.Replace("Provider=SQLOLEDB;", "");
 
@@ -755,7 +756,7 @@ namespace clsBuiness
                 {
 
                     string sql = "";
-                    sql = "insert into t_Item(FItemID,FItemClassID,FExternID,FNumber,FParentID,FLevel,FDetail,FName,FUnUsed,FBrNo,FFullNumber,FDiff,FDeleted,FShortNumber,FFullName,FGRCommonID,FSystemType,FUseSign,FAccessory,FGrControl,FHavePicture) values ('" + item.FItemID + "','" + item.FItemClassID + "',N'" + item.FExternID + "',N'" + item.FNumber + "','" + item.FParentID + "','" + item.FLevel + "','" + item.FDetail + "','" + item.FName + "','" + item.FUnUsed + "','" + item.FBrNo + "','" + item.FFullNumber + "','" + item.FDiff + "','" + item.FDeleted + "','" + item.FShortNumber + "','" + item.FFullName + "','" + item.FGRCommonID + "','" + item.FSystemType + "','" + item.FUseSign + "','" + item.FAccessory + "','" + item.FGrControl  + "','" + item.FHavePicture + "')";
+                    sql = "insert into t_Item(FItemID,FItemClassID,FExternID,FNumber,FParentID,FLevel,FDetail,FName,FUnUsed,FBrNo,FFullNumber,FDiff,FDeleted,FShortNumber,FFullName,FGRCommonID,FSystemType,FUseSign,FAccessory,FGrControl,FHavePicture) values ('" + item.FItemID + "','" + item.FItemClassID + "',N'" + item.FExternID + "',N'" + item.FNumber + "','" + item.FParentID + "','" + item.FLevel + "','" + item.FDetail + "','" + item.FName + "','" + item.FUnUsed + "','" + item.FBrNo + "','" + item.FFullNumber + "','" + item.FDiff + "','" + item.FDeleted + "','" + item.FShortNumber + "','" + item.FFullName + "','" + item.FGRCommonID + "','" + item.FSystemType + "','" + item.FUseSign + "','" + item.FAccessory + "','" + item.FGrControl + "','" + item.FHavePicture + "')";
 
                     OleDbCommand cmd = new OleDbCommand(sql, con);
                     cmd.ExecuteNonQuery();
@@ -782,7 +783,7 @@ namespace clsBuiness
             finally { if (con.State == ConnectionState.Open) con.Close(); con.Dispose(); }
         }
 
-        public void createPIC_info_Server(List<clCard_info> AddMAPResult)
+        public void createPIC_info_Server(List<clt_detail_info> AddMAPResult)
         {
             //创建连接对象
             bool isok = false;
@@ -792,57 +793,38 @@ namespace clsBuiness
                 if (con.State == ConnectionState.Closed)
                     con.Open();
                 //命令
-                foreach (clCard_info item in AddMAPResult)
+                foreach (clt_detail_info item in AddMAPResult)
                 {
 
-                    #region 之前
-                    //string sql = "";
-                    //sql = "insert into t_Accessory(FTypeID,FItemID,FFileName,FData,FVersion,FSaveMode,FPage,FEntryID) values ('" + item.FTypeID + "','" + item.Order_id + "',N'" + item.tupian + "','" + item.FData + "','" + item.FVersion + "','" + item.FSaveMode + "','" + item.FPage + "','" + item.FEntryID + "')";
-
-                    //OleDbCommand cmd = new OleDbCommand(sql, con);
-                    //cmd.ExecuteNonQuery();
-                    //isok = true;
-                    #endregion
 
                     #region sql 插入图片
                     string A_Path = AppDomain.CurrentDomain.BaseDirectory + "bin\\img.txt";//记录 Status  click 和选择哪个服务器
-                    //if (File.Exists(A_Path))
-                    {
-                        //   mdbpath2_Ctirx = Base64StringToImage(A_Path, AddMAPResult[0].FTypeID);
-                    }
-                    #region 读取本地记事本
-                    //FileStream ifs = new FileStream(A_Path, FileMode.Open, FileAccess.Read);
-                    //StreamReader sr = new StreamReader(ifs);
-                    ////读取txt里面的内容
-                    //String inputStr = sr.ReadToEnd();
 
-                    //AddMAPResult[0].FTypeID = inputStr;
-                    #endregion
-                    //  FileStream fs = new FileStream(mdbpath2_Ctirx, FileMode.Open, FileAccess.Read);
-                    //Byte[] btye2 = new byte[fs.Length];
-                    byte[] btye2 = Convert.FromBase64String(AddMAPResult[0].FData);
-                    //fs.Read(btye2, 0, Convert.ToInt32(fs.Length));
-                    //fs.Close();
+
+                    byte[] btye2 = Convert.FromBase64String(AddMAPResult[0].img);
+
                     using (SqlConnection conn = new SqlConnection(ConStrPIC))
                     {
                         conn.Open();
                         SqlCommand cmd1 = new SqlCommand();
                         cmd1.Connection = conn;
-                        cmd1.CommandText = "insert into t_Accessory(FData,FTypeID,FItemID,FFileName) values(@imgfile,@FTypeID,@FItemID,@FFileName)";
-                        SqlParameter par = new SqlParameter("@imgfile", SqlDbType.Image);
+                        //cmd1.CommandText = "insert into Detailed(img,no,num,FFileName) values(@img,@no,@num,@FFileName)";
+                        cmd1.CommandText = "UPDATE Detailed SET img = @img, FFileName = @FFileName " + "WHERE id = @Order_id";
+
+                        SqlParameter par = new SqlParameter("@img", SqlDbType.Image);
                         par.Value = btye2;
                         cmd1.Parameters.Add(par);
 
-                        SqlParameter par1 = new SqlParameter("@FTypeID", SqlDbType.Int);
-                        par1.Value = 3002;
-                        cmd1.Parameters.Add(par1);
+                        //SqlParameter par1 = new SqlParameter("@no", SqlDbType.Int);
+                        //par1.Value = 3002;
+                        //cmd1.Parameters.Add(par1);
 
-                        SqlParameter par2 = new SqlParameter("@FItemID", SqlDbType.Int);
+                        SqlParameter par2 = new SqlParameter("@Order_id", SqlDbType.Int);
                         par2.Value = item.Order_id;
                         cmd1.Parameters.Add(par2);
 
                         SqlParameter par3 = new SqlParameter("@FFileName", SqlDbType.Char);
-                        par3.Value = item.zhengjianhaoma;
+                        par3.Value = item.FFileName;
                         cmd1.Parameters.Add(par3);
                         int t = (int)(cmd1.ExecuteNonQuery());
                         if (t > 0)
@@ -852,26 +834,9 @@ namespace clsBuiness
                         conn.Close();
 
                     }
-                    //byte[] MyData = new byte[0];
-                    //using (SqlConnection conn = new SqlConnection(bew))
-                    //{
-                    //    conn.Open();
-                    //    SqlCommand cmd2 = new SqlCommand();
-                    //    cmd2.Connection = conn;
-                    //    cmd2.CommandText = "select * from t_Accessory";
-                    //    SqlDataReader sdr = cmd2.ExecuteReader();
-                    //    sdr.Read();
-                    //    MyData = (byte[])sdr["FData"];//读取第一个图片的位流
-                    //    int ArraySize = MyData.GetUpperBound(0);//获得数据库中存储的位流数组的维度上限，用作读取流的上限
 
-                    //    FileStream fs2 = new FileStream(@"c:\00.jpg", FileMode.OpenOrCreate, FileAccess.Write);
-                    //    fs2.Write(MyData, 0, ArraySize);
-                    //    fs2.Close();   //-- 写入到c:\00.jpg。
-                    //    conn.Close();
-                    //    Console.WriteLine("读取成功");//查看硬盘上的文件
-                    //}
                     #endregion
-                    //con.Close();
+
                     return;
                 }
             }
@@ -933,43 +898,39 @@ namespace clsBuiness
 
         }
 
-        public List<clCard_info> Readt_PICServer(string conditions)
+        public List<clt_detail_info> Readt_PICServer(string conditions)
         {
 
             OleDbConnection aConnection = new OleDbConnection(ConStr);
 
-            List<clCard_info> ClaimReport_Server = new List<clCard_info>();
+            List<clt_detail_info> ClaimReport_Server = new List<clt_detail_info>();
             if (aConnection.State == ConnectionState.Closed)
                 aConnection.Open();
 
             OleDbDataAdapter myDataAdapter = new OleDbDataAdapter(conditions, aConnection);
             OleDbCommandBuilder mybuilder = new OleDbCommandBuilder(myDataAdapter);
             DataSet ds = new DataSet();
-            myDataAdapter.Fill(ds, "t_Accessory");
-            foreach (DataRow reader in ds.Tables["t_Accessory"].Rows)
+            myDataAdapter.Fill(ds, "Detailed");
+            foreach (DataRow reader in ds.Tables["Detailed"].Rows)
             {
-                clCard_info item = new clCard_info();
+                clt_detail_info item = new clt_detail_info();
 
-                if (reader["FTypeID"].ToString() != "")
-                    item.FTypeID = reader["FTypeID"].ToString();
-                if (reader["FItemID"].ToString() != "")
-                    item.Order_id = reader["FItemID"].ToString();
-                if (reader["FData"].ToString() != "")
+                if (reader["id"].ToString() != "")
+                    item.Order_id = reader["id"].ToString();
+                //if (reader["FItemID"].ToString() != "")
+                //    item.Order_id = reader["FItemID"].ToString();
+                if (reader["img"].ToString() != "")
                 {
-                    item.FData = reader["FData"].ToString();
-                    item.imagebytes = (byte[])reader["FData"];
+                    item.img = reader["img"].ToString();
+                    item.imagebytes = (byte[])reader["img"];
                 }
-                if (reader["FFileName"].ToString() != "")
-                    item.tupian = reader["FFileName"].ToString();
-                if (reader["FVersion"].ToString() != "")
-                    item.FVersion = reader["FVersion"].ToString();
+                if (reader["no"].ToString() != "")
+                    item.no = reader["no"].ToString();
+                if (reader["num"].ToString() != "")
+                    item.num = reader["num"].ToString();
 
-                if (reader["FSaveMode"].ToString() != "")
-                    item.FSaveMode = reader["FSaveMode"].ToString();
-                if (reader["FPage"].ToString() != "")
-                    item.FPage = reader["FPage"].ToString();
-                if (reader["FEntryID"].ToString() != "")
-                    item.zhengjianleixing = reader["FEntryID"].ToString();
+                if (reader["FFileName"].ToString() != "")
+                    item.FFileName = reader["FFileName"].ToString();
 
 
 
@@ -1058,7 +1019,7 @@ namespace clsBuiness
             }
             catch (Exception ex)
             {
-                HttpContext.Current.Response.Redirect("~/ErrorPage/ErrorPage.aspx?Error=" +"网络访问较慢或网络不通无法访问 ："+ ex.ToString());
+                HttpContext.Current.Response.Redirect("~/ErrorPage/ErrorPage.aspx?Error=" + "网络访问较慢或网络不通无法访问 ：" + ex.ToString());
 
                 // inputlog(ex.Message + "//" + ex.Source + "//" + ex.StackTrace);
 
@@ -1097,7 +1058,67 @@ namespace clsBuiness
             finally { if (con.State == ConnectionState.Open) con.Close(); con.Dispose(); }
 
         }
+        public void changePIC_server(List<clt_detail_info> AddMAPResult)
+        {
+            //创建连接对象
+            bool isok = false;
+            OleDbConnection con = new OleDbConnection(ConStr);
+            try
+            {
+                if (con.State == ConnectionState.Closed)
+                    con.Open();
+                //命令
+                foreach (clt_detail_info item in AddMAPResult)
+                {
+                    #region sql 删除图片
 
+                    using (SqlConnection conn = new SqlConnection(ConStrPIC))
+                    {
+                        conn.Open();
+                        SqlCommand cmd1 = new SqlCommand();
+                        cmd1.Connection = conn;
+
+                        cmd1.CommandText = "UPDATE Detailed SET img = @img, FFileName = @FFileName " + "WHERE id = @Order_id";
+
+                        cmd1.Parameters.AddWithValue("@img", System.Data.SqlTypes.SqlBinary.Null);
+
+                        SqlParameter par1 = new SqlParameter("@Order_id", SqlDbType.Int);
+                        par1.Value = item.Order_id;
+                        cmd1.Parameters.Add(par1);
+
+                        SqlParameter par3 = new SqlParameter("@FFileName", SqlDbType.Char);
+                        par3.Value = item.FFileName;
+                        cmd1.Parameters.Add(par3);
+
+                        int t = (int)(cmd1.ExecuteNonQuery());
+                        if (t > 0)
+                        {
+                            Console.WriteLine("插入成功");
+                        }
+                        conn.Close();
+
+                    }
+
+                    #endregion
+
+                    return;
+                }
+            }
+            catch (Exception ex)
+            {
+
+                if (con.State == ConnectionState.Open) con.Close();
+                if (con != null)
+                    con.Dispose();
+                HttpContext.Current.Response.Redirect("~/ErrorPage/ErrorPage.aspx?Error=" + ex.ToString());
+
+                return;
+
+                throw;
+            }
+            finally { if (con.State == ConnectionState.Open) con.Close(); con.Dispose(); }
+
+        }
         public bool changeCardServer(List<clCard_info> AddMAPResult)
         {
             //创建连接对象
