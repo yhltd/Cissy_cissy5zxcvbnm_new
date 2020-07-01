@@ -24,7 +24,7 @@
         </div>
     </div>
 
-    <div id="Dlg-Edit" title="编辑窗口" style="width: 800px; height: 400px;">
+    <div id="Dlg-Edit" title="编辑窗口" style="width: 623px; height: 216px; margin-right: 0px;">
         <div style="padding: 20px 20px 40px 40px;">
             <form method="post">
             <table>
@@ -70,7 +70,7 @@
             </form>
         </div>
     </div>
-   <div id="search-window" title="查询窗口" style="width: 350px; height: 200px;">
+   <div id="search-window" title="查询窗口" style="width: 496px; height: 181px;">
         <div style="padding: 20px 20px 40px 80px;">
             <form method="post">
             <table>
@@ -127,7 +127,7 @@
                         <asp:BoundField DataField="产品重量（公斤）" HeaderText="产品重量（公斤）" SortExpression="产品重量（公斤）" />
                     </Columns>
                 </asp:GridView>
-                <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:CissyConnectionString %>" SelectCommand="select no as '产品编号',num as '产品子编号',name as '产品名称',color as '颜色/型号',cost as '采购成本（试算）',length as '产品长（厘米）',width as '产品宽（厘米）',high as '产品高（厘米）',weight as '产品重量（公斤）' from Trial"></asp:SqlDataSource>
+                <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:CissyConnectionString %>" SelectCommand="select Trial.no as '产品编号',Trial.num as '产品子编号',Trial.name as '产品名称',Trial.color as '颜色/型号',Trial.cost as '采购成本（试算）',Product.length as '产品长（厘米）',Product.width as '产品宽（厘米）',Product.high as '产品高（厘米）',Product.weight as '产品重量（公斤）' from Trial left join Product on Trial.no = Product.no and Trial.name = Product.name"></asp:SqlDataSource>
 
             </div>
         </div>

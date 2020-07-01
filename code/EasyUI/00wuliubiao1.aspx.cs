@@ -45,6 +45,8 @@ namespace EasyUI
                 conn.Open();
                 SqlTransaction str = conn.BeginTransaction();//利用事务处理 防止中断  
                 int k = 0;
+                DateTime dt = DateTime.Now;
+                string time = dt.ToShortDateString().ToString();
                 sheet = workbook.GetSheet("Sheet1");
                 try
                 {
@@ -55,7 +57,17 @@ namespace EasyUI
                     for (int i = 0; i < sheet.LastRowNum; i++)
                     {
                         IRow row = sheet.GetRow(i + 1);
-                        string sqlStr = "update Product set country='" + row.GetCell(2) + "',freight= '" + row.GetCell(3) + "' where name='" + row.GetCell(1) + "',no='" + row.GetCell(0) + "'";
+                        string sqlStr = "insert into Freight(no,name,country,freight,time)values";
+                        sqlStr += "('" + row.GetCell(0) + "',";
+                        sqlStr += "'" + row.GetCell(1) + "',";
+                        sqlStr += "'" + row.GetCell(2) + "',";
+                        sqlStr += "'" + row.GetCell(3) + "',"; 
+                        sqlStr += "'" + time + "')";
+                        //sheet = workbook.GetSheet("sheet1") as HSSFSheet;
+                        if (i == 0)
+                        {
+                            sqlStr = "truncate table Freight;" + sqlStr;
+                        }
                         SqlCommand cmd = new SqlCommand(sqlStr, conn, str);
                         cmd.Transaction = str;
                         k += cmd.ExecuteNonQuery();

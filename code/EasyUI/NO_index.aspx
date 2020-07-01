@@ -16,9 +16,54 @@
 
         var _menus = {
             "menus": [
-                  {
-                     "menuid": "6", "icon": "icon-sys", "menuname": "库存核对",
-                     "menus": [{ "menuid": "61", "menuname": "库存核对表", "icon": "icon-log", "url": "01rukuhesuan.aspx" },
+                 //{
+                 //    "menuid": "1", "icon": "icon-sys", "menuname": "采购和设计部预录",
+                 //    "menus": [{ "menuid": "11", "menuname": "采购预录表", "icon": "icon-log", "url": "00caigoubiao1.aspx" },
+                 //            { "menuid": "12", "menuname": "采购部（试算）", "icon": "icon-log", "url": "00caigoubiao2.aspx" },
+                 //            //{ "menuid": "13", "menuname": "设计部预录", "icon": "icon-log", "url": "01shejibiao.aspx" },                       
+                 //    ]
+                 //}, {
+                 //    "menuid": "2", "icon": "icon-sys", "menuname": "物流部预录",
+                 //    "menus": [{ "menuid": "21", "menuname": "物流部预录表", "icon": "icon-log", "url": "00wuliubiao1.aspx" },
+                 //    ]
+                 //}, {
+                 //    "menuid": "3", "icon": "icon-sys", "menuname": "销售部预录",
+                 //    "menus": [{ "menuid": "31", "menuname": "销售部预录表", "icon": "icon-log", "url": "00xiaoshoubiao1.aspx" },
+                 //             { "menuid": "33", "menuname": "销售部(试算)", "icon": "icon-log", "url": "00xiaoshoubiao2.aspx" },
+
+                 //    ]
+                 //}, {
+                 //    "menuid": "4", "icon": "icon-sys", "menuname": "财务部预录",
+                 //    "menus": [{ "menuid": "41", "menuname": "财务预录表", "icon": "icon-log", "url": "00caiwubiao1.aspx " },
+                 //            { "menuid": "42", "menuname": "财务部（试算）", "icon": "icon-log", "url": "00caiwubiao2.aspx" },
+                 //            { "menuid": "43", "menuname": "每月销售记录", "icon": "icon-log", "url": "00caiwubiao3.aspx" },
+                 //            { "menuid": "44", "menuname": "录入星级", "icon": "icon-log", "url": "00caiwubiao4.aspx" },
+                 //            { "menuid": "45", "menuname": "冗余时间（天数）", "icon": "icon-log", "url": "00caiwubiao5.aspx" },
+                 //    ]
+                 //}, {
+                 //    "menuid": "5", "icon": "icon-sys", "menuname": "运营部出具",
+                 //    "menus": [//{ "menuid": "51", "menuname": "运营部表", "icon": "icon-log", "url": "01yunyingbuchuju1.aspx" },
+                 //                { "menuid": "51", "menuname": "销售总情况", "icon": "icon-log", "url": "01xiaoshouqingkuang.aspx" },
+                 //                { "menuid": "52", "menuname": "销售情况（城市）", "icon": "icon-log", "url": "01xiaoshouqiangkuang1.aspx" },
+                 //                { "menuid": "53", "menuname": "销售情况（州）", "icon": "icon-log", "url": "01xiaoshouqingkuang2.aspx" },
+                 //    ]
+                 //}, {
+                 //    "menuid": "6", "icon": "icon-sys", "menuname": "财务部出具",
+                 //    "menus": [{ "menuid": "61", "menuname": "考核表", "icon": "icon-log", "url": "01kaohebiao.aspx" },
+                 //               { "menuid": "62", "menuname": "考核汇总表", "icon": "icon-log", "url": "01kaohebiao1.aspx" },
+                 //                { "menuid": "63", "menuname": "利润试算表", "icon": "icon-log", "url": "01lirunshisuan.aspx" },
+                 //                { "menuid": "64", "menuname": "实际利润表", "icon": "icon-log", "url": "01shijilirun.aspx" },
+                 //                { "menuid": "65", "menuname": "实际利润表汇总", "icon": "icon-log", "url": "01shijilirun1.aspx" },
+                 //                { "menuid": "66", "menuname": "平台利润表汇总", "icon": "icon-log", "url": "01shijilirun2.aspx" },
+                 //    ]
+                 //},
+                 {
+                     "menuid": "7", "icon": "icon-sys", "menuname": "库存核对",
+                     "menus": [{ "menuid": "71", "menuname": "库存核对表", "icon": "icon-log", "url": "01ruku.aspx" },
+                               //{ "menuid": "72", "menuname": "产品目录", "icon": "icon-log", "url": "01chanpinmulu.aspx" },
+                               //{ "menuid": "73", "menuname": "星级比例配置", "icon": "icon-log", "url": "01peizhi01.aspx" },
+                               //{ "menuid": "74", "menuname": "冗余比例配置", "icon": "icon-log", "url": "01peizhi02.aspx" },
+                               //{ "menuid": "72", "menuname": "用户管理", "icon": "icon-log", "url": "01user.aspx" },
                      ]
                  }
             ]
@@ -170,13 +215,13 @@
         </div>
     </noscript>
     <div region="north" split="true" border="false" style="overflow: hidden; height: 36px; background: url(images/layout-browser-hd-bg.gif) #7f99be repeat-x center 50%; line-height: 20px; color: #fff; font-family: Verdana, 微软雅黑,黑体">
-        <span style="float: right; padding-right: 20px;" class="head">欢迎，您的身份：<span style="color: #ffffff">普通用户&nbsp&nbsp</span><a href="#" id="editpass">修改密码</a> <a href="#" id="loginOut">安全退出</a></span>
+        <span style="float: right; padding-right: 20px;" class="head">欢迎，您的身份：<span >普通用户&nbsp&nbsp</span><%--<a href="#" id="editpass">修改密码</a>--%><span>&nbsp&nbsp</span><a href="#" id="loginOut">安全退出</a></span>
         <span style="padding-left: 10px; font-size: 16px;">
             <img src="images/tm_logo.png" width="40" height="30" align="absmiddle" />
             <text style="font-size: 20px; font-family: '楷体'">云合未来系统</text>
     </div>
     <div region="south" split="true" style="height: 30px; background: #D2E0F2;">
-        <div class="footer">遇到问题或需要维护请联系：xxxxxxx-xxxxxxx-xxxxxx</div>
+        <div class="footer">遇到问题或需要维护请联系：<a href="http://www.yhocn.cn">www.yhocn.cn</a></div>
     </div>
     <div region="west" split="true" title="导航菜单" style="width: 180px;" id="west">
         <div class="easyui-accordion1" fit="true" border="false">
@@ -190,13 +235,44 @@
     <div id="mainPanle" region="center" style="background: #eee; overflow-y: hidden">
         <div id="tabs" class="easyui-tabs" fit="true" border="false">
             <div title="欢迎使用" style="padding: 20px; overflow: hidden;" id="home">
+                <h1 style="font-size: 25px; font-family: '楷体'">欢迎使用本系统</h1>
+                <%--<h4 style="font-size: 15px; width: 600px;">本页作用：助您快速上手系统,提高办公效率。</h4>--%>
+                <%--<text style="font-size: 13px; width: 600px;">
+                    <h4>本系统分为两个部分，实际运营部分和利润试算部分</h4>
 
-                <h1 style="font-size: 20px">欢迎阅读系统操作说明</h1>
-                <h4 style="font-size: 15px; width: 600px; font-family: '楷体'">一个幽灵，共产主义的幽灵，在欧洲大陆徘徊。为了对这个幽灵进行神圣的围剿，旧欧洲的一切势力，教皇和沙皇、梅特涅和基佐、法国的激进派和德国的警察，都联合起来了。
-                有哪一个反对党不被它的当政的敌人骂为共产党呢？又有哪一个反对党不拿共产主义这个罪名去回敬更进步的反对党人和自己的反动敌人呢？从这一事实中可以得出两个结论：
-共产主义已经被欧洲的一切势力公认为一种势力；现在是共产党人向全世界公开说明自己的观点、自己的目的、自己的意图并且拿党自己的宣言来反驳关于共产主义幽灵的神话的时候了。
-为了这个目的，各国共产党人集会于伦敦，拟定
-                </h4>
+                    <h3>一、实际运营部分</h3>
+                    <h2>完整的流程</h2>
+                    1、录入部分
+                    （1）由采购员录入或导入<text style="color:red">采购预录表</text>（位置：采购和设计部预录）
+                    （2）接下来由物流部录入或导入<text style="color:red">物流预录表</text>（位置：物流部预录）
+                    （3）接下来由销售部录入或导入<text style="color:red">销售预录表</text>（位置：销售部预录）
+                    （4）接下来由财务部录入或导入<text style="color:red">财务预录表</text>（位置：财务部预录）
+                    （5）接下来由财务部录入<text style="color:red">各个产品的星级</text>和<text style="color:red">冗余时间</text>（位置：财务部预录）
+
+                    （6）接下来根据实际生产，录入或导入每月销售记录表（位置：财务部预录）
+
+                    注意事项：
+                    其中（1）采购预录表为必填，否则（2-5）不能录入；（6）必须在（1-5）之后录入，统计数据才生效
+
+                    2、出具报表
+                    （1）运营部出具3张表，关于销售情况出具销售情况、销售情况按城市排名、销售情况按州排名（点击列名可自动按大小排序）--> 销售情况表    报表1
+                    （2）财务部出具5张表，关于员工考核出具考核表、考核汇总表                                                        -->员工考核表	  报表2	
+			                    关于实际利润计算出具实际利润表、实际利润汇总表、平台利润汇总表				-->实际利润表	   报表3
+
+
+
+                    二、利润试算部分
+                    完整的流程
+                    1、录入部分
+                    （1）由采购员录入或导入采购部（试算）     （位置：采购和设计部预录）
+                    （2）由销售部录入或导入销售部（试算）     （位置：销售部预录）
+                    （3）由财务部录入或导入财务部（试算）     （位置：财务部预录）
+                    （4）由物流部录入或导入物流预录表         （位置：物流部预录） 
+
+
+                    2、出具报表
+                    （1）财务部出具利润试算表，可手动填写或更改售价，自动计算利润
+                </text>--%>
             </div>
         </div>
     </div>

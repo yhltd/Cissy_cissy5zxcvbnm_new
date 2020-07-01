@@ -55,7 +55,7 @@ namespace EasyUI
                     for (int i = 0; i < sheet.LastRowNum; i++)
                     {
                         IRow row = sheet.GetRow(i + 1);
-                        string sqlStr = "update Sale set rate='" + row.GetCell(1) + "',commission= '" + row.GetCell(3) + "' where name='" + row.GetCell(2) + "', account ='" + row.GetCell(0) + "'";
+                        string sqlStr = "update Sale set rate='" + row.GetCell(1) + "',commission= '" + row.GetCell(3) + "' where name='" + row.GetCell(2) + "'and account ='" + row.GetCell(0) + "'";
                         SqlCommand cmd = new SqlCommand(sqlStr, conn, str);
                         cmd.Transaction = str;
                         k += cmd.ExecuteNonQuery();
@@ -76,42 +76,6 @@ namespace EasyUI
             }
         }
 
-        //public void Export_Click1(object sender, EventArgs e)
-        //{
-        //    if (GridView1.Rows.Count > 0)
-        //    {
-        //        //调用导出方法  
-        //        ExportGridViewForUTF8(GridView1, DateTime.Now.ToShortDateString() + ".xls");
-        //    }
-        //    else
-        //    {
-        //    }
-        //}
-        //private void ExportGridViewForUTF8(GridView GridView, string filename)
-        //{
-        //    string attachment = "attachment; filename=" + filename;
-        //    Response.ClearContent();
-        //    Response.Buffer = true;
-        //    Response.AddHeader("content-disposition", attachment);
-        //    Response.Charset = "GB2312";
-        //    Response.ContentEncoding = System.Text.Encoding.GetEncoding("GB2312");
-        //    Response.ContentType = "application/vnd.ms-excel";
-        //    System.IO.StringWriter sw = new System.IO.StringWriter();
-        //    HtmlTextWriter htw = new HtmlTextWriter(sw);
-        //    GridView.RenderControl(htw);
-        //    Response.Charset = null;
-        //    Response.Output.Write(sw);
-        //    Response.Flush();
-        //    Response.End();
-        //}
-        //public override void VerifyRenderingInServerForm(Control control)
-        //{
-        //    //base.VerifyRenderingInServerForm(control);
-        //}
-
-
-
-
         //2020.6.20老板的代码，可以解决excel导出中文乱码问题
         public override void VerifyRenderingInServerForm(Control control)
         {
@@ -128,7 +92,7 @@ namespace EasyUI
 
             "attachment;filename=" + fileName);
 
-            Response.Charset = "";
+            Response.Charset = "UTF-8";
 
             // If you want the option to open the Excel file without saving than
 

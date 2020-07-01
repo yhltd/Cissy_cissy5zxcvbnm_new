@@ -57,7 +57,7 @@ public class Handler : IHttpHandler
         {
             string stitle = ParamsofEasyUI.RequstString("title");
             if (!string.IsNullOrEmpty(stitle))
-                sWhere = " where sunSKU like '%" + stitle + "%'";
+                sWhere = " where Sale.sunSKU like '%" + stitle + "%'";
         }
         //sqlexe = @"select top 10 ID,title,addTime from (select top 20 * from Product " + PID + " order by [addTime] DESC,ID desc) as a";
         //sqlexe = @"SELECT row_number() over( order by  Sales.sunSKU) as id,Sales.sunSKU,SUM ( CASE WHEN Sales.type= 'Order' THEN Sales.sales * Sales.quantity END ) AS 销售额,SUM ( CASE WHEN Sales.type= 'Order' THEN Sales.quantity END ) AS 售出数量,SUM ( CASE WHEN Sales.type= 'Refund' THEN Sales.sales * Sales.quantity END ) AS 退货额,SUM ( CASE WHEN Sales.type= 'Refund' THEN Sales.quantity END ) AS 退货数量,ROUND(CAST(SUM ( CASE WHEN Sales.type= 'Refund' THEN Sales.quantity END ) as float)/CAST(SUM ( CASE WHEN Sales.type= 'Refund' or Sales.type= 'Order' THEN Sales.quantity END )as float),3) as 退货率,SUM ((Sales.total*Sale.rate - Product.cost- Product.freight)*Sales.quantity ) AS 利润 FROM Sales LEFT JOIN Sale ON Sale.sunSKU= Sales.sunSKU LEFT JOIN Product ON Sale.name = Product.name  GROUP BY Sales.sunSKU" + sWhere + " order by " + sort + " " + order;
@@ -72,6 +72,7 @@ FROM
 	LEFT JOIN (
 	SELECT 
 		Sales.sunSKU AS sunSKU,
+        Sales.account AS account,
 		SUM ( CASE WHEN Sales.type= 'Order' THEN Sales.sales * Sales.quantity END ) AS 销售额,
 		SUM ((
 						CASE
@@ -81,7 +82,7 @@ FROM
 								WHEN Sales.type = 'Transfer' THEN
 								0 
                                 WHEN Sales.type = 'Order' THEN
-								(Sales.total- ( Product.cost + Product.freight )) * Sales.quantity * Sale.rate ELSE Sales.total * Sales.quantity* Sale.rate  
+								(Sales.total- ( Sales.cost + Freight.freight )) * Sales.quantity * Sale.rate ELSE Sales.total * Sales.quantity* Sale.rate  
 							END 
 							) 
 						) AS 利润,
@@ -89,11 +90,13 @@ FROM
 			SUM ( CASE WHEN Sales.type= 'Order' THEN Sales.quantity WHEN Sales.type= 'Refund' THEN - Sales.quantity END ) AS 净售出数量 
 		FROM
 			Sales
-			LEFT JOIN Sale ON Sale.sunSKU= Sales.sunSKU
+			LEFT JOIN Sale ON Sale.sunSKU= Sales.sunSKU AND Sale.account = Sales.account
 			LEFT JOIN Product ON Sale.name = Product.name 
+            LEFT JOIN Country ON Country.account = Sales.account
+			LEFT JOIN Freight ON Freight.country = Country.country 
 		GROUP BY
-			Sales.sunSKU 
-		) AS aa ON aa.sunSKU = Sale.sunSKU
+			Sales.sunSKU,Sales.account 
+		) AS aa ON aa.sunSKU = Sale.sunSKU AND aa.account = Sale.account
 		LEFT JOIN Peizhi ON Peizhi.star = Sale.star" + sWhere + " order by " + sort + " " + order;
         DataTable dt = SqlHelper.dataTable(sqlexe);
         return Json4EasyUI.onDataGrid(dt, page, rows);

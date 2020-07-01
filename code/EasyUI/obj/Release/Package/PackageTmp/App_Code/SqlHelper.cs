@@ -4,6 +4,10 @@ using System.Web;
 using System.Configuration;
 using System.Data.Sql;
 using System.Data.SqlClient;
+using System.Collections;
+using System.Text;
+
+
 /// <summary>
 /// 
 /// </summary>
@@ -49,6 +53,41 @@ public class SqlHelper
             conn.Close();
         conn.Dispose();
         comm.Dispose();
+    }
+
+
+    /// <summary>
+    /// 权限管理函数，用于拼接字符串
+    /// </summary>
+    public static string sel(string sql)
+    {
+        SqlDataReader dr = null;
+        StringBuilder sb = new StringBuilder();
+        try
+        {
+            openConnection();
+            comm = new SqlCommand(sql, conn);
+            dr = comm.ExecuteReader();
+            while (dr.Read())
+            {
+
+                for (int i = 0; i < dr.FieldCount; i++)
+                {
+                    sb.Append(dr[i].ToString().Trim() + ",");
+                }
+
+            }
+        }
+        catch (Exception e)
+        {
+            throw new Exception(e.Message);
+        }
+        finally
+        {
+            dr.Close();
+            closeConnection();
+        }
+        return sb.ToString();
     }
     /// <summary> 
     /// 执行Sql查询语句 

@@ -52,3 +52,10 @@ D:\git_version\Cissy_cissy5zxcvbnm_new\code\China_System.Common\bin\Debug\SDZdb.
 D:\git_version\Cissy_cissy5zxcvbnm_new\code\China_System.Common\obj\Debug\China_System.Common.csprojResolveAssemblyReference.cache
 D:\git_version\Cissy_cissy5zxcvbnm_new\code\China_System.Common\obj\Debug\China_System.Common.dll
 D:\git_version\Cissy_cissy5zxcvbnm_new\code\China_System.Common\obj\Debug\China_System.Common.pdb
+D:\yho117\Cissy_new\Cissy_cissy5zxcvbnm_new\code\China_System.Common\bin\Debug\China_System.Common.dll
+D:\yho117\Cissy_new\Cissy_cissy5zxcvbnm_new\code\China_System.Common\bin\Debug\China_System.Common.pdb
+D:\yho117\Cissy_new\Cissy_cissy5zxcvbnm_new\code\China_System.Common\bin\Debug\SDZdb.dll
+D:\yho117\Cissy_new\Cissy_cissy5zxcvbnm_new\code\China_System.Common\bin\Debug\SDZdb.pdb
+D:\yho117\Cissy_new\Cissy_cissy5zxcvbnm_new\code\China_System.Common\obj\Debug\China_System.Common.csprojResolveAssemblyReference.cache
+D:\yho117\Cissy_new\Cissy_cissy5zxcvbnm_new\code\China_System.Common\obj\Debug\China_System.Common.dll
+D:\yho117\Cissy_new\Cissy_cissy5zxcvbnm_new\code\China_System.Common\obj\Debug\China_System.Common.pdb

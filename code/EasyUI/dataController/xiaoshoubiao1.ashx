@@ -22,16 +22,21 @@ public class Handler : IHttpHandler
             case "del":
                 sReturnJson = delete();
                 break;
-                
-                //列表
+
+
+            //列表
             case "list":
-                //查询
+            //查询
             case "query":
                 sReturnJson = getData(action);
                 break;
-                
+
+            case "dell":
+                sReturnJson = dellete();
+                break;
+
             case "get":
-            sReturnJson=getSingleData();
+                sReturnJson = getSingleData();
                 break;
             default:
                 break;
@@ -46,7 +51,7 @@ public class Handler : IHttpHandler
     private string getSingleData()
     {
         string id = ParamsofEasyUI.RequstString("ID");
-        string sqlexe = @"select * from Sale where ID=" + id + "";
+        string sqlexe = @"select id,account ,smallGroup ,saler ,type ,asin ,sunSKU ,name ,REPLACE(fatherSKU, CHAR(10) , '') as fatherSKU  ,FBA ,three,thirty  from Sale where id=" + id + "";
         DataTable dt = SqlHelper.dataTable(sqlexe);
         return Json4EasyUI.onForm(dt);//{"ID":"25","Column1":"22221","Column2":"33331","Column3":"44441"}
     }
@@ -78,7 +83,7 @@ public class Handler : IHttpHandler
                 sWhere = " where sunSKU like '%" + stitle + "%'";
         }
         //sqlexe = @"select top 10 ID,title,addTime from (select top 20 * from product " + PID + " order by [addTime] DESC,ID desc) as a";
-        sqlexe = @"select * from Sale " + sWhere + " order by " + sort + " " + order;
+        sqlexe = @"select id,account ,smallGroup ,saler ,type ,asin ,sunSKU ,name ,REPLACE(fatherSKU, CHAR(10) , '') as fatherSKU ,FBA ,three,thirty,CONVERT(varchar(10), time,120)as time  from Sale " + sWhere + " order by " + sort + " " + order;
         DataTable dt = SqlHelper.dataTable(sqlexe);
         return Json4EasyUI.onDataGrid(dt, page, rows);
     }
@@ -93,6 +98,17 @@ public class Handler : IHttpHandler
             sReturnJson = "{success:true}";
         else
             sReturnJson = "{success:false}";
+        return sReturnJson;
+    }
+
+    //清空
+    private string dellete()
+    {
+        string sReturnJson = string.Empty;
+        string sqlexe = string.Format("truncate table Sale;");
+        SqlHelper.ExecuteUpdate(sqlexe);
+        sReturnJson = "{success:true}";
+
         return sReturnJson;
     }
     
@@ -115,8 +131,8 @@ public class Handler : IHttpHandler
         string sqlexe = string.Empty;
         if (id.Length > 0)
         {
-            sqlexe = string.Format("update Sale set account='{0}',smallGroup='{1}',saler='{2}',type='{3}',asin='{4}',sunSKU='{5}',name='{6}',fatherSKU='{7}',FBA='{8}',three='{9}',thirty='{10}' where id={11}",
-   account, smallGroup, saler, type, asin, sunSKU, name, fatherSKU, FBA,three,thirty, Convert.ToInt32(id));
+            sqlexe = string.Format("update Sale set account='{0}',smallGroup='{1}',saler='{2}',type='{3}',asin='{4}',sunSKU='{5}',name='{6}' ,fatherSKU='{7}',FBA='{8}',three='{9}',thirty='{10}'where id={11}",
+   account, smallGroup, saler, type, asin, sunSKU, name, fatherSKU, FBA, three, thirty, Convert.ToInt32(id));
             if (SqlHelper.ExecuteUpdate(sqlexe))
                 sReturnJson = "{success:true}";
             else
@@ -124,8 +140,8 @@ public class Handler : IHttpHandler
         }
         else
         {
-            sqlexe = string.Format("insert Into Sale (account, smallGroup, saler, type, asin, sunSKU, name, fatherSKU, FBA,three,thirty) values ('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}','{9}','{10}')",
-               account, smallGroup, saler, type, asin, sunSKU, name, fatherSKU, FBA, three, thirty);
+            sqlexe = string.Format("insert Into Sale ( account, smallGroup, saler, type, asin, sunSKU, name, fatherSKU, FBA, three, thirty) values ('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}','{9}','{10}')",
+                account, smallGroup, saler, type, asin, sunSKU, name, fatherSKU, FBA, three, thirty);
             if (SqlHelper.ExecuteUpdate(sqlexe))
                 sReturnJson = "{success:true}";
             else

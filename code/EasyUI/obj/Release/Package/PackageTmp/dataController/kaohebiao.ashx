@@ -64,8 +64,8 @@ public class Handler : IHttpHandler
         sqlexe = @"SELECT
 	row_number () OVER ( ORDER BY Sale.sunSKU ) AS id,
 	Sale.saler,
-	Sale.account,
-	Sale.fatherSKU,
+	aa.account,
+	REPLACE(Sale.fatherSKU, CHAR(10) , '') as fatherSKU  ,
 	Sale.name,
 	Sale.sunSKU,
 	aa.净销售数量,
@@ -83,7 +83,7 @@ CASE
 	( 1-Peizhi.betw91180 ) 
 	WHEN ( Sale.redundancy<= 90 AND Sale.redundancy > 30 ) THEN
 	( 1-Peizhi.betw3190 ) 
-	WHEN ( Sale.redundancy<= 30 AND Sale.redundancy > 0 ) THEN
+	WHEN ( Sale.redundancy<= 30 AND Sale.redundancy >= 0 ) THEN
 	1 
 END 
 	) AS 冗余考核系数,
@@ -113,7 +113,8 @@ END
 			LEFT JOIN (
 			SELECT
 				Sales.sunSKU AS sunSKU,
-				SUM(CASE WHEN Sales.type= 'Order' THEN Sales.quantity WHEN Sales.type= 'Refund' THEN -Sales.quantity END) AS 净销售数量,
+                Sales.account AS account,
+				SUM ( CASE WHEN Sales.type= 'Order' THEN Sales.quantity WHEN Sales.type= 'Refund' THEN - Sales.quantity END ) AS 净销售数量,
 				SUM ( CASE WHEN Sales.type= 'Order' THEN Sales.sales * Sales.quantity END ) AS 销售额,
 				(
 					SUM ((
@@ -123,8 +124,9 @@ END
 								Sales.sales * Sales.quantity * Sale.rate 
 								WHEN Sales.type = 'Transfer' THEN
 								0 
-                                WHEN Sales.type = 'Order' THEN
-								(Sales.total- ( Product.cost + Product.freight )) * Sales.quantity * Sale.rate ELSE Sales.total * Sales.quantity* Sale.rate  
+								WHEN Sales.type = 'Order' THEN
+								(
+								Sales.total- ( Sales.cost + Freight.freight )) * Sales.quantity * Sale.rate ELSE Sales.total * Sales.quantity* Sale.rate 
 							END 
 							) 
 						)) AS 利润,
@@ -140,11 +142,13 @@ END
 						SUM ( CASE WHEN Sales.type= 'Order' THEN Sales.quantity WHEN Sales.type= 'Refund' THEN - Sales.quantity END ) AS 净售出数量 
 					FROM
 						Sales
-						LEFT JOIN Sale ON Sale.sunSKU= Sales.sunSKU
+						LEFT JOIN Sale ON Sale.sunSKU= Sales.sunSKU AND Sale.account = Sales.account
 						LEFT JOIN Product ON Sale.name = Product.name 
+						LEFT JOIN Country ON Country.account = Sales.account
+			            LEFT JOIN Freight ON Freight.country = Country.country 
 					GROUP BY
-						Sales.sunSKU 
-					) AS aa ON aa.sunSKU = Sale.sunSKU
+						Sales.sunSKU,Sales.account 
+					) AS aa ON aa.sunSKU = Sale.sunSKU and aa.account = Sale.account
 LEFT JOIN Peizhi ON Peizhi.star = Sale.star" + sWhere + " order by " + sort + " " + order;
         DataTable dt = SqlHelper.dataTable(sqlexe);
         return Json4EasyUI.onDataGrid(dt, page, rows);

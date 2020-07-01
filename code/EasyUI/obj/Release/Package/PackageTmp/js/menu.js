@@ -44,11 +44,17 @@ function InitLeftMenu() {
 function getIcon(menuid) {
     var icon = 'icon ';
     $.each(_menus.menus, function (i, n) {
-        $.each(n.menus, function (j, o) {
-            if (o.menuid == menuid) {
-                icon += o.icon;
-            }
-        })
+        if (n != "") {
+            $.each(n.menus, function (j, o) {
+                if (o != "") {
+                    if (o.menuid == menuid) {
+                        icon += o.icon;
+                    }
+                }
+                
+            })
+        }
+        
     })
 
     return icon;

@@ -41,69 +41,90 @@
     });
     searchForm = searchWin.find('form');
 
-
-    grid = $('#grid').datagrid({
-        title: '考核表',
-        iconCls: 'icon-save',
-        methord: 'get', //请求远程数据的 method 类型
-        url: 'dataController/kaohebiao.ashx?action=list&ran=' + Math.random(),  //从远程站点请求数据的 URL
-        sortName: 'id',  //定义可以排序的列
-        sortOrder: 'desc',
-        idField: 'id', //标识字段
-        pageSize: 30,   //初始化页码尺寸
-        frozenColumns: [[
-	                { field: 'ID', checkbox: true }//checkbox: true 表示显示 checkbox
-                    //,{ title: 'ID', field: 'ID', width: 80, sortable: true }
-        ]], //和列的特性一样，但是这些列将被冻结在左边。
-        columns: [[
-					{ field: 'saler', title: '销售员', width: 100, sortable: true, align: 'center' }, //fieldfield 列的字段名,title列的标题文字,sortable 是否允许此列被排序
-					{ field: 'account', title: '平台账户', width: 100, sortable: true, align: 'center' },
-                    { field: 'fatherSKU', title: '父SKU', width: 100, sortable: true, align: 'center' },
-                    { field: 'name', title: '商品名称', width: 100, sortable: true, align: 'center' },
-                    { field: 'sunSKU', title: '子SKU', width: 100, sortable: true, align: 'center' },
-                    { field: '净销售数量', title: '净数量', width: 100, sortable: true, align: 'center' },
-                    { field: '利润', title: '利润金额', width: 100, sortable: true, align: 'center' },
-                    { field: '提成比例', title: '提成比例', width: 100, sortable: true, align: 'center' },
-                    { field: '汇率', title: '汇率', width: 100, sortable: true, align: 'center' },
-                    { field: '提成', title: '提成', width: 100, sortable: true, align: 'center' },
-                    { field: '评价考核系数', title: '评价考核系数', width: 100, sortable: true, align: 'center' },
-                    { field: '冗余考核系数', title: '冗余考核系数', width: 100, sortable: true, align: 'center' },
-                    { field: '无利润考核系数', title: '无利润考核系数', width: 100, sortable: true, align: 'center' },
-                    { field: '应发提成', title: '应发提成', width: 100, sortable: true, align: 'center' },
-                    { field: 'id', title: '实际提成（未确认）', width: 100, sortable: true, align: 'center' },
-        ]], //datagrid 的 column 的配置对象
-        fit: true,
-        pagination: true, //True 就会在 datagrid 的底部显示分页栏
-        rownumbers: true, //True 就会显示行号的列
-        fitColumns: true,//True 就会自动扩大或缩小列的尺寸以适应表格的宽度并且防止水平滚动。
-        singleSelect: false, //True 就会只允许选中一行。
-        toolbar: [{
-            text: '查找',
-            iconCls: 'icon-search',
-            handler: OpensearchWin
-        }, '-', {
-            text: '所有',
-            iconCls: 'icon-search',
-            handler: showAll
-        },'-', {
-            text: '导出excel',
-            iconCls: 'icon-print',
-            handler: OpenExcelWin1
-        }
-        ],
-        onHeaderContextMenu: function (e, field) {//当 datagrid 的头部被右键单击时触发
-            e.preventDefault();
-            if (!$('#tmenu').length) {
-                createColumnMenu();
-            }
-            $('#tmenu').menu('show', {
-                left: e.pageX,
-                top: e.pageY
-            });
-        }
-    });
+    getLV();    
+    
     $('body').layout();
 });
+
+function getLV() {
+    $.ajax({
+        url: 'dataController/selCon.ashx?operation=viewAccess&tableName=kaohe',
+        type: 'GET',
+        error: function () {
+            $.messager.alert('错误', 'error');
+        },
+        success: function (data) {
+            if (data != "") {
+                var arr = new Array(); //定义一数组
+                arr = data.split(",");
+                grid = $('#grid').datagrid({
+                    title: '考核表',
+                    iconCls: 'icon-save',
+                    methord: 'get', //请求远程数据的 method 类型
+                    url: 'dataController/kaohebiao.ashx?action=list&ran=' + Math.random(),  //从远程站点请求数据的 URL
+                    sortName: 'id',  //定义可以排序的列
+                    sortOrder: 'desc',
+                    idField: 'id', //标识字段
+                    pageSize: 30,   //初始化页码尺寸
+                    frozenColumns: [[
+                                { field: 'ID', checkbox: true }//checkbox: true 表示显示 checkbox
+                                //,{ title: 'ID', field: 'ID', width: 80, sortable: true }
+                    ]], //和列的特性一样，但是这些列将被冻结在左边。
+                    columns: [[
+                                { field: 'saler', title: '销售员', width: 100, sortable: true, align: 'center' }, //fieldfield 列的字段名,title列的标题文字,sortable 是否允许此列被排序
+                                { field: 'account', title: '平台账户', width: 100, sortable: true, align: 'center' },
+                                { field: 'fatherSKU', title: '父SKU', width: 100, sortable: true, align: 'center' },
+                                { field: 'name', title: '商品名称', width: 100, sortable: true, align: 'center' },
+                                { field: 'sunSKU', title: '子SKU', width: 100, sortable: true, align: 'center' },
+                                { field: '净销售数量', title: '净数量', width: 100, sortable: true, align: 'center' },
+                                { field: '利润', title: '利润金额', width: 100, sortable: true, align: 'center' },
+                                { field: '提成比例', title: '提成比例', width: 100, sortable: true, align: 'center' },
+                                { field: '汇率', title: '汇率', width: 100, sortable: true, align: 'center' },
+                                { field: '提成', title: '提成', width: 100, sortable: true, align: 'center' },
+                                { field: '评价考核系数', title: '评价系数', width: 100, sortable: true, align: 'center' },
+                                { field: '冗余考核系数', title: '冗余系数', width: 100, sortable: true, align: 'center' },
+                                { field: '无利润考核系数', title: '无利润系数', width: 100, sortable: true, align: 'center' },
+                                { field: '应发提成', title: '应发提成', width: 100, sortable: true, align: 'center' },
+                                { field: 'id', title: '实际提成（未确认）', width: 100, sortable: true, align: 'center' },
+                    ]], //datagrid 的 column 的配置对象
+                    fit: true,
+                    nowrap: false,
+                    pagination: true, //True 就会在 datagrid 的底部显示分页栏
+                    rownumbers: true, //True 就会显示行号的列
+                    fitColumns: true,//True 就会自动扩大或缩小列的尺寸以适应表格的宽度并且防止水平滚动。
+                    singleSelect: false, //True 就会只允许选中一行。
+                    toolbar: [{
+                        text: '查找',
+                        disabled: arr[3] == '1' ? false : true,
+                        iconCls: 'icon-search',
+                        handler: OpensearchWin
+                    }, '-', {
+                        text: '所有',
+                        disabled: arr[4] == '1' ? false : true,
+                        iconCls: 'icon-search',
+                        handler: showAll
+                    }, '-', {
+                        text: '导出excel',
+                        disabled: arr[6] == '1' ? false : true,
+                        iconCls: 'icon-print',
+                        handler: OpenExcelWin1
+                    }
+                    ],
+                    onHeaderContextMenu: function (e, field) {//当 datagrid 的头部被右键单击时触发
+                        e.preventDefault();
+                        if (!$('#tmenu').length) {
+                            createColumnMenu();
+                        }
+                        $('#tmenu').menu('show', {
+                            left: e.pageX,
+                            top: e.pageY
+                        });
+                    }
+                });
+            }
+        }
+    });
+}
 
 function createColumnMenu() {
     var tmenu = $('<div id="tmenu" style="width:100px;"></div>').appendTo('body');

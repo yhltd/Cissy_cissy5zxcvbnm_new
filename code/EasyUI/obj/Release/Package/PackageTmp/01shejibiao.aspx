@@ -1,5 +1,6 @@
 ﻿<%--<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="01shejibiao.aspx.cs" Inherits="EasyUI._01shejibiao" %>--%>
-<%@ Page Language="C#" AutoEventWireup="true" Inherits="EasyUI._01shejibiao"  EnableEventValidation = "false"  CodeBehind="01shejibiao.aspx.cs" %>
+
+<%@ Page Language="C#" AutoEventWireup="true" Inherits="EasyUI._01shejibiao" EnableEventValidation="false" CodeBehind="01shejibiao.aspx.cs" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -14,14 +15,7 @@
     <script src="/dataPage/shejibiao.js" type="text/javascript"></script>
     <script type="text/javascript">
 
-        //单击事件写法
-        ShowDetail1 = function (id) {
-            alert("上传"+id);
-        },
-        ShowDetail2 = function (id) {
-            alert("下载"+id);
-        }
-
+        
     </script>
 </head>
 <body class="easyui-layout" style="overflow-y: hidden" scroll="no">
@@ -31,7 +25,10 @@
         <%--<button onclick=""><img src="file/1.jpg"></img></button>--%>
     </div>
 
-    <div id="Dlg-Edit" title="编辑窗口" style="width: 800px; height: 400px;">
+<%--    <asp:Button runat="server" ID="btn123" OnClick="show_Image"></asp:Button>--%>
+    <%-- 一个不会显示出来的按钮，用于js传值和调用C#的方法--%>
+
+    <div id="Dlg-Edit" title="编辑窗口" style="width: 621px; height: 164px;">
         <div style="padding: 20px 20px 40px 40px;">
             <form method="post">
                 <table>
@@ -47,30 +44,21 @@
                             <input name="num" class="easyui-validatebox" required="true" style="width: 150px;" />
                         </td>
                     </tr>
-                    <tr>
-                        <td>图片：
-                        </td>
-                        <td>
-                            <input name="img" class="easyui-validatebox" required="true" style="width: 150px;" />
-                        </td>  
-                    </tr>
-
-                    
                 </table>
             </form>
         </div>
     </div>
-    <div id="search-window" title="查询窗口" style="width: 350px; height: 200px;">
+    <div id="search-window" title="查询窗口" style="width: 387px; height: 219px;">
         <div style="padding: 20px 20px 40px 80px;">
-            <form method="post" style="width: 218px">
+            <form method="post" style="width: 242px; height: 37px;">
                 <br />
                 <br />
                 <table>
                     <tr>
-                        <td>序号：
+                        <td>产品子编号：
                         </td>
                         <td>
-                            <input name="s_title" id="s_title" style="width: 150px; height: 35px;" />
+                            <input name="s_title" id="s_title" style="width: 150px; height: 20px;" />
                         </td>
                     </tr>
                 </table>
@@ -81,30 +69,51 @@
             <a href="javascript:void(0)" onclick="closeSearchWindow()" id="btn-search-cancel" icon="icon-cancel">取消</a>
         </div>
     </div>
-    <div id="excelWin" title="从excel导入" style="width: 350px; height: 200px;">
+    <%--<div id="excelWin" title="从excel导入" style="width: 350px; height: 200px;">
         <div style="padding: 20px 20px 40px 80px;">
-            <form id="Form1" method="post" runat="server">
+            <form id="Form1" method="post" >
                 <table>
                     <tr>
-                        <asp:FileUpload ID="fileId" runat="server" Width="433px" />
-                        <asp:Button ID="Button1" runat="server" Text="上传" OnClientClick="return check()" OnClick="Export_Click" />
+                        <%--<asp:FileUpload ID="fileId" runat="server" Width="433px" />
+                        <asp:Button ID="Button1" runat="server" Text="上传" OnClientClick="return check()" OnClick="Export_Click" />--%>
+                    <%--</tr>
+                </table>
+            </form>
+        </div>--%>
+        <%--<div style="text-align: center; padding: 5px;">
+            <a href="javascript:void(0)" onclick="CloseExcelWindow()" id="btn-excel-canel" icon="icon-cancel">取消</a>
+        </div> --%>
+    </div>--%>
+    <div id="imgWin" title="从本地导入图片" style="width: 350px; height: 200px;">
+        <div style="padding: 20px 20px 40px 80px;">
+            <form id="Form2" method="post" runat="server">
+                <table>
+                    <tr>
+                        <td><asp:FileUpload ID="fileUpload" Width="200px" runat="server"  /></td>
+                    
+                    </tr>  
+                    <tr>  
+                        <td> <asp:Button ID="btnAddAttach" runat="server" Text="添加" CssClass="ui-btn ui-btn-add" OnClick="btnAddAttach_Click" /></td>
+                        <%--<td>
+                            <input name="id" class="easyui-validatebox" required="true" style="width: 150px;" />
+                        </td>--%>
                     </tr>
                 </table>
             </form>
         </div>
         <%--<div style="text-align: center; padding: 5px;">
-            <a href="javascript:void(0)" onclick="CloseExcelWindow()" id="btn-excel-canel" icon="icon-cancel">取消</a>
+            <a href="javascript:void(0)" onclick="CloseExcelWindow()" id="hash" icon="icon-cancel">取消</a>
         </div>--%>
     </div>
 
-    <div id="excelWin1" title="导出预览" style="width: 1000px; height: 300px;">
-        
+    <%--<div id="excelWin1" title="导出预览" style="width: 1000px; height: 300px;">
+
         <div style="padding: 20px 20px 40px 80px; text-align: center">
-                <table>
-                    <tr>
-                        <button id="Button2" runat="server" text="下载表格" onclick="Export_Click1" />
-                    </tr>
-                </table>
+            <table>
+                <tr>
+                    <button id="Button2" runat="server" text="下载表格" onclick="Export_Click1" />
+                </tr>
+            </table>
             <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource1" BackColor="White" BorderColor="#336666" BorderStyle="Double" BorderWidth="3px" CellPadding="4" GridLines="Horizontal" Width="654px">
                 <Columns>
                     <asp:BoundField DataField="no" HeaderText="no" SortExpression="no" />
@@ -132,7 +141,7 @@
             <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:CissyConnectionString %>" SelectCommand="select no, grouping, name, cost, buyer, sale, length, width, high, weight, pack from Product"></asp:SqlDataSource>
 
         </div>
-    </div>
+    </div>--%>
 
 </body>
 </html>

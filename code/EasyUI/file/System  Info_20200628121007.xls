@@ -1,0 +1,21 @@
+<div>
+	<table cellspacing="0" rules="all" border="1" id="GridView1" style="width:1042px;border-collapse:collapse;margin-left: 0px; margin-top: 22px">
+		<tr>
+			<th scope="col">产品编号</th><th scope="col">产品分组</th><th scope="col">产品名称</th><th scope="col">采购成本</th><th scope="col">采购负责人</th><th scope="col">在售账户</th><th scope="col">产品长（厘米）</th><th scope="col">产品宽（厘米）</th><th scope="col">产品高（厘米）</th><th scope="col">产品重量（公斤）</th><th scope="col">包装清单</th>
+		</tr><tr>
+			<td>1</td><td>1</td><td>1</td><td>1.0000</td><td>1</td><td>1</td><td>1</td><td>1</td><td>1</td><td>1</td><td>1</td>
+		</tr><tr>
+			<td>1</td><td>1</td><td>1</td><td>1.0000</td><td>1</td><td>1</td><td>1</td><td>1</td><td>1</td><td>1</td><td>1</td>
+		</tr><tr>
+			<td>1</td><td>1</td><td>1</td><td>1.0000</td><td>1</td><td>1</td><td>1</td><td>1</td><td>1</td><td>1</td><td>1</td>
+		</tr><tr>
+			<td>1</td><td>1</td><td>1</td><td>1.0000</td><td>1</td><td>1</td><td>1</td><td>1</td><td>1</td><td>1</td><td>1</td>
+		</tr><tr>
+			<td>1</td><td>1</td><td>1</td><td>1.0000</td><td>1</td><td>1</td><td>1</td><td>1</td><td>1</td><td>1</td><td>1</td>
+		</tr><tr>
+			<td>1</td><td>1</td><td>1</td><td>1.0000</td><td>1</td><td>1</td><td>1</td><td>1</td><td>1</td><td>1</td><td>1</td>
+		</tr><tr>
+			<td>1</td><td>1</td><td>1</td><td>1.0000</td><td>1</td><td>1</td><td>1</td><td>1</td><td>1</td><td>1</td><td>1</td>
+		</tr>
+	</table>
+</div>

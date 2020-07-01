@@ -1,0 +1,21 @@
+<div>
+	<table cellspacing="0" rules="all" border="1" id="GridView1" style="height:122px;width:421px;border-collapse:collapse;margin-left: 29px; margin-right: 38px; margin-top: 33px">
+		<tr>
+			<th scope="col">产品编号</th><th scope="col">产品名称</th><th scope="col">运抵国</th><th scope="col">单件头程运费</th><th scope="col">备注</th>
+		</tr><tr>
+			<td>1</td><td>1</td><td>1</td><td>1.0000</td><td>&nbsp;</td>
+		</tr><tr>
+			<td>1</td><td>1</td><td>1</td><td>1.0000</td><td>&nbsp;</td>
+		</tr><tr>
+			<td>1</td><td>1</td><td>1</td><td>1.0000</td><td>&nbsp;</td>
+		</tr><tr>
+			<td>1</td><td>1</td><td>1</td><td>1.0000</td><td>&nbsp;</td>
+		</tr><tr>
+			<td>1</td><td>1</td><td>1</td><td>1.0000</td><td>&nbsp;</td>
+		</tr><tr>
+			<td>1</td><td>1</td><td>1</td><td>1.0000</td><td>&nbsp;</td>
+		</tr><tr>
+			<td>1</td><td>1</td><td>1</td><td>1.0000</td><td>&nbsp;</td>
+		</tr>
+	</table>
+</div>

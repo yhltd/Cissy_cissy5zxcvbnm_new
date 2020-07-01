@@ -96,7 +96,7 @@
                     </td>
                     <td>
                         <input name="total" class="easyui-validatebox"  style="width: 150px;" />
-                    </td>
+                    </td>                 
                 </tr>
             </table>
             </form>

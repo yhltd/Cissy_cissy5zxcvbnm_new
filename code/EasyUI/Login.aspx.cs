@@ -20,7 +20,7 @@ namespace EasyUI
         private string sql = null;
         protected void Page_Load(object sender, EventArgs e)
         {
-            
+
         }
         public void openDatabase()
         {
@@ -40,7 +40,7 @@ namespace EasyUI
             conn.Close();
 
         }
-        public void load(string sql) 
+        public void load(string sql)
         {
             openDatabase();
             cmd = new SqlCommand(sql, conn);
@@ -58,7 +58,7 @@ namespace EasyUI
         {
             Session.Timeout = 10000;
             string account = Request.Form["account"];
-            string password = Request.Form["password"]; 
+            string password = Request.Form["password"];
             user = account;
             pass = password;
             HttpCookie cookie = new HttpCookie("MyCook");
@@ -70,40 +70,35 @@ namespace EasyUI
             {
                 Response.Write("<script>alert('密码不能为空!')</script>");
             }
-            else 
+            else
             {
-                sql = "select pwd,LV from  Account where account='" + account + "'";
+                sql = "select pwd,con_id,name from  Account where account='" + account + "'";
                 openDatabase();
                 cmd = new SqlCommand(sql, conn);
                 SqlDataReader dr = cmd.ExecuteReader();
                 if (dr.Read())
                 {
-                    
+
                     if ((String)dr[0].ToString().Trim() == password)
                     {
-                        if ((String)dr[1].ToString().Trim() == "admin")
-                        {
-                            Session["account"] = account;
-                            Response.Redirect("index.aspx");
-                        }
-                        else if ((String)dr[1].ToString().Trim() == "normal")
-                        {
-                            Response.Redirect("NO_index.aspx");
-                        }
+                        HttpCookie Cookie1 = new HttpCookie("conCookie");
+                        Cookie1.Values.Add("id", (String)dr[1].ToString().Trim());
+                        Cookie1.Values.Add("shengfen", (String)dr[2].ToString().Trim());
+                        Response.Cookies.Add(Cookie1);
+
+                        Response.Redirect("index.aspx");
                     }
                     else
                     {
                         Response.Write("<script>alert('输入密码有误，请重试')</script>");
                     }
                 }
-                else 
+                else
                 {
                     Response.Write("<script>alert('输入账户名有误，请重试')</script>");
                 }
-                 
-                conn.Close();
 
-                
+                conn.Close();
             }
         }
     }

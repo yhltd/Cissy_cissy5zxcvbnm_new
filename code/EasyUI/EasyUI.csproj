@@ -35,6 +35,8 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <Prefer32Bit>false</Prefer32Bit>
+    <PlatformTarget>x86</PlatformTarget>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -114,6 +116,7 @@
     <Content Include="00caiwubiao4.aspx" />
     <Content Include="00caiwubiao5.aspx" />
     <Content Include="00wuliubiao1.aspx" />
+    <Content Include="01country.aspx" />
     <Content Include="01kaohebiao.aspx" />
     <Content Include="01kaohebiao1.aspx" />
     <Content Include="01lirunshisuan.aspx" />
@@ -123,14 +126,15 @@
     <Content Include="01shijilirun.aspx" />
     <Content Include="01shijilirun1.aspx" />
     <Content Include="01shijilirun2.aspx" />
+    <Content Include="00xiaoshoubiao2.aspx" />
+    <Content Include="01user1.aspx" />
     <Content Include="01xiaoshouqiangkuang1.aspx" />
     <Content Include="01xiaoshouqingkuang2.aspx" />
+    <Content Include="01user.aspx" />
+    <Content Include="01xiaoshouqingkuang3.aspx" />
     <Content Include="01yunyingbuchuju1.aspx" />
     <Content Include="01xiaoshouqingkuang.aspx" />
     <Content Include="01chanpinmulu.aspx" />
-    <Content Include="a123.aspx" />
-    <Content Include="aaa.html" />
-    <Content Include="as1.html" />
     <Content Include="bin\EasyUI.dll" />
     <Content Include="bin\EasyUI.pdb" />
     <Content Include="bin\EntityFramework.dll" />
@@ -146,6 +150,7 @@
     <Content Include="bin\System.Web.Http.dll" />
     <Content Include="bin\System.Web.Http.WebHost.dll" />
     <Content Include="CQU_CHM_ShowImage.aspx" />
+    <Content Include="css\checkbox.css" />
     <Content Include="css\default.css" />
     <Content Include="css\framework-font.css" />
     <Content Include="css\framework-login.css" />
@@ -172,6 +177,11 @@
     <Content Include="dataPage\shejibiao.js" />
     <Content Include="dataPage\xiaoshouqingkuang1.js" />
     <Content Include="dataPage\xiaoshouqingkuang2.js" />
+    <Content Include="dataPage\xiaoshoubiao2.js" />
+    <Content Include="dataPage\user.js" />
+    <Content Include="dataPage\country.js" />
+    <Content Include="dataPage\xiaoshouqingkuang3.js" />
+    <Content Include="dataPage\user1.js" />
     <Content Include="EasyUiDataGrid\datagrid-export.js" />
     <Content Include="EasyUiDataGrid\easyloader.js" />
     <Content Include="EasyUiDataGrid\jquery-1.4.2.min.js" />
@@ -369,12 +379,17 @@
     <Content Include="EasyUiDataGrid\themes\gray\validatebox.css" />
     <Content Include="EasyUiDataGrid\themes\gray\window.css" />
     <Content Include="EasyUiDataGrid\themes\icon.css" />
+    <Content Include="EasyUiDataGrid\themes\icons\03.png" />
+    <Content Include="EasyUiDataGrid\themes\icons\2012080404391.png" />
+    <Content Include="EasyUiDataGrid\themes\icons\application_form_edit.png" />
     <Content Include="EasyUiDataGrid\themes\icons\back.png" />
     <Content Include="EasyUiDataGrid\themes\icons\cancel.png" />
+    <Content Include="EasyUiDataGrid\themes\icons\client.png" />
     <Content Include="EasyUiDataGrid\themes\icons\cut.png" />
     <Content Include="EasyUiDataGrid\themes\icons\edit_add.png" />
     <Content Include="EasyUiDataGrid\themes\icons\edit_remove.png" />
     <Content Include="EasyUiDataGrid\themes\icons\filesave.png" />
+    <Content Include="EasyUiDataGrid\themes\icons\folder_go.png" />
     <Content Include="EasyUiDataGrid\themes\icons\help.png" />
     <Content Include="EasyUiDataGrid\themes\icons\no.png" />
     <Content Include="EasyUiDataGrid\themes\icons\ok.png" />
@@ -750,7 +765,6 @@
     <Content Include="easyUI\Extension\datagrid-filter.js" />
     <Content Include="easyUI\Extension\GridToExport.js" />
     <Content Include="easyUI\Extension\Test.js" />
-    <Content Include="excel.aspx" />
     <Content Include="excel\css\buttons.dataTables.min.css" />
     <Content Include="excel\css\jquery.datatables.min.css" />
     <Content Include="excel\index.html" />
@@ -923,8 +937,14 @@
     <Content Include="dataController\shejibiao.ashx" />
     <Content Include="dataController\xiaoshouqingkuang1.ashx" />
     <Content Include="dataController\xiaoshouqingkuang2.ashx" />
+    <Content Include="dataController\xiaoshoubiao2.ashx" />
+    <Content Include="dataController\user.ashx" />
+    <Content Include="dataController\country.ashx" />
+    <Content Include="dataController\xiaoshouqingkuang3.ashx" />
+    <Content Include="dataController\selCon.ashx" />
+    <Content Include="dataController\user1.ashx" />
+    <Content Include="dataController\accManager.ashx" />
     <None Include="Scripts\jquery-1.7.1.intellisense.js" />
-    <Content Include="picture.aspx" />
     <Content Include="Scripts\jquery-1.7.1.js" />
     <Content Include="Scripts\jquery-1.7.1.min.js" />
     <Content Include="Scripts\jquery-ui-1.8.20.js" />
@@ -940,7 +960,6 @@
     <Content Include="Scripts\knockout-2.1.0.js" />
     <Content Include="Scripts\modernizr-2.5.3.js" />
     <Content Include="Scripts\_references.js" />
-    <Content Include="test.aspx" />
     <Content Include="ViewImage.aspx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -1010,6 +1029,13 @@
     <Compile Include="00wuliubiao1.aspx.designer.cs">
       <DependentUpon>00wuliubiao1.aspx</DependentUpon>
     </Compile>
+    <Compile Include="01country.aspx.cs">
+      <DependentUpon>01country.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="01country.aspx.designer.cs">
+      <DependentUpon>01country.aspx</DependentUpon>
+    </Compile>
     <Compile Include="01kaohebiao.aspx.cs">
       <DependentUpon>01kaohebiao.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1073,6 +1099,20 @@
     <Compile Include="01shijilirun2.aspx.designer.cs">
       <DependentUpon>01shijilirun2.aspx</DependentUpon>
     </Compile>
+    <Compile Include="00xiaoshoubiao2.aspx.cs">
+      <DependentUpon>00xiaoshoubiao2.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="00xiaoshoubiao2.aspx.designer.cs">
+      <DependentUpon>00xiaoshoubiao2.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="01user1.aspx.cs">
+      <DependentUpon>01user1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="01user1.aspx.designer.cs">
+      <DependentUpon>01user1.aspx</DependentUpon>
+    </Compile>
     <Compile Include="01xiaoshouqiangkuang1.aspx.cs">
       <DependentUpon>01xiaoshouqiangkuang1.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1086,6 +1126,20 @@
     </Compile>
     <Compile Include="01xiaoshouqingkuang2.aspx.designer.cs">
       <DependentUpon>01xiaoshouqingkuang2.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="01user.aspx.cs">
+      <DependentUpon>01user.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="01user.aspx.designer.cs">
+      <DependentUpon>01user.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="01xiaoshouqingkuang3.aspx.cs">
+      <DependentUpon>01xiaoshouqingkuang3.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="01xiaoshouqingkuang3.aspx.designer.cs">
+      <DependentUpon>01xiaoshouqingkuang3.aspx</DependentUpon>
     </Compile>
     <Compile Include="01yunyingbuchuju1.aspx.cs">
       <DependentUpon>01yunyingbuchuju1.aspx</DependentUpon>
@@ -1108,26 +1162,12 @@
     <Compile Include="01chanpinmulu.aspx.designer.cs">
       <DependentUpon>01chanpinmulu.aspx</DependentUpon>
     </Compile>
-    <Compile Include="a123.aspx.cs">
-      <DependentUpon>a123.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="a123.aspx.designer.cs">
-      <DependentUpon>a123.aspx</DependentUpon>
-    </Compile>
     <Compile Include="CQU_CHM_ShowImage.aspx.cs">
       <DependentUpon>CQU_CHM_ShowImage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="CQU_CHM_ShowImage.aspx.designer.cs">
       <DependentUpon>CQU_CHM_ShowImage.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="excel.aspx.cs">
-      <DependentUpon>excel.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="excel.aspx.designer.cs">
-      <DependentUpon>excel.aspx</DependentUpon>
     </Compile>
     <Compile Include="frmShejibuyulu.aspx.cs">
       <DependentUpon>frmShejibuyulu.aspx</DependentUpon>
@@ -1163,20 +1203,6 @@
     </Compile>
     <Compile Include="NO_index.aspx.designer.cs">
       <DependentUpon>NO_index.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="picture.aspx.cs">
-      <DependentUpon>picture.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="picture.aspx.designer.cs">
-      <DependentUpon>picture.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="test.aspx.cs">
-      <DependentUpon>test.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="test.aspx.designer.cs">
-      <DependentUpon>test.aspx</DependentUpon>
     </Compile>
     <Compile Include="00xiaoshoubiao1.aspx.cs">
       <DependentUpon>00xiaoshoubiao1.aspx</DependentUpon>
@@ -1271,7 +1297,7 @@
         <WebProjectProperties>
           <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>61674</DevelopmentServerPort>
+          <DevelopmentServerPort>50380</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>
           </IISUrl>

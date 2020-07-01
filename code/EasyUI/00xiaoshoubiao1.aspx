@@ -11,6 +11,12 @@
     <script src="/EasyUiDataGrid/jquery.easyui.min.js" type="text/javascript"></script>
     <script src="/EasyUiDataGrid/locale/easyui-lang-zh_CN.js" type="text/javascript"></script>
     <script src="/dataPage/xiaoshoubiao1.js" type="text/javascript"></script>
+    <style type="text/css">
+        #Button2 {
+            width: 104px;
+            height: 36px;
+        }
+    </style>
 </head>
 <body class="easyui-layout" style="overflow-y: hidden" scroll="no">
     <div region="center" style="width: 500px; height: 300px; padding: 1px;overflow-y: hidden">
@@ -18,7 +24,7 @@
         </div>
     </div>
 
-    <div id="Dlg-Edit" title="编辑窗口" style="width: 800px; height: 400px;">
+    <div id="Dlg-Edit" title="编辑窗口" style="width: 655px; height: 352px;">
         <div style="padding: 20px 20px 40px 40px;">
             <form method="post">
             <table>
@@ -27,7 +33,7 @@
                         销售账户：
                     </td>
                     <td>
-                        <input name="account" class="easyui-validatebox"  style="width: 150px;" />
+                        <input name="account" class="easyui-validatebox"  required="true" style="width: 150px;" />
                     </td>
                 </tr
                 <tr>
@@ -104,7 +110,7 @@
             </form>
         </div>
     </div>
-   <div id="search-window" title="查询窗口"  style="width: 350px; height: 200px;">
+   <div id="search-window" title="查询窗口"  style="width: 417px; height: 184px;">
         <div style="padding: 20px 20px 40px 80px;">
             <form method="post">
             <table>
@@ -160,6 +166,7 @@
                             <asp:BoundField DataField="30天仓租费" HeaderText="30天仓租费" SortExpression="30天仓租费" />
                         </Columns>
                     </asp:GridView>
+&nbsp;&nbsp;
 &nbsp;<asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:CissyConnectionString %>" SelectCommand="select account as '销售账户',smallGroup as '小组',saler as '销售专员',type as '货件类型',asin as 'ASIN',sunSKU as '子SKU',name as '产品名称',fatherSKU as '父SKU',FBA as 'FBA派送费',three as '第三方派送费',thirty as '30天仓租费' from Sale"></asp:SqlDataSource>
                 </form>
 

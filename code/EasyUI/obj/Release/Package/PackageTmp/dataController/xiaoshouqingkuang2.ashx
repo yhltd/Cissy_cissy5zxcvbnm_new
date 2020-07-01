@@ -60,53 +60,57 @@ public class Handler : IHttpHandler
                 sWhere = " where Sales.state like '%" + stitle + "%'";
         }
         //sqlexe = @"select top 10 ID,title,addTime from (select top 20 * from Product " + PID + " order by [addTime] DESC,ID desc) as a";
-        //sqlexe = @"SELECT row_number() over( order by  Sales.sunSKU) as id,Sales.sunSKU,SUM ( CASE WHEN Sales.type= 'Order' THEN Sales.sales * Sales.quantity END ) AS 销售额,SUM ( CASE WHEN Sales.type= 'Order' THEN Sales.quantity END ) AS 售出数量,SUM ( CASE WHEN Sales.type= 'Refund' THEN Sales.sales * Sales.quantity END ) AS 退货额,SUM ( CASE WHEN Sales.type= 'Refund' THEN Sales.quantity END ) AS 退货数量,ROUND(CAST(SUM ( CASE WHEN Sales.type= 'Refund' THEN Sales.quantity END ) as float)/CAST(SUM ( CASE WHEN Sales.type= 'Refund' or Sales.type= 'Order' THEN Sales.quantity END )as float),3) as 退货率,SUM ((Sales.total*Sale.rate - Product.cost- Product.freight)*Sales.quantity ) AS 利润 FROM Sales LEFT JOIN Sale ON Sale.sunSKU= Sales.sunSKU LEFT JOIN Product ON Sale.name = Product.name  GROUP BY Sales.sunSKU" + sWhere + " order by " + sort + " " + order;
-        sqlexe = @"SELECT
-	row_number () OVER ( ORDER BY Sales.state ) AS id,
-	Sales.state,
+        //sqlexe = @"SELECT row_number() over( order by  Sales.sunSKU) as id,Sales.sunSKU,SUM ( CASE WHEN Sales.type= 'Order' THEN Sales.sales * Sales.quantity END ) AS 销售额,SUM ( CASE WHEN Sales.type= 'Order' THEN Sales.quantity END ) AS 售出数量,SUM ( CASE WHEN Sales.type= 'Refund' THEN Sales.sales * Sales.quantity END ) AS 退货额,SUM ( CASE WHEN Sales.type= 'Refund' THEN Sales.quantity END ) AS 退货数量,ROUND(CAST(SUM ( CASE WHEN Sales.type= 'Refund' THEN Sales.quantity END ) as float)/CAST(SUM ( CASE WHEN Sales.type= 'Refund' or Sales.type= 'Order' THEN Sales.quantity END )as float),3) as 退货率,SUM ((Sales.total*Sale.rate - Product.cost- Freight.freight)*Sales.quantity ) AS 利润 FROM Sales LEFT JOIN Sale ON Sale.sunSKU= Sales.sunSKU LEFT JOIN Product ON Sale.name = Product.name  GROUP BY Sales.sunSKU" + sWhere + " order by " + sort + " " + order;
+        sqlexe = @"SELECT row_number() over( order by  Sales.sunSKU) as id,
+    Sales.state ,
 	SUM ( CASE WHEN Sales.type= 'Order' THEN Sales.quantity ELSE 0 END ) AS 售出数量,
 	SUM ( CASE WHEN Sales.type= 'Order' THEN Sales.sales * Sales.quantity ELSE 0 END ) AS 商品销售额,
 	SUM ( CASE WHEN Sales.type= 'Refund' THEN Sales.quantity ELSE 0 END ) AS 退货数量,
 	SUM ( CASE WHEN Sales.type= 'Refund' THEN Sales.total * Sales.quantity ELSE 0 END ) AS 退货金额,
 	ROUND(
-		CAST ( SUM ( CASE WHEN Sales.type= 'Refund' THEN Sales.quantity ELSE 0 END ) AS FLOAT ) / CAST ( SUM ( CASE WHEN Sales.type= 'Refund' OR Sales.type= 'Order' THEN Sales.quantity END ) AS FLOAT ),
-		4 
+	CAST ( SUM ( CASE WHEN Sales.type= 'Refund' THEN Sales.quantity ELSE 0 END ) AS FLOAT ) / CAST ( SUM ( CASE WHEN Sales.type= 'Refund' OR Sales.type= 'Order' THEN Sales.quantity END ) AS FLOAT ),
+	4 
 	) AS 退货率,
 	(
-		SUM ((
-                CASE
-								
-								WHEN Sales.type = 'Refund' THEN
-								Sales.sales * Sales.quantity * Sale.rate 
-								WHEN Sales.type = 'Transfer' THEN
-								0 
-                                WHEN Sales.type = 'Order' THEN
-								(Sales.total- ( Product.cost + Product.freight )) * Sales.quantity * Sale.rate ELSE Sales.total * Sales.quantity* Sale.rate  
-							END 
-							) 
-						)) AS 利润,
-		ROUND(((
-					SUM ((
-						CASE
-								
-								WHEN Sales.type = 'Refund' THEN
-								Sales.sales * Sales.quantity * Sale.rate 
-								WHEN Sales.type = 'Transfer' THEN
-								0
-                                WHEN Sales.type = 'Order' THEN
-								(Sales.total- ( Product.cost + Product.freight )) * Sales.quantity * Sale.rate ELSE Sales.total * Sales.quantity* Sale.rate  
-							END 
-							)  
-						)) / SUM ( CASE WHEN Sales.type= 'Order' THEN Sales.sales * Sales.quantity* Sale.rate ELSE 0 END )),
-				4 
-				) AS 利润率,
-		SUM ( CASE WHEN Sales.type= 'Service Fee' THEN Sales.total * Sales.quantity ELSE 0 END ) / SUM ( CASE WHEN Sales.type= 'Order' THEN Sales.sales * Sales.quantity END ) AS 广告占总销售,
+	SUM ((
+CASE
+	
+	WHEN Sales.type = 'Refund' THEN
+	Sales.sales * Sales.quantity * Sale.rate 
+	WHEN Sales.type = 'Transfer' THEN
+	0 
+	WHEN Sales.type = 'Order' THEN
+	(
+	Sales.total- ( Sales.cost + Freight.freight )) * Sales.quantity * Sale.rate ELSE Sales.total * Sales.quantity* Sale.rate 
+END 
+	) 
+	)) AS 利润,
+	ROUND(((
+				SUM ((
+					CASE
+							
+							WHEN Sales.type = 'Refund' THEN
+							Sales.sales * Sales.quantity * Sale.rate 
+							WHEN Sales.type = 'Transfer' THEN
+							0 
+							WHEN Sales.type = 'Order' THEN
+							(
+							Sales.total- ( Sales.cost + Freight.freight )) * Sales.quantity * Sale.rate ELSE Sales.total * Sales.quantity* Sale.rate 
+						END 
+						) 
+					)) / SUM ( CASE WHEN Sales.type= 'Order' THEN Sales.sales * Sales.quantity* Sale.rate ELSE 0 END )),
+			4 
+			) AS 利润率,
+	SUM ( CASE WHEN Sales.type= 'Service Fee' THEN Sales.total * Sales.quantity ELSE 0 END ) / SUM ( CASE WHEN Sales.type= 'Order' THEN Sales.sales * Sales.quantity END ) AS 广告占总销售,
 	SUM ( CASE WHEN Sales.type= 'FBA Inventory Fee' THEN Sales.total * Sales.quantity ELSE 0 END ) / SUM ( CASE WHEN Sales.type= 'Order' THEN Sales.sales * Sales.quantity END ) AS 仓储占总销售 
 FROM
 	Sales
-	LEFT JOIN Sale ON Sale.sunSKU= Sales.sunSKU
-	LEFT JOIN Product ON Sale.name = Product.name 
-    " + sWhere + "  GROUP BY Sales.state order by " + sort + " " + order;
+	LEFT JOIN Sale ON Sale.sunSKU= Sales.sunSKU 
+	AND Sale.account = Sales.account
+	LEFT JOIN Product ON Sale.name = Product.name
+	LEFT JOIN Country ON Country.account = Sales.account
+	LEFT JOIN Freight ON Freight.country = Country.country 
+    " + sWhere + "  GROUP BY Sales.sunSKU,Sales.state order by " + sort + " " + order;
         DataTable dt = SqlHelper.dataTable(sqlexe);
         return Json4EasyUI.onDataGrid(dt, page, rows);
     }

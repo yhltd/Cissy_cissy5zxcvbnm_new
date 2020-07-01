@@ -22,16 +22,21 @@ public class Handler : IHttpHandler
             case "del":
                 sReturnJson = delete();
                 break;
-                
-                //列表
+
+
+            //列表
             case "list":
-                //查询
+            //查询
             case "query":
                 sReturnJson = getData(action);
                 break;
-                
+
+            case "dell":
+                sReturnJson = dellete();
+                break;
+
             case "get":
-            sReturnJson=getSingleData();
+                sReturnJson = getSingleData();
                 break;
             default:
                 break;
@@ -75,11 +80,11 @@ public class Handler : IHttpHandler
         {
             string stitle = ParamsofEasyUI.RequstString("title");
             if (!string.IsNullOrEmpty(stitle))
-                sWhere = " where num like '%" + stitle + "%' and color is not NULL    ";
+                sWhere = " where num like '%" + stitle + "%' ";
         }
         //sqlexe = @"select top 10 ID,title,addTime from (select top 20 * from Trial " + PID + " order by [addTime] DESC,ID desc) as a";
         //sqlexe = @"select * from(select  Trial.no, Trial.num, Trial.name, Trial.color, Trial.cost, Product.length, Product.width, Product.high, Product.weight from Trial Full join Product on Trial.no = Product.no) " + sWhere + " order by " + sort + " " + order;
-        sqlexe = @"select Trial.id,Trial.no, Trial.num, Trial.name, Trial.color, Trial.cost, Product.length, Product.width, Product.high, Product.weight from Trial left join Product on Trial.no = Product.no and Trial.name = Product.name" + sWhere + " order by " + sort + " " + order;
+        sqlexe = @"select DISTINCT Trial.id,Trial.no, Trial.num, Trial.name, Trial.color, Trial.cost, Product.length, Product.width, Product.high, Product.weight from Trial left join Product on Trial.no = Product.no and Trial.name = Product.name" + sWhere + " order by " + sort + " " + order;
         DataTable dt = SqlHelper.dataTable(sqlexe);
         return Json4EasyUI.onDataGrid(dt, page, rows);
     }
@@ -94,6 +99,17 @@ public class Handler : IHttpHandler
             sReturnJson = "{success:true}";
         else
             sReturnJson = "{success:false}";
+        return sReturnJson;
+    }
+
+    //清空
+    private string dellete()
+    {
+        string sReturnJson = string.Empty;
+        string sqlexe = string.Format("truncate table Trial;");
+        SqlHelper.ExecuteUpdate(sqlexe);
+        sReturnJson = "{success:true}";
+
         return sReturnJson;
     }
     

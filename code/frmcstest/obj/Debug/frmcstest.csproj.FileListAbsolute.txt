@@ -16,3 +16,11 @@ D:\git_version\Cissy_cissy5zxcvbnm_new\code\frmcstest\obj\Debug\frmcstest.Proper
 D:\git_version\Cissy_cissy5zxcvbnm_new\code\frmcstest\obj\Debug\frmcstest.csproj.GenerateResource.Cache
 D:\git_version\Cissy_cissy5zxcvbnm_new\code\frmcstest\obj\Debug\frmcstest.exe
 D:\git_version\Cissy_cissy5zxcvbnm_new\code\frmcstest\obj\Debug\frmcstest.pdb
+D:\yho117\Cissy_new\Cissy_cissy5zxcvbnm_new\code\frmcstest\bin\Debug\frmcstest.exe.config
+D:\yho117\Cissy_new\Cissy_cissy5zxcvbnm_new\code\frmcstest\bin\Debug\frmcstest.exe
+D:\yho117\Cissy_new\Cissy_cissy5zxcvbnm_new\code\frmcstest\bin\Debug\frmcstest.pdb
+D:\yho117\Cissy_new\Cissy_cissy5zxcvbnm_new\code\frmcstest\obj\Debug\frmcstest.Form1.resources
+D:\yho117\Cissy_new\Cissy_cissy5zxcvbnm_new\code\frmcstest\obj\Debug\frmcstest.Properties.Resources.resources
+D:\yho117\Cissy_new\Cissy_cissy5zxcvbnm_new\code\frmcstest\obj\Debug\frmcstest.csproj.GenerateResource.Cache
+D:\yho117\Cissy_new\Cissy_cissy5zxcvbnm_new\code\frmcstest\obj\Debug\frmcstest.exe
+D:\yho117\Cissy_new\Cissy_cissy5zxcvbnm_new\code\frmcstest\obj\Debug\frmcstest.pdb

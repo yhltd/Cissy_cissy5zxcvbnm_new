@@ -27,7 +27,7 @@
     </div>
 
    
-   <div id="search-window" title="查询窗口" style="width: 350px; height: 200px;">
+   <div id="search-window" title="查询窗口" style="width: 443px; height: 200px;">
         <div style="padding: 20px 20px 40px 80px;">
             <form method="post">
             <table>
@@ -105,7 +105,7 @@ CASE
 	WHEN Sales.type = 'Transfer' THEN
 	0 
 	WHEN Sales.type = 'Order' THEN
-	( Sales.total - ( Product.cost + Product.freight ) ) * Sales.quantity * Sale.rate ELSE Sales.total * Sales.quantity * Sale.rate 
+	( Sales.total - ( Sales.cost + Freight.freight ) ) * Sales.quantity * Sale.rate ELSE Sales.total * Sales.quantity * Sale.rate 
 END 
 	) 
 	) 
@@ -122,7 +122,7 @@ END
 							WHEN Sales.type = 'Transfer' THEN
 							0 
 							WHEN Sales.type = 'Order' THEN
-							( Sales.total - ( Product.cost + Product.freight ) ) * Sales.quantity * Sale.rate ELSE Sales.total * Sales.quantity * Sale.rate 
+							( Sales.total - ( Sales.cost + Freight.freight ) ) * Sales.quantity * Sale.rate ELSE Sales.total * Sales.quantity * Sale.rate 
 						END 
 						) 
 					) 
@@ -134,10 +134,12 @@ END
 		SUM( CASE WHEN Sales.type = 'FBA Inventory Fee' THEN Sales.total * Sales.quantity ELSE 0 END ) / SUM( CASE WHEN Sales.type = 'Order' THEN Sales.sales * Sales.quantity END ) AS 仓储占总销售 
 	FROM
 		Sales
-		LEFT JOIN Sale ON Sale.sunSKU = Sales.sunSKU
+		LEFT JOIN Sale ON Sale.sunSKU = Sales.sunSKU AND Sale.account = Sales.account
 		LEFT JOIN Product ON Sale.NAME = Product.NAME 
+        LEFT JOIN Country ON Country.account = Sales.account
+		LEFT JOIN Freight ON Freight.country = Country.country 
 GROUP BY
-Sales.city"></asp:SqlDataSource>
+Sales.city,Sales.sunSKU"></asp:SqlDataSource>
 
             </div>
         </div>

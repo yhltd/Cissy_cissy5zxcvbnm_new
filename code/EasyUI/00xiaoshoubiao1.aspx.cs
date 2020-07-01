@@ -45,6 +45,10 @@ namespace EasyUI
                 conn.Open();
                 SqlTransaction str = conn.BeginTransaction();//利用事务处理 防止中断  
                 int k = 0;
+                string strChange = "";
+                string strChangee = "";
+                DateTime dt = DateTime.Now;
+                string time = dt.ToShortDateString().ToString();
                 sheet = workbook.GetSheet("Sheet1");
                 try
                 {
@@ -54,24 +58,28 @@ namespace EasyUI
                     }
                     for (int i = 0; i < sheet.LastRowNum; i++)
                     {
-
                         IRow row = sheet.GetRow(i + 1);
-                        string sqlStr = "insert into Sale(account,smallGroup,saler,type,asin,sunSKU,name,fatherSKU,FBA,three,thirty,)values";
+                        strChange = row.GetCell(5).ToString();
+                        strChange = strChange.Replace("\'", "\'\'");
+                        strChangee = row.GetCell(7).ToString();
+                        strChangee = strChangee.Replace("\'", "\'\'");
+                        string sqlStr = "insert into Sale(account,smallGroup,saler,type,asin,sunSKU,name,fatherSKU,FBA,three,thirty,time)values";
                         sqlStr += "('" + row.GetCell(0) + "',";
                         sqlStr += "'" + row.GetCell(1) + "',";
                         sqlStr += "'" + row.GetCell(2) + "',";
                         sqlStr += "'" + row.GetCell(3) + "',";
                         sqlStr += "'" + row.GetCell(4) + "',";
-                        sqlStr += "'" + row.GetCell(5) + "',";
-                        sqlStr += "'" + row.GetCell(6) + "',";
+                        sqlStr += "'" + strChange + "',";
+                        sqlStr += "'" + row.GetCell(6) + "',";  //防止产品名称里有单引号不能往数据库里输入
                         sqlStr += "'" + row.GetCell(7) + "',";
                         sqlStr += "'" + row.GetCell(8) + "',";
                         sqlStr += "'" + row.GetCell(9) + "',";
-                        sqlStr += "'" + row.GetCell(10) + "')";
+                        sqlStr += "'" + row.GetCell(10) + "',";
+                        sqlStr += "'" + time + "');";
                         //sheet = workbook.GetSheet("sheet1") as HSSFSheet;
                         if (i == 0)
                         {
-                            sqlStr = "truncate table Product;" + sqlStr;
+                            sqlStr = "truncate table Sale;" + sqlStr;
                         }
                         SqlCommand cmd = new SqlCommand(sqlStr, conn, str);
                         cmd.Transaction = str;
@@ -109,7 +117,7 @@ namespace EasyUI
         //    Response.ClearContent();
         //    Response.Buffer = true;
         //    Response.AddHeader("content-disposition", attachment);
-        //    Response.Charset = "utf-8";
+        //    Response.Charset = "";
         //    Response.ContentEncoding = System.Text.Encoding.GetEncoding("GB2312");
         //    Response.ContentType = "application/vnd.ms-excel";
         //    System.IO.StringWriter sw = new System.IO.StringWriter();

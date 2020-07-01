@@ -25,7 +25,7 @@
     </div>
 
    
-   <div id="search-window" title="查询窗口" style="width: 350px; height: 200px;">
+   <div id="search-window" title="查询窗口" style="width: 436px; height: 200px;">
         <div style="padding: 20px 20px 40px 80px;">
             <form method="post">
             <table>
@@ -71,7 +71,7 @@
                     </form>
                 <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource1" Width="901px" style="margin-left: 0px; margin-top: 36px">
                     <Columns>
-                        <asp:BoundField DataField="子sku" HeaderText="子sku" SortExpression="子sku" />
+                        <asp:BoundField DataField="子SKU" HeaderText="子SKU" SortExpression="子SKU" />
                         <asp:BoundField DataField="售出数量" HeaderText="售出数量" SortExpression="售出数量" ReadOnly="True" />
                         <asp:BoundField DataField="商品销售额" HeaderText="商品销售额" SortExpression="商品销售额" ReadOnly="True" />
                         <asp:BoundField DataField="退货数量" HeaderText="退货数量" SortExpression="退货数量" ReadOnly="True" />
@@ -84,18 +84,17 @@
                     </Columns>
                 </asp:GridView>
                 <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:CissyConnectionString %>" SelectCommand="SELECT
-	Sales.sunSKU AS '子sku',
-	SUM( CASE WHEN Sales.type = 'Order' THEN Sales.quantity ELSE 0 END ) AS 售出数量,
-	SUM( CASE WHEN Sales.type = 'Order' THEN Sales.sales * Sales.quantity ELSE 0 END ) AS 商品销售额,
-	SUM( CASE WHEN Sales.type = 'Refund' THEN Sales.quantity ELSE 0 END ) AS 退货数量,
-	SUM( CASE WHEN Sales.type = 'Refund' THEN Sales.total * Sales.quantity ELSE 0 END ) AS 退货金额,
+	Sales.sunSKU as '子SKU',
+	SUM ( CASE WHEN Sales.type= 'Order' THEN Sales.quantity ELSE 0 END ) AS 售出数量,
+	SUM ( CASE WHEN Sales.type= 'Order' THEN Sales.sales * Sales.quantity ELSE 0 END ) AS 商品销售额,
+	SUM ( CASE WHEN Sales.type= 'Refund' THEN Sales.quantity ELSE 0 END ) AS 退货数量,
+	SUM ( CASE WHEN Sales.type= 'Refund' THEN Sales.total * Sales.quantity ELSE 0 END ) AS 退货金额,
 	ROUND(
-	CAST ( SUM( CASE WHEN Sales.type = 'Refund' THEN Sales.quantity ELSE 0 END ) AS FLOAT ) / CAST ( SUM( CASE WHEN Sales.type = 'Refund' OR Sales.type = 'Order' THEN Sales.quantity END ) AS FLOAT ),
+	CAST ( SUM ( CASE WHEN Sales.type= 'Refund' THEN Sales.quantity ELSE 0 END ) AS FLOAT ) / CAST ( SUM ( CASE WHEN Sales.type= 'Refund' OR Sales.type= 'Order' THEN Sales.quantity END ) AS FLOAT ),
 	4 
 	) AS 退货率,
 	(
-	SUM(
-	(
+	SUM ((
 CASE
 	
 	WHEN Sales.type = 'Refund' THEN
@@ -103,16 +102,13 @@ CASE
 	WHEN Sales.type = 'Transfer' THEN
 	0 
 	WHEN Sales.type = 'Order' THEN
-	( Sales.total - ( Product.cost + Product.freight ) ) * Sales.quantity * Sale.rate ELSE Sales.total * Sales.quantity * Sale.rate 
+	(
+	Sales.total- ( Sales.cost + Freight.freight )) * Sales.quantity * Sale.rate ELSE Sales.total * Sales.quantity* Sale.rate 
 END 
 	) 
-	) 
-	) AS 利润,
-	ROUND(
-		(
-			(
-				SUM(
-					(
+	)) AS 利润,
+	ROUND(((
+				SUM ((
 					CASE
 							
 							WHEN Sales.type = 'Refund' THEN
@@ -120,22 +116,25 @@ END
 							WHEN Sales.type = 'Transfer' THEN
 							0 
 							WHEN Sales.type = 'Order' THEN
-							( Sales.total - ( Product.cost + Product.freight ) ) * Sales.quantity * Sale.rate ELSE Sales.total * Sales.quantity * Sale.rate 
+							(
+							Sales.total- ( Sales.cost + Freight.freight )) * Sales.quantity * Sale.rate ELSE Sales.total * Sales.quantity* Sale.rate 
 						END 
 						) 
-					) 
-				) / SUM( CASE WHEN Sales.type = 'Order' THEN Sales.sales * Sales.quantity * Sale.rate ELSE 0 END ) 
-			),
+					)) / SUM ( CASE WHEN Sales.type= 'Order' THEN Sales.sales * Sales.quantity* Sale.rate ELSE 0 END )),
 			4 
-		) AS 利润率,
-		SUM( CASE WHEN Sales.type = 'Service Fee' THEN Sales.total * Sales.quantity ELSE 0 END ) / SUM( CASE WHEN Sales.type = 'Order' THEN Sales.sales * Sales.quantity END ) AS 广告占总销售,
-		SUM( CASE WHEN Sales.type = 'FBA Inventory Fee' THEN Sales.total * Sales.quantity ELSE 0 END ) / SUM( CASE WHEN Sales.type = 'Order' THEN Sales.sales * Sales.quantity END ) AS 仓储占总销售 
-	FROM
-		Sales
-		LEFT JOIN Sale ON Sale.sunSKU = Sales.sunSKU
-		LEFT JOIN Product ON Sale.NAME = Product.NAME 
+			) AS 利润率,
+	SUM ( CASE WHEN Sales.type= 'Service Fee' THEN Sales.total * Sales.quantity ELSE 0 END ) / SUM ( CASE WHEN Sales.type= 'Order' THEN Sales.sales * Sales.quantity END ) AS 广告占总销售,
+	SUM ( CASE WHEN Sales.type= 'FBA Inventory Fee' THEN Sales.total * Sales.quantity ELSE 0 END ) / SUM ( CASE WHEN Sales.type= 'Order' THEN Sales.sales * Sales.quantity END ) AS 仓储占总销售 
+FROM
+	Sales
+	LEFT JOIN Sale ON Sale.sunSKU= Sales.sunSKU 
+	AND Sale.account = Sales.account
+	LEFT JOIN Product ON Sale.name = Product.name
+	LEFT JOIN Country ON Country.account = Sales.account
+	LEFT JOIN Freight ON Freight.country = Country.country 
 GROUP BY
-Sales.sunSKU"></asp:SqlDataSource>
+	Sales.sunSKU 
+	HAVING COUNT(Sale.account) is not null"></asp:SqlDataSource>
 
             </div>
         </div>

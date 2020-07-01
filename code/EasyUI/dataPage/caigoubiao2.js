@@ -41,80 +41,110 @@
     });
     searchForm = searchWin.find('form');
 
-
-    grid = $('#grid').datagrid({
-        title: '采购预录（试算）',
-        iconCls: 'icon-save',
-        methord: 'get', //请求远程数据的 method 类型
-        url: 'dataController/caigoubiao2.ashx?action=list&ran=' + Math.random(),  //从远程站点请求数据的 URL
-        sortName: 'id',  //定义可以排序的列
-        sortOrder: 'desc',
-        idField: 'id', //标识字段
-        pageSize: 30,   //初始化页码尺寸
-        frozenColumns: [[
-	                { field: 'ID', checkbox: true }//checkbox: true 表示显示 checkbox
-                    //,{ title: 'ID', field: 'ID', width: 80, sortable: true }
-        ]], //和列的特性一样，但是这些列将被冻结在左边。
-        columns: [[
-					{ field: 'no', title: '产品编号', width: 100, sortable: true, align: 'center' }, //fieldfield 列的字段名,title列的标题文字,sortable 是否允许此列被排序
-					{ field: 'num', title: '产品子编号', width: 100, sortable: true, align: 'center' },
-                    { field: 'name', title: '产品名称', width: 200, sortable: true, align: 'center' },
-                    { field: 'color', title: '颜色/型号', width: 100, sortable: true, align: 'center' },
-                    { field: 'cost', title: '采购成本（试算）', width: 150, sortable: true, align: 'center' },
-                    { field: 'length', title: '产品长（厘米）', width: 150, sortable: true, align: 'center' },
-                    { field: 'width', title: '产品宽（厘米）', width: 150, sortable: true, align: 'center' },
-                    { field: 'high', title: '产品高（厘米）', width: 150, sortable: true, align: 'center' },
-                    { field: 'weight', title: '产品重量（公斤）', width: 150, sortable: true, align: 'center' },
-        ]], //datagrid 的 column 的配置对象
-        fit: true,
-        pagination: true, //True 就会在 datagrid 的底部显示分页栏
-        rownumbers: true, //True 就会显示行号的列
-        fitColumns: true,//True 就会自动扩大或缩小列的尺寸以适应表格的宽度并且防止水平滚动。
-        singleSelect: false, //True 就会只允许选中一行。
-        toolbar: [{
-            text: '新增',
-            iconCls: 'icon-add',
-            handler: add    //为按钮添加方法
-        }, '-', {
-            text: '修改',
-            iconCls: 'icon-edit',
-            handler: edit
-        }, '-', {
-            text: '删除',
-            iconCls: 'icon-remove',
-            handler: del
-        }
-        , '-', {
-            text: '查找',
-            iconCls: 'icon-search',
-            handler: OpensearchWin
-        }, '-', {
-            text: '所有',
-            iconCls: 'icon-search',
-            handler: showAll
-        }, '-', {
-            text: '导入excel',
-            iconCls: 'icon-save',
-            handler: OpenExcelWin
-        }, '-', {
-            text: '导出excel',
-            iconCls: 'icon-print',
-            handler: OpenExcelWin1
-        }
-        ],
-        onHeaderContextMenu: function (e, field) {//当 datagrid 的头部被右键单击时触发
-            e.preventDefault();
-            if (!$('#tmenu').length) {
-                createColumnMenu();
-            }
-            $('#tmenu').menu('show', {
-                left: e.pageX,
-                top: e.pageY
-            });
-        }
-    });
+    getLV()
+    
     $('body').layout();
 });
+
+function getLV() {
+    $.ajax({
+        url: 'dataController/selCon.ashx?operation=viewAccess&tableName=caigoushisuan',
+        type: 'GET',
+        error: function () {
+            $.messager.alert('错误', 'error');
+        },
+        success: function (data) {
+            if (data != "") {
+                var arr = new Array(); //定义一数组
+                arr = data.split(",");
+                grid = $('#grid').datagrid({
+                    title: '采购预录（试算）',
+                    iconCls: 'icon-save',
+                    methord: 'get', //请求远程数据的 method 类型
+                    url: 'dataController/caigoubiao2.ashx?action=list&ran=' + Math.random(),  //从远程站点请求数据的 URL
+                    sortName: 'id',  //定义可以排序的列
+                    sortOrder: 'desc',
+                    idField: 'id', //标识字段
+                    pageSize: 30,   //初始化页码尺寸
+                    frozenColumns: [[
+                                { field: 'ID', checkbox: true }//checkbox: true 表示显示 checkbox
+                                //,{ title: 'ID', field: 'ID', width: 80, sortable: true }
+                    ]], //和列的特性一样，但是这些列将被冻结在左边。
+                    columns: [[
+                                { field: 'no', title: '产品编号', width: 100, sortable: true, align: 'center' }, //fieldfield 列的字段名,title列的标题文字,sortable 是否允许此列被排序
+                                { field: 'num', title: '产品子编号', width: 100, sortable: true, align: 'center' },
+                                { field: 'name', title: '产品名称', width: 200, sortable: true, align: 'center' },
+                                { field: 'color', title: '颜色/型号', width: 100, sortable: true, align: 'center' },
+                                { field: 'cost', title: '采购成本（试算）', width: 150, sortable: true, align: 'center' },
+                                { field: 'length', title: '产品长（厘米）', width: 150, sortable: true, align: 'center' },
+                                { field: 'width', title: '产品宽（厘米）', width: 150, sortable: true, align: 'center' },
+                                { field: 'high', title: '产品高（厘米）', width: 150, sortable: true, align: 'center' },
+                                { field: 'weight', title: '产品重量（公斤）', width: 150, sortable: true, align: 'center' },
+                    ]], //datagrid 的 column 的配置对象
+                    fit: true,
+                    nowrap: false,
+                    pagination: true, //True 就会在 datagrid 的底部显示分页栏
+                    rownumbers: true, //True 就会显示行号的列
+                    fitColumns: true,//True 就会自动扩大或缩小列的尺寸以适应表格的宽度并且防止水平滚动。
+                    singleSelect: false, //True 就会只允许选中一行。
+                    toolbar: [{
+                        text: '新增',
+                        disabled: arr[0] == '1' ? false : true,
+                        iconCls: 'icon-add',
+                        handler: add    //为按钮添加方法
+                    }, '-', {
+                        text: '修改',
+                        disabled: arr[1] == '1' ? false : true,
+                        iconCls: 'icon-edit',
+                        handler: edit
+                    }, '-', {
+                        text: '删除',
+                        disabled: arr[2] == '1' ? false : true,
+                        iconCls: 'icon-remove',
+                        handler: del
+                    }
+                    , '-', {
+                        text: '查找',
+                        disabled: arr[3] == '1' ? false : true,
+                        iconCls: 'icon-search',
+                        handler: OpensearchWin
+                    }, '-', {
+                        text: '所有',
+                        disabled: arr[4] == '1' ? false : true,
+                        iconCls: 'icon-search',
+                        handler: showAll
+                    }, '-', {
+                        text: '导入excel',
+                        disabled: arr[5] == '1' ? false : true,
+                        iconCls: 'icon-save',
+                        handler: OpenExcelWin
+                    }, '-', {
+                        text: '导出excel',
+                        disabled: arr[6] == '1' ? false : true,
+                        iconCls: 'icon-print',
+                        handler: OpenExcelWin1
+                    }, '-', {
+                        text: '清空所有数据',
+                        disabled: arr[7] == '1' ? false : true,
+                        iconCls: 'icon-remove',
+                        handler: dell
+                    }
+                    ],
+                    onHeaderContextMenu: function (e, field) {//当 datagrid 的头部被右键单击时触发
+                        e.preventDefault();
+                        if (!$('#tmenu').length) {
+                            createColumnMenu();
+                        }
+                        $('#tmenu').menu('show', {
+                            left: e.pageX,
+                            top: e.pageY
+                        });
+                    }
+                });
+            }
+        }
+    });
+}
 
 function createColumnMenu() {
     var tmenu = $('<div id="tmenu" style="width:100px;"></div>').appendTo('body');
@@ -244,6 +274,30 @@ function del() {
     }
 }
 
+//清空
+function dell() {
+    var arr = getSelectedArr();
+    $.messager.confirm('提示信息', '您确认要清空数据吗？清空后无法恢复，重要数据请及时备份！', function (data) {
+        if (data) {
+            $.ajax({
+                url: 'dataController/caigoubiao2.ashx?action=dell',
+                type: 'GET',
+                timeout: 1000,
+                success: function (data) {
+                    eval('data=' + data);
+                    if (data.success) {
+                        grid.datagrid('reload');
+                    } else {
+                        //$.messager.alert('错误', data.msg, 'error');
+                        grid.datagrid('reload');
+                    }
+                }
+            });
+        }
+    });
+}
+
+
 function Msgshow(msg) {
     $.messager.show({
         title: '提示',
@@ -279,7 +333,7 @@ function OpensearchWin() {
     searchForm.form('clear');
 }
 
-保存数据
+//保存数据
 function saveData() {
     dlg_Edit_form.form('submit', {
         url: dlg_Edit_form.url,

@@ -18,10 +18,10 @@ namespace EasyUI
             if (!Page.IsPostBack)
             {
                 clsAllnew BusinessHelp = new clsAllnew();
-                string QiHao = Request.QueryString["QiHao"];
+                string id = Request.QueryString["id"];
 
 
-                string sql2 = "select * from Detailed where   id='" + QiHao + "'";
+                string sql2 = "select * from Detailed where id='" + id + "'";
 
                 List<clt_detail_info> readCards = BusinessHelp.Readt_PICServer(sql2);
 

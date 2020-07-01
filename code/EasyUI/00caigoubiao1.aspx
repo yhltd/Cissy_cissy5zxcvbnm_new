@@ -29,7 +29,7 @@
         <%--<button onclick=""><img src="file/1.jpg"></img></button>--%>
     </div>
 
-    <div id="Dlg-Edit" title="编辑窗口" style="width: 800px; height: 400px;">
+    <div id="Dlg-Edit" title="编辑窗口" style="width: 703px; height: 325px;">
         <div style="padding: 20px 20px 40px 40px;">
             <form method="post">
                 <table>
@@ -105,7 +105,7 @@
             </form>
         </div>
     </div>
-   <div id="search-window" title="查询窗口" style="width: 350px; height: 200px;">
+   <div id="search-window" title="查询窗口" style="width: 452px; height: 168px;">
         <div style="padding: 20px 20px 40px 80px;">
             <form method="post">
                 <table>
@@ -131,10 +131,8 @@
                     <tr>
                         <asp:FileUpload ID="fileId" runat="server" Width="433px" />
                     </tr>
-                    <tr align="center">
                         <asp:Button ID="Button1"  runat="server" Text="上传" OnClientClick="return check()" OnClick="Export_Click" />
-                    </tr>
-                </table>
+                    </table>
             </form>
         </div>
         <%--<div style="text-align: center; padding: 5px;">

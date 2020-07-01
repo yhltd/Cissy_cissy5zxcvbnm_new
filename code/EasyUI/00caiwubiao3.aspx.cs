@@ -45,6 +45,7 @@ namespace EasyUI
                 conn.Open();
                 SqlTransaction str = conn.BeginTransaction();//利用事务处理 防止中断  
                 int k = 0;
+                string strChange = "";
                 sheet = workbook.GetSheet("Sheet1");
                 try
                 {
@@ -55,26 +56,32 @@ namespace EasyUI
                     for (int i = 0; i < sheet.LastRowNum; i++)
                     {
                         IRow row = sheet.GetRow(i + 1);
-                        string aa = row.GetCell(2).ToString();
-                        string cc = aa.Substring(0, 24);
+                        string aa = row.GetCell(1).ToString();
+                        string cc = aa.Replace("PST", "   ");
+                        cc = cc.Substring(0, 24);
                         DateTime dd = Convert.ToDateTime(cc);
-                        string sqlStr = "insert into Sales(account,saleDate,type,sunSKU,quantity,fulfillment,city,state,sales,total,cost,rate,returnCost,freight,thirty)values";
+                        strChange = row.GetCell(3).ToString();
+                        strChange = strChange.Replace("\'", "\'\'");
+                        //string sqlStr = "insert into Sales(account,saleDate,type,sunSKU,quantity,fulfillment,city,state,sales,total,cost,rate,returnCost,freight,thirty)values";
+                        string sqlStr = "insert into Sales(account,saleDate,type,sunSKU,quantity,fulfillment,city,state,sales,total,cost)values";
                         sqlStr += "('" + row.GetCell(0) + "',";
-                        sqlStr += "'" + row.GetCell(1) + "',";
                         sqlStr += "'" + dd + "',";
-                        sqlStr += "'" + row.GetCell(3) + "',";
+                        sqlStr += "'" + row.GetCell(2) + "',";
+                        sqlStr += "'" + strChange + "',";
                         sqlStr += "'" + row.GetCell(4) + "',";
                         sqlStr += "'" + row.GetCell(5) + "',";
                         sqlStr += "'" + row.GetCell(6) + "',";
                         sqlStr += "'" + row.GetCell(7) + "',";
                         sqlStr += "'" + row.GetCell(8) + "',";
                         sqlStr += "'" + row.GetCell(9) + "',";
-                        sqlStr += "(select Product.cost from Sales inner join Sale on Sales.sunSKU=Sale.sunSKU and Sales.account=Sale.account inner join Product on Sale.name=Product.name where Sale.sunSKU='" + row.GetCell(0) + "' and Sale.account='" + row.GetCell(1) + "'),";
-                        sqlStr += "(select Sale.rate from Sales inner join Sale on Sales.sunSKU=Sale.sunSKU and Sales.account=Sale.account where Sale.sunSKU='" + row.GetCell(0) + "' and Sale.account='" + row.GetCell(1) + "')";
-                        sqlStr += "(select Sale.returnCost from Sales inner join Sale on Sales.sunSKU=Sale.sunSKU and Sales.account=Sale.account where Sale.sunSKU='" + row.GetCell(0) + "' and Sale.account='" + row.GetCell(1) + "')";
-                        sqlStr += "(select Product.freight from Sales inner join Sale on Sales.sunSKU=Sale.sunSKU and Sales.account=Sale.account inner join Product on Sale.name=Product.name where Sale.sunSKU='" + row.GetCell(0) + "' and Sale.account='" + row.GetCell(1) + "'),";
-                        sqlStr += "(select Sale.thirty from Sales inner join Sale on Sales.sunSKU=Sale.sunSKU and Sales.account=Sale.account where Sale.sunSKU='" + row.GetCell(0) + "' and Sale.account='" + row.GetCell(1) + "')";
+                        sqlStr += "(SELECT DISTINCT Product.cost FROM Product LEFT JOIN Sale ON Product.name = Sale.name LEFT JOIN Sales ON Sale.sunSKU = Sales.sunSKU AND Sale.account = Sales.account where Sale.sunSKU='" + row.GetCell(3) + "' and Sale.account='" + row.GetCell(0) + "')";
+                        //sqlStr += "(select Product.cost from Sales inner join Sale on Sales.sunSKU=Sale.sunSKU and Sales.account=Sale.account inner join Product on Sale.name=Product.name where Sale.sunSKU='" + row.GetCell(3) + "' and Sale.account='" + row.GetCell(0) + "')";
+                        //sqlStr += "(select Sale.rate from Sales inner join Sale on Sales.sunSKU=Sale.sunSKU and Sales.account=Sale.account where Sale.sunSKU='" + row.GetCell(0) + "' and Sale.account='" + row.GetCell(1) + "')";
+                        //sqlStr += "(select Sale.returnCost from Sales inner join Sale on Sales.sunSKU=Sale.sunSKU and Sales.account=Sale.account where Sale.sunSKU='" + row.GetCell(0) + "' and Sale.account='" + row.GetCell(1) + "')";
+                        //sqlStr += "(select Product.freight from Sales inner join Sale on Sales.sunSKU=Sale.sunSKU and Sales.account=Sale.account inner join Product on Sale.name=Product.name where Sale.sunSKU='" + row.GetCell(0) + "' and Sale.account='" + row.GetCell(1) + "'),";
+                        //sqlStr += "(select Sale.thirty from Sales inner join Sale on Sales.sunSKU=Sale.sunSKU and Sales.account=Sale.account where Sale.sunSKU='" + row.GetCell(0) + "' and Sale.account='" + row.GetCell(1) + "')";
                         //sheet = workbook.GetSheet("sheet1") as HSSFSheet;
+                        sqlStr += ")";
                         SqlCommand cmd = new SqlCommand(sqlStr, conn, str);
                         cmd.Transaction = str;
                         k += cmd.ExecuteNonQuery();
@@ -83,7 +90,8 @@ namespace EasyUI
                 }
                 catch (Exception ex)
                 {
-                    Response.Write("发生异常,数据已回滚/n信息/n" + ex.Message);
+                    Response.Write( ex.Message);
+                    //Response.Write("<script>alert('发生异常,数据已回滚/n信息/n' + " + ex.Message+")</script>");
                     str.Rollback();
                 }
                 finally

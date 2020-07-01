@@ -29,6 +29,25 @@ a:hover{ color:Red; text-decoration:underline;}
 .icon-role{background-position: -360px -200px;}
 .icon-set{background-position: -380px -200px;}
 .icon-log{background-position: -380px -80px;}
+.icon-sys{ background:url(../images/directory.png) no-repeat;}
+.icon-sys{ background:url(../images/directory.png) no-repeat;}
+.icon-go{
+	background:url('/EasyUIDataGrid/themes/icons/folder_go.png') no-repeat;
+}
+.icon-set{
+	background:url('/EasyUIDataGrid/themes/icons/2012080404391.png') no-repeat;
+}
+.icon-admin{
+	background:url('/EasyUIDataGrid/themes/icons/client.png') no-repeat;
+}
+.icon-kucun{
+	background:url('/EasyUIDataGrid/themes/icons/03.png') no-repeat;
+}
+.icon-form_edit{
+	background:url('/EasyUIDataGrid/themes/icons/application_form_edit.png') no-repeat;
+}
+
+
 
 
 

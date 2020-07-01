@@ -46,7 +46,7 @@ public class Handler : IHttpHandler
     private string getSingleData()
     {
         string id = ParamsofEasyUI.RequstString("ID");
-        string sqlexe = @"select * from Sale where ID=" + id + "";
+        string sqlexe = @"select id,account,rate,name,commission  from Sale where ID=" + id + "";
         DataTable dt = SqlHelper.dataTable(sqlexe);
         return Json4EasyUI.onForm(dt);//{"ID":"25","Column1":"22221","Column2":"33331","Column3":"44441"}
     }
@@ -78,7 +78,7 @@ public class Handler : IHttpHandler
                 sWhere = " where name like '%" + stitle + "%'";
         }
         //sqlexe = @"select top 10 ID,title,addTime from (select top 20 * from Sale " + PID + " order by [addTime] DESC,ID desc) as a";
-        sqlexe = @"select * from Sale where id in(select min(id) from Sale " + sWhere + " group by name)order by " + sort + " " + order;
+        sqlexe = @"select id,account,rate,name,commission  from Sale  " + sWhere + "  order by " + sort + " " + order;
         DataTable dt = SqlHelper.dataTable(sqlexe);
         return Json4EasyUI.onDataGrid(dt, page, rows);
     }
@@ -108,7 +108,7 @@ public class Handler : IHttpHandler
         string sqlexe = string.Empty;
         if (id.Length > 0)
         {
-            sqlexe = string.Format("update Sale set account='{0}',rate='{1}',commission='{3}' where name='{2}'",
+            sqlexe = string.Format("update Sale set rate='{1}',commission='{3}' where name='{2}' and account='{0}'",
    account, rate, name, commission ,Convert.ToInt32(id));
             if (SqlHelper.ExecuteUpdate(sqlexe))
                 sReturnJson = "{success:true}";

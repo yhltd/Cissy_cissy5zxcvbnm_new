@@ -20,14 +20,19 @@ public class Handler : IHttpHandler
                 sReturnJson = save();
                 break;
             case "del":
-                sReturnJson = delete();
+                sReturnJson = delete(); 
                 break;
+            
                 
                 //列表
-            case "list":
+            case "list":    
                 //查询
             case "query":
                 sReturnJson = getData(action);
+                break;
+
+            case "dell":
+                sReturnJson = dellete();
                 break;
                 
             case "get":
@@ -78,7 +83,7 @@ public class Handler : IHttpHandler
                 sWhere = " where no like '%" + stitle + "%'";
         }
         //sqlexe = @"select top 10 ID,title,addTime from (select top 20 * from Product " + PID + " order by [addTime] DESC,ID desc) as a";
-        sqlexe = @"select id, no, grouping, name, cost, buyer, sale, length, width, high, weight, pack from Product " + sWhere + " order by " + sort + " " + order;
+        sqlexe = @"select id, no, grouping, name, cost, buyer, sale, length, width, high, weight, pack,CONVERT(varchar(10), time,120)as time from Product " + sWhere + " order by " + sort + " " + order;
         DataTable dt = SqlHelper.dataTable(sqlexe);
         return Json4EasyUI.onDataGrid(dt, page, rows);
     }
@@ -93,6 +98,17 @@ public class Handler : IHttpHandler
             sReturnJson = "{success:true}";
         else
             sReturnJson = "{success:false}";
+        return sReturnJson;
+    }
+
+    //清空
+    private string dellete()
+    {
+        string sReturnJson = string.Empty;
+        string sqlexe = string.Format("truncate table Product;");
+        SqlHelper.ExecuteUpdate(sqlexe);
+        sReturnJson = "{success:true}";
+
         return sReturnJson;
     }
     

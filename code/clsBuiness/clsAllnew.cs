@@ -212,43 +212,42 @@ namespace clsBuiness
 
         public clsAllnew()
         {
+            ConStr = "Provider=SQLOLEDB;server=yhocn.cn,1433;uid=sa;pwd=Lyh07910_001;database=Cissy";
+            ConStrPIC = ConStr.Replace("Provider=SQLOLEDB;", "");
 
+            //if (HttpRuntime.Cache.Get("servename") != null)
+            //{
+            //    var objCache = HttpRuntime.Cache.Get("servename");
+            //    //ConStr = System.Web.Configuration.WebConfigurationManager.AppSettings["connectionstring"];
+            //    //ConStrPIC = System.Web.Configuration.WebConfigurationManager.AppSettings["DbContext"];
+            //    //server=bds28428944.my3w.com,1433;uid=bds28428944;pwd=Lyh079101;database=bds28428944_db
+            //    //Provider=SQLOLEDB;server=bds28428944.my3w.com,1433;uid=bds28428944;pwd=Lyh079101;database=bds28428944_db
+            //    ConStr = System.Web.Configuration.WebConfigurationManager.AppSettings[objCache.ToString()];
+            //    ConStrPIC = ConStr.Replace("Provider=SQLOLEDB;", "");
 
-            if (HttpRuntime.Cache.Get("servename") != null)
-            {
-                var objCache = HttpRuntime.Cache.Get("servename");
-                //ConStr = System.Web.Configuration.WebConfigurationManager.AppSettings["connectionstring"];
-                //ConStrPIC = System.Web.Configuration.WebConfigurationManager.AppSettings["DbContext"];
-                //server=bds28428944.my3w.com,1433;uid=bds28428944;pwd=Lyh079101;database=bds28428944_db
-                //Provider=SQLOLEDB;server=bds28428944.my3w.com,1433;uid=bds28428944;pwd=Lyh079101;database=bds28428944_db
-                ConStr = System.Web.Configuration.WebConfigurationManager.AppSettings[objCache.ToString()];
-                ConStrPIC = ConStr.Replace("Provider=SQLOLEDB;", "");
+            //}
+            //else
+            //{
+            //    if (HttpContext.Current.Request.Cookies["MyCook"] != null)
+            //    {
+            //        HttpCookie cookie1 = HttpContext.Current.Request.Cookies["MyCook"];
 
-            }
-            else
-            {
-                if (HttpContext.Current.Request.Cookies["MyCook"] != null)
-                {
-                    HttpCookie cookie1 = HttpContext.Current.Request.Cookies["MyCook"];
+            //        if (cookie1 != null && cookie1["servename"].ToString() != "")
+            //        {
+            //            rev_servename = cookie1["servename"].ToString();
 
-                    if (cookie1 != null && cookie1["servename"].ToString() != "")
-                    {
-                        rev_servename = cookie1["servename"].ToString();
+            //            // var rev_servename = HttpContext.Current.Session["servename"];
+            //            if (rev_servename != "" && rev_servename != null)
+            //            {
 
-                        // var rev_servename = HttpContext.Current.Session["servename"];
-                        if (rev_servename != "" && rev_servename != null)
-                        {
+            //                //ConStr = System.Web.Configuration.WebConfigurationManager.AppSettings[cookie1["servename"].ToString()];
+            //                ConStr = System.Web.Configuration.WebConfigurationManager.AppSettings[HttpUtility.UrlDecode("CissyConnectionString").ToString()];
+                     
 
-                            //ConStr = System.Web.Configuration.WebConfigurationManager.AppSettings[cookie1["servename"].ToString()];
-                            ConStr = System.Web.Configuration.WebConfigurationManager.AppSettings[HttpUtility.UrlDecode("CissyConnectionString").ToString()];
-                            ConStr = "Provider=SQLOLEDB;server=yhocn.cn,1433;uid=sa;pwd=Lyh07910_001;database=Cissy";
-
-                            ConStrPIC = ConStr.Replace("Provider=SQLOLEDB;", "");
-
-                        }
-                    }
-                }
-            }
+            //            }
+            //        }
+            //    }
+            //}
 
         }
         public List<clsuserinfo> findUser(string findtext)
@@ -266,7 +265,7 @@ namespace clsBuiness
                 OleDbCommandBuilder mybuilder = new OleDbCommandBuilder(myDataAdapter);
                 DataSet ds = new DataSet();
                 myDataAdapter.Fill(ds, "emw_user");
-                foreach (DataRow reader in ds.Tables["emw_user"].Rows)
+                foreach (DataRow reader in ds.Tables["Detailed"].Rows)
                 {
                     clsuserinfo item = new clsuserinfo();
 
@@ -798,7 +797,7 @@ namespace clsBuiness
 
 
                     #region sql 插入图片
-                    string A_Path = AppDomain.CurrentDomain.BaseDirectory + "bin\\img.txt";//记录 Status  click 和选择哪个服务器
+                    //string A_Path = AppDomain.CurrentDomain.BaseDirectory + "bin\\img.txt";//记录 Status  click 和选择哪个服务器
 
 
                     byte[] btye2 = Convert.FromBase64String(AddMAPResult[0].img);
@@ -827,6 +826,8 @@ namespace clsBuiness
                         par3.Value = item.FFileName;
                         cmd1.Parameters.Add(par3);
                         int t = (int)(cmd1.ExecuteNonQuery());
+
+
                         if (t > 0)
                         {
                             Console.WriteLine("插入成功");

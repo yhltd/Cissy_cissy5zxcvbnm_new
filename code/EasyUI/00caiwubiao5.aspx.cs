@@ -55,7 +55,7 @@ namespace EasyUI
                     for (int i = 0; i < sheet.LastRowNum; i++)
                     {
                         IRow row = sheet.GetRow(i + 1);
-                        string sqlStr = "update Sale set redundancy='" + row.GetCell(2) + "'where name='" + row.GetCell(0) + "', sunSKU='" + row.GetCell(1) + "'";
+                        string sqlStr = "update Sale set redundancy='" + row.GetCell(2) + "'where name='" + row.GetCell(0) + "'and sunSKU='" + row.GetCell(1) + "'";
                         SqlCommand cmd = new SqlCommand(sqlStr, conn, str);
                         cmd.Transaction = str;
                         k += cmd.ExecuteNonQuery();

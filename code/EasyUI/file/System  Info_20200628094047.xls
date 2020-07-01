@@ -1,0 +1,17 @@
+<div>
+	<table cellspacing="0" rules="all" border="1" id="GridView1" style="width:475px;border-collapse:collapse;margin-left: 54px; margin-top: 34px">
+		<tr>
+			<th scope="col">销售账户</th><th scope="col">当月汇率</th><th scope="col">产品名称</th><th scope="col">单件运营提成比</th>
+		</tr><tr>
+			<td>UK1</td><td>11</td><td>9FT伞面</td><td>0.02</td>
+		</tr><tr>
+			<td>US1</td><td>9</td><td>9FT伞面</td><td>0.02</td>
+		</tr><tr>
+			<td>US1</td><td>9</td><td>9FT伞面</td><td>0.02</td>
+		</tr><tr>
+			<td>UK1</td><td>11</td><td>9FT伞面</td><td>0.02</td>
+		</tr><tr>
+			<td>US1</td><td>7</td><td>CCC</td><td>0.02</td>
+		</tr>
+	</table>
+</div>

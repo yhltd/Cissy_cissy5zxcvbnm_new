@@ -1,0 +1,17 @@
+<div>
+	<table cellspacing="0" rules="all" border="1" id="GridView1" style="width:796px;border-collapse:collapse;margin-left: 0px; margin-top: 22px">
+		<tr>
+			<th scope="col">销售账户</th><th scope="col">小组</th><th scope="col">销售专员</th><th scope="col">货件类型</th><th scope="col">ASIN</th><th scope="col">子SKU</th><th scope="col">产品名称</th><th scope="col">父SKU</th><th scope="col">FBA派送费</th><th scope="col">第三方派送费</th><th scope="col">30天仓租费</th>
+		</tr><tr>
+			<td>UK1</td><td>1</td><td>马琦斌</td><td>小货件</td><td>B07QS7LG1N</td><td>2.7M umbrella cover forest green</td><td>9FT伞面</td><td>2.7M umbrella cover</td><td>1.0000</td><td>14.0000</td><td>1.0000</td>
+		</tr><tr>
+			<td>US1</td><td>00</td><td>何敏</td><td>小货件</td><td>B07QS7LG1N</td><td>2.7M umbrella cover khaki</td><td>9FT伞面</td><td>2.7M umbrella cover</td><td>13.0000</td><td>1.0000</td><td>1.0000</td>
+		</tr><tr>
+			<td>US1</td><td>1</td><td>何敏</td><td>小货件</td><td>B07QS7LG1N</td><td>2.7M umbrella cover forest green</td><td>9FT伞面</td><td>2.7M umbrella cover</td><td>0.0000</td><td>14.0000</td><td>0.0000</td>
+		</tr><tr>
+			<td>UK1</td><td>222</td><td>马琦斌</td><td>小货件</td><td>B07QS7LG1N</td><td>2.7M umbrella cover khaki</td><td>9FT伞面</td><td>2.7M umbrella cover</td><td>1.0000</td><td>0.0000</td><td>0.0000</td>
+		</tr><tr>
+			<td>US1</td><td>1</td><td>马琦斌</td><td>小货件</td><td>B07QS7LG1N</td><td>6bk&amp;wt Ball Ropex25</td><td>CCC</td><td>9FT Frills Hanging Umbrella-CA</td><td>1.0000</td><td>1.0000</td><td>1.0000</td>
+		</tr>
+	</table>
+</div>

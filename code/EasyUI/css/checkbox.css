@@ -1,0 +1,104 @@
+﻿.check_boxs
+{
+	margin: 10px;
+	width: 63%;
+	height: 81%;
+	border: 1px solid #99BBE8;
+	float: right;
+}
+
+.check_box
+{
+	cursor: pointer;
+    width: 131px;
+    height: 50px;
+    text-align: center;
+    line-height: 50px;
+    float: left;
+    margin-left: 49px;
+    margin-top: 20px;
+    background-color:#E0ECFF;
+    border: 1px solid #99BBE8;
+    color: #416AA3;
+    font-weight: bold;
+    font-size: 15px;
+}
+
+.list
+{
+    float: left;
+    width: 30%;
+    height: 94%;
+    border: 1px solid #99BBE8;
+    margin: 10px;
+}
+
+.list .item
+{
+    width: 60%;
+    margin: auto;
+}
+
+.item_header
+{
+    color : #15428b;
+    background-color: #E0ECFF;
+    border: 1px solid #99BBE8;
+    width: 163px;
+    height: 26px;
+    line-height: 26px;
+    padding-left: 16px;
+    margin-left: -28px;
+    margin-top: 10px;
+}
+
+.item_li_mouse_on
+{
+    width: 142px;
+    height: 28px;
+    line-height: 28px;
+    list-style: none;
+    margin-left: -53px;
+    background-color: #E0ECFF;
+    padding-left: 11px;
+    padding-top: 1px;
+    border: 1px dashed #99BBE8;
+    margin-top: 2px;
+    color: #15428b;
+}
+
+.item_li_mouse_out
+{
+    width: 142px;
+    height: 28px;
+    line-height: 28px;
+    list-style: none;
+    margin-left: -53px;
+    padding-left: 10px;
+    margin-top: 2px;
+}
+
+.item_li_choice
+{
+    width: 142px;
+    height: 28px;
+    line-height: 28px;
+    list-style: none;
+    margin-left: -53px;
+    background-color: #E0ECFF;
+    padding-left: 10px;
+    border: 1px solid #99BBE8;
+    margin-top: 2px;
+    color: #416AA3;
+    font-weight: bold;
+}
+.bt_caozuo
+{
+    width: 100px;
+    height: 38px;
+    margin-left: 63px;
+    margin-top: 13px;
+    margin-right: 57px;
+}
+
+

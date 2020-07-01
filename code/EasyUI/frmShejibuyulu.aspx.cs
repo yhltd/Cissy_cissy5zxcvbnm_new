@@ -141,7 +141,7 @@ namespace EasyUI
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            picpath = @"D:\all\公司素材\软件设计图片素材\psd素材\116ae547bbc0baa3528d6b3f81cb7812.jpg";
+            picpath = @"D:\yho117\Cissy_new\Cissy_cissy5zxcvbnm_new\code\EasyUI\images\tm_logo.png";
 
             //if (IsPostBack)
             InitialSystemInfo();
@@ -249,8 +249,8 @@ namespace EasyUI
                 int RowRemark = Convert.ToInt32(e.CommandArgument);
                 if (RowRemark >= 0)
                 {
-                    string QiHao = gvList.DataKeys[RowRemark].Value.ToString();
-                    QiHao = "8";
+                    string id = gvList.DataKeys[RowRemark].Value.ToString();
+                    id = "8";
 
                     List<clt_detail_info> cloumnlist = readCards.FindAll(s => s.Order_id != null && s.Order_id == "8");
                     cloumnlist[0].img = null;
@@ -266,9 +266,9 @@ namespace EasyUI
                 if (RowRemark >= 0)
                 {
                     BusinessHelp = new clsAllnew();
-                    string QiHao = gvList.DataKeys[RowRemark].Value.ToString();
-                    QiHao = "8";
-                    Response.Redirect("~/ViewImage.aspx?QiHao=" + QiHao);
+                    string id = gvList.DataKeys[RowRemark].Value.ToString();
+                    id = "8";
+                    Response.Redirect("~/ViewImage.aspx?id=" + id);
                 }
 
             }
@@ -346,7 +346,7 @@ namespace EasyUI
             string fileNameNo = Path.GetFileName(fileUpload.PostedFile.FileName);
             clsAllnew BusinessHelp = new clsAllnew();
             string image64 = "";
-            DirectoryName = @"D:\all\公司素材\软件设计图片素材\psd素材\116ae547bbc0baa3528d6b3f81cb7812.jpg";
+            DirectoryName = @"D:\yho117\Cissy_new\Cissy_cissy5zxcvbnm_new\code\EasyUI\images\tm_logo.png";
 
             if (File.Exists(DirectoryName))
             {
@@ -356,7 +356,12 @@ namespace EasyUI
             cloumnlist[0].img = image64;
             cloumnlist[0].FFileName = fileNameNo;
             BusinessHelp.createPIC_info_Server(cloumnlist);
-            Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('添加成功')</script>");
+            Page.ClientScript.RegisterStartupScript(Page.GetType(), "message", "<script language='javascript'>alert('图片添加成功')</script>");
+
+        }
+
+        protected void gvList_SelectedIndexChanged(object sender, EventArgs e)
+        {
 
         }
 

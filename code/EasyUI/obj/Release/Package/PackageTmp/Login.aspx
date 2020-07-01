@@ -178,7 +178,7 @@
                     -o-animation-duration: 8s;
                     -webkit-animation-duration: 8s;
                 }
-                
+
 
                 .wrap ul li:nth-child(8) {
                     width: 90px;
@@ -213,7 +213,7 @@
                     -o-animation-duration: 30s;
                     -webkit-animation-duration: 30s;
                 }
-                
+
 
         @keyframes square {
             0% {
@@ -272,32 +272,32 @@
 <body>
     <div class="wrap">
         <div class="container">
-            <h1 style="font-family: '楷体'; color: white; margin: 0; font-size: 60px; text-align: center">云合未来系统</h1>
+            <h1 style="font-family: '楷体'; color: white; margin: 0; font-size: 35px; text-align: center">云合未来系统</h1>
             <br />
             <br />
             <form name="MyForm" id="MyForm" runat="server">
-                <input type="text" runat="server" id="account" name="account" style="font-size: 20px; height: 40px;" placeholder="输入用户名" value="" />
+                <input type="text" runat="server" id="account" name="account" style="font-family: '楷体'; font-size: 15px; height: 30px;" placeholder="输入用户名" value="" />
                 <br />
-                <input type="password" runat="server" id="password" name="password" style="font-size: 20px; height: 40px;" placeholder="输入密码" value="" />
+                <input type="password" runat="server" id="password" name="password" style="font-family: '楷体'; font-size: 15px; height: 30px;" placeholder="输入密码" value="" />
                 <br />
-                <asp:Button ID="login" runat="server" Text=" 登    录 " Style="font-size: 26px; height: 40px;" OnClick="denglu" OnClientClick="CheckLogin()" />
+                <asp:Button ID="login" runat="server" Text=" 登    录 " Style="font-family: '楷体'; font-size: 22px; height: 35px;" OnClick="denglu" OnClientClick="CheckLogin()" />
                 <%--<p class="change_link" style="text-align: center">
                     <span class="text">忘记密码? </span>
                 </p>--%>
             </form>
         </div>
         <ul>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-    </ul>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
     </div>
 </body>
 </html>

@@ -45,7 +45,7 @@ public class Handler : IHttpHandler
     private string getSingleData()
     {
         string id = ParamsofEasyUI.RequstString("id");
-        string sqlexe = @"select * from Product where id=" + id + "";
+        string sqlexe = @"select * from Freight where id=" + id + "";
         DataTable dt = SqlHelper.dataTable(sqlexe);
         return Json4EasyUI.onForm(dt);//{"ID":"25","Column1":"22221","Column2":"33331","Column3":"44441"}
     }
@@ -77,7 +77,7 @@ public class Handler : IHttpHandler
                 sWhere = " where no like '%" + stitle + "%'";
         }
         //sqlexe = @"select top 10 ID,title,addTime from (select top 20 * from product " + PID + " order by [addTime] DESC,ID desc) as a";
-        sqlexe = @"select * from Product " + sWhere + " order by " + sort + " " + order;
+        sqlexe = @"select no,name,country,freight,CONVERT(varchar(10), time,120)as time from Freight " + sWhere + " order by " + sort + " " + order;
         DataTable dt = SqlHelper.dataTable(sqlexe);
         return Json4EasyUI.onDataGrid(dt, page, rows);
     }
@@ -87,7 +87,7 @@ public class Handler : IHttpHandler
     {
         string sReturnJson = string.Empty;
         string id = ParamsofEasyUI.RequstString("id");
-        string sqlexe = string.Format("delete from Product where id in ({0})", id);
+        string sqlexe = string.Format("delete from Freight where id in ({0})", id);
         if (SqlHelper.ExecuteUpdate(sqlexe))
             sReturnJson = "{success:true}";
         else
@@ -107,7 +107,7 @@ public class Handler : IHttpHandler
         string sqlexe = string.Empty;
         if (id.Length > 0)
         {
-            sqlexe = string.Format("update Product set no='{0}',name='{1}',country='{2}',freight='{3}' where id={4}",
+            sqlexe = string.Format("update Freight set no='{0}',name='{1}',country='{2}',freight='{3}' where id={4}",
    no, name, country, freight, Convert.ToInt32(id));
             if (SqlHelper.ExecuteUpdate(sqlexe))
                 sReturnJson = "{success:true}";
@@ -116,7 +116,7 @@ public class Handler : IHttpHandler
         }
         else
         {
-            sqlexe = string.Format("insert Into Product (no, name, country, freight) values ('{0}','{1}','{2}','{3}')",
+            sqlexe = string.Format("insert Into Freight (no, name, country, freight) values ('{0}','{1}','{2}','{3}')",
                no, name, country, freight);
             if (SqlHelper.ExecuteUpdate(sqlexe))
                 sReturnJson = "{success:true}";

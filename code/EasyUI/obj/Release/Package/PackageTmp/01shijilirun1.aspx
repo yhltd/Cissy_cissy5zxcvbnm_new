@@ -25,13 +25,13 @@
     </div>
 
    
-   <div id="search-window" title="查询窗口" style="width: 350px; height: 200px;">
+   <div id="search-window" title="查询窗口" style="width: 439px; height: 200px;">
         <div style="padding: 20px 20px 40px 80px;">
             <form method="post">
             <table>
                 <tr>
                     <td>
-                        子sku：
+                        产品名称：
                     </td>
                     <td>
                         <input name="s_title" id="s_title" style="width: 150px;" />
@@ -85,6 +85,7 @@ FROM
 	LEFT JOIN (
 	SELECT
 		Sales.sunSKU AS sunSKU,
+                    Sales.account,
 		SUM ( CASE WHEN Sales.type= 'Order' THEN Sales.sales * Sales.quantity END ) AS 销售额,
 		(
 			SUM ((
@@ -95,7 +96,7 @@ FROM
 								WHEN Sales.type = 'Transfer' THEN
 								0 
                                 WHEN Sales.type = 'Order' THEN
-								(Sales.total- ( Product.cost + Product.freight )) * Sales.quantity * Sale.rate ELSE Sales.total * Sales.quantity* Sale.rate  
+								(Sales.total- ( Product.cost + Freight.freight )) * Sales.quantity * Sale.rate ELSE Sales.total * Sales.quantity* Sale.rate  
 							END 
 							) 
 						)) AS 利润,
@@ -111,11 +112,13 @@ FROM
 				SUM ( CASE WHEN Sales.type= 'Order' THEN Sales.quantity WHEN Sales.type= 'Refund' THEN - Sales.quantity END ) AS 净售出数量 
 			FROM
 				Sales
-				LEFT JOIN Sale ON Sale.sunSKU= Sales.sunSKU
-				LEFT JOIN Product ON Sale.name = Product.name 
+				LEFT JOIN Sale ON Sale.sunSKU= Sales.sunSKU AND Sale.account = Sales.account
+				LEFT JOIN Product ON Sale.name = Product.name
+                LEFT JOIN Country ON Country.account = Sales.account
+			    LEFT JOIN Freight ON Freight.country = Country.country 
 			GROUP BY
-				Sales.sunSKU 
-			) AS aa ON aa.sunSKU = Sale.sunSKU
+				Sales.sunSKU,Sales.account 
+			)  AS aa ON aa.sunSKU = Sale.sunSKU AND aa.account = Sale.account
 			LEFT JOIN Peizhi ON Peizhi.star = Sale.star 
 	GROUP BY
 	Sale.name"></asp:SqlDataSource>

@@ -14,3 +14,11 @@ D:\yho117\Cissy_cissy5zxcvbnm\code\QRCodeLib\obj\Release\ThoughtWorks.QRCode.dll
 D:\yho117\Cissy_cissy5zxcvbnm\code\QRCodeLib\obj\Release\ThoughtWorks.QRCode.pdb
 D:\yho117\Cissy_cissy5zxcvbnm\code\QRCodeLib\ThoughtWorks.QRCode.dll
 D:\yho117\Cissy_cissy5zxcvbnm\code\QRCodeLib\ThoughtWorks.QRCode.pdb
+D:\yho117\Cissy_new\Cissy_cissy5zxcvbnm_new\code\QRCodeLib\obj\Release\QRCodeLib.csprojResolveAssemblyReference.cache
+D:\yho117\Cissy_new\Cissy_cissy5zxcvbnm_new\code\QRCodeLib\obj\Release\ThoughtWorks.QRCode.frmtest.resources
+D:\yho117\Cissy_new\Cissy_cissy5zxcvbnm_new\code\QRCodeLib\obj\Release\ThoughtWorks.QRCode.Properties.Resources.resources
+D:\yho117\Cissy_new\Cissy_cissy5zxcvbnm_new\code\QRCodeLib\obj\Release\QRCodeLib.csproj.GenerateResource.Cache
+D:\yho117\Cissy_new\Cissy_cissy5zxcvbnm_new\code\QRCodeLib\obj\Release\ThoughtWorks.QRCode.dll
+D:\yho117\Cissy_new\Cissy_cissy5zxcvbnm_new\code\QRCodeLib\obj\Release\ThoughtWorks.QRCode.pdb
+D:\yho117\Cissy_new\Cissy_cissy5zxcvbnm_new\code\QRCodeLib\ThoughtWorks.QRCode.dll
+D:\yho117\Cissy_new\Cissy_cissy5zxcvbnm_new\code\QRCodeLib\ThoughtWorks.QRCode.pdb

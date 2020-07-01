@@ -75,14 +75,14 @@ public class Handler : IHttpHandler
         {
             string stitle = ParamsofEasyUI.RequstString("title");
             if (!string.IsNullOrEmpty(stitle))
-                sWhere = " where no like '%" + stitle + "%'";
+                sWhere = " where Trial.num like '%" + stitle + "%'";
         }
         //sqlexe = @"select top 10 ID,title,addTime from (select top 20 * from Product " + PID + " order by [addTime] DESC,ID desc) as a";
         sqlexe = @"SELECT 
-    Trial.id,
+  Trial.id,
 	Trial.no,
 	Trial.num,
-    Trial.name,
+  Trial.name,
 	Trial.price,
 	Trial.cost,
 	Trial.rate,
@@ -90,12 +90,13 @@ public class Handler : IHttpHandler
 	Trial.advertisment AS 广告费占比,
 	Trial.returnRate AS 退货率,
 	Trial.commissionRate AS 平台佣金占比 ,
-	Trial.price - Trial.price*Trial.commissionRate - Trial.price*Trial.advertisment - Sale.FBA - Sale.three - Sale.thirty as 实际到手价,
-	(Trial.price - Trial.price*Trial.commissionRate - Trial.price*Trial.advertisment - Sale.FBA - Sale.three - Sale.thirty)*Trial.rate - Trial.cost -  Product.freight - Trial.cost*Trial.returnRate - Trial.price*Trial.commission AS 利润
+	Trial.price - Trial.price*Trial.commissionRate - Trial.price*Trial.advertisment - Trial.FBA - Trial.three - Trial.thirty as 实际到手价,
+	(Trial.price - Trial.price*Trial.commissionRate - Trial.price*Trial.advertisment - Trial.FBA - Trial.three - Trial.thirty)*Trial.rate - Trial.cost -  Freight.freight - Trial.cost*Trial.returnRate - Trial.price*Trial.commission AS 利润
 FROM
 	[dbo].[Trial]
-	LEFT JOIN Sale on Sale.name = Trial.name
-	LEFT JOIN Product on Product.name = Trial.name" + sWhere + " order by " + sort + " " + order;
+	LEFT JOIN Country on Country.account = Trial.sale
+	LEFT JOIN Freight on Freight.country = Country.country
+" + sWhere + " order by " + sort + " " + order;
         DataTable dt = SqlHelper.dataTable(sqlexe);
         return Json4EasyUI.onDataGrid(dt, page, rows);
     }

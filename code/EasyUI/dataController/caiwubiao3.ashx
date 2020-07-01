@@ -47,7 +47,26 @@ public class Handler : IHttpHandler
     {
         string id = ParamsofEasyUI.RequstString("ID");
         //string sqlexe = @"select id, account,convert(varchar(10),datepart(YYYY,saleDate)) as years, convert(varchar(10),datepart(mm,saleDate)) as months,convert(varchar(10),datepart(dd,saleDate)) as days,type,sunSKU,quantity,fulfillment,city,state,sales,total from Sales where ID=" + id + "";
-        string sqlexe = @"select id, account,convert(char(20),saleDate,120) as saleDate,type,sunSKU,quantity,fulfillment,city,state,sales,total from Sales where ID=" + id + "";
+        string sqlexe = @"SELECT DISTINCT
+	Sales.id as id,
+	Sales.account,
+	CONVERT ( CHAR ( 20 ), Sales.saleDate, 120 ) AS saleDate,
+	Sales.type,
+	Sales.sunSKU,
+	Sales.quantity,
+	Sales.fulfillment,
+	Sales.city,
+	Sales.state,
+	Sales.sales,
+	Sales.total,
+	bb.freight as freight,
+	bb.cost as cost
+FROM
+	Sales
+	LEFT JOIN ( SELECT * FROM Sale) AS aa 
+	on Sales.sunSKU = aa.sunSKU
+	LEFT JOIN (SELECT * FROM Product) AS bb
+	on aa.name = bb.name where Sales.id =" + id + "";
         DataTable dt = SqlHelper.dataTable(sqlexe);
         return Json4EasyUI.onForm(dt);//{"ID":"25","Column1":"22221","Column2":"33331","Column3":"44441"}
     }
@@ -76,10 +95,28 @@ public class Handler : IHttpHandler
         {
             string stitle = ParamsofEasyUI.RequstString("title");
             if (!string.IsNullOrEmpty(stitle))
-                sWhere = " where sunSKU like '%" + stitle + "%'";
+                sWhere = " where Sales.sunSKU like '%" + stitle + "%'";
         }
         //sqlexe = @"select top 10 ID,title,addTime from (select top 20 * from product " + PID + " order by [addTime] DESC,ID desc) as a";
-        sqlexe = @"select id,account,saleDate,type,sunSKU,quantity,fulfillment,city,state,sales,total from Sales " + sWhere + " order by " + sort + " " + order;
+        sqlexe = @"SELECT DISTINCT
+	Sales.id as id,
+	Sales.account,
+	CONVERT ( CHAR ( 20 ), Sales.saleDate, 120 ) AS saleDate,
+	Sales.type,
+	Sales.sunSKU,
+	Sales.quantity,
+	Sales.fulfillment,
+	Sales.city,
+	Sales.state,
+	Sales.sales,
+	Sales.total,
+	bb.cost as cost
+FROM
+	Sales
+	LEFT JOIN ( SELECT sunSKU,name FROM Sale) AS aa 
+	on Sales.sunSKU = aa.sunSKU
+	LEFT JOIN (SELECT name,cost FROM Product) AS bb
+	on aa.name = bb.name " + sWhere + " order by " + sort + " " + order;
         DataTable dt = SqlHelper.dataTable(sqlexe);
         return Json4EasyUI.onDataGrid(dt, page, rows);
     }
@@ -105,13 +142,15 @@ public class Handler : IHttpHandler
         string account = ParamsofEasyUI.RequstForm("account");
         string saleDate = ParamsofEasyUI.RequstForm("saleDate");
         string type = ParamsofEasyUI.RequstForm("type");
-        string sunSKU = ParamsofEasyUI.RequstForm("sunSKU");
+        string sunSKUU = ParamsofEasyUI.RequstForm("sunSKU");
+        string sunSKU = sunSKUU.Replace("\'","\'\'");
         string quantity = ParamsofEasyUI.RequstForm("quantity");
         string fulfillment = ParamsofEasyUI.RequstForm("fulfillment");
         string city = ParamsofEasyUI.RequstForm("city");
         string state = ParamsofEasyUI.RequstForm("state");
         string sales = ParamsofEasyUI.RequstForm("sales");
         string total = ParamsofEasyUI.RequstForm("total");
+        string cost = ParamsofEasyUI.RequstForm("cost");
         //string years = ParamsofEasyUI.RequstForm("years"); string months = ParamsofEasyUI.RequstForm("months"); string days = ParamsofEasyUI.RequstForm("days");
         string sqlexe = string.Empty;
         if (id.Length > 0)
@@ -125,8 +164,8 @@ public class Handler : IHttpHandler
         }
         else
         {
-            sqlexe = string.Format("insert Into Sales (account, saleDate, type, sunSKU, quantity, fulfillment, city, state, sales, total) values ('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}','{9}')",
-               account, saleDate, type, sunSKU, quantity, fulfillment, city, state, sales, total);
+            sqlexe = string.Format("insert Into Sales (account, saleDate, type, sunSKU, quantity, fulfillment, city, state, sales, total, cost) values ('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}','{9}','{10}');",
+               account, saleDate, type, sunSKU, quantity, fulfillment, city, state, sales, total, cost);
             if (SqlHelper.ExecuteUpdate(sqlexe))
                 sReturnJson = "{success:true}";
             else

@@ -46,7 +46,7 @@ public class Handler : IHttpHandler
     private string getSingleData()
     {
         string id = ParamsofEasyUI.RequstString("ID");
-        string sqlexe = @"select * from Sale where ID=" + id + "";
+        string sqlexe = @"select id,account,name,sunSKU,star from Sale where ID=" + id + "";
         DataTable dt = SqlHelper.dataTable(sqlexe);
         return Json4EasyUI.onForm(dt);//{"ID":"25","Column1":"22221","Column2":"33331","Column3":"44441"}
     }
@@ -78,7 +78,7 @@ public class Handler : IHttpHandler
                 sWhere = " where sunSKU like '%" + stitle + "%'";
         }
         //sqlexe = @"select top 10 ID,title,addTime from (select top 20 * from product " + PID + " order by [addTime] DESC,ID desc) as a";
-        sqlexe = @"select * from Sale " + sWhere + " order by " + sort + " " + order;
+        sqlexe = @"select id,account,name,sunSKU,star from Sale " + sWhere + " order by " + sort + " " + order;
         DataTable dt = SqlHelper.dataTable(sqlexe);
         return Json4EasyUI.onDataGrid(dt, page, rows);
     }
@@ -103,7 +103,8 @@ public class Handler : IHttpHandler
         string id = ParamsofEasyUI.RequstString("id");
         string account = ParamsofEasyUI.RequstForm("account");
         string name = ParamsofEasyUI.RequstForm("name");
-        string sunSKU = ParamsofEasyUI.RequstForm("sunSKU");
+        string sunSKUU = ParamsofEasyUI.RequstForm("sunSKU");
+        string sunSKU = sunSKUU.Replace("\'", "\'\'");
         string star = ParamsofEasyUI.RequstForm("star");
         string sqlexe = string.Empty;
         if (id.Length > 0)

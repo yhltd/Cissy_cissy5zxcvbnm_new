@@ -6,3 +6,7 @@ D:\yho117\Cissy_cissy5zxcvbnm\code\SDZdb\bin\Release\SDZdb.dll
 D:\yho117\Cissy_cissy5zxcvbnm\code\SDZdb\bin\Release\SDZdb.pdb
 D:\yho117\Cissy_cissy5zxcvbnm\code\SDZdb\obj\Release\SDZdb.dll
 D:\yho117\Cissy_cissy5zxcvbnm\code\SDZdb\obj\Release\SDZdb.pdb
+D:\yho117\Cissy_new\Cissy_cissy5zxcvbnm_new\code\SDZdb\bin\Release\SDZdb.dll
+D:\yho117\Cissy_new\Cissy_cissy5zxcvbnm_new\code\SDZdb\bin\Release\SDZdb.pdb
+D:\yho117\Cissy_new\Cissy_cissy5zxcvbnm_new\code\SDZdb\obj\Release\SDZdb.dll
+D:\yho117\Cissy_new\Cissy_cissy5zxcvbnm_new\code\SDZdb\obj\Release\SDZdb.pdb

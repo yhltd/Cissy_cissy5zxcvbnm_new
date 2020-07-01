@@ -46,7 +46,7 @@ public class Handler : IHttpHandler
     private string getSingleData()
     {
         string id = ParamsofEasyUI.RequstString("ID");
-        string sqlexe = @"select * from Sale where ID=" + id + "";
+        string sqlexe = @"select id,account,name,sunSKU,redundancy,time from Sale where ID=" + id + "";
         DataTable dt = SqlHelper.dataTable(sqlexe);
         return Json4EasyUI.onForm(dt);//{"ID":"25","Column1":"22221","Column2":"33331","Column3":"44441"}
     }
@@ -78,7 +78,7 @@ public class Handler : IHttpHandler
                 sWhere = " where sunSKU like '%" + stitle + "%'";
         }
         //sqlexe = @"select top 10 ID,title,addTime from (select top 20 * from product " + PID + " order by [addTime] DESC,ID desc) as a";
-        sqlexe = @"select * from Sale " + sWhere + " order by " + sort + " " + order;
+        sqlexe = @"select id,account,name,sunSKU,redundancy,time from Sale " + sWhere + " order by " + sort + " " + order;
         DataTable dt = SqlHelper.dataTable(sqlexe);
         return Json4EasyUI.onDataGrid(dt, page, rows);
     }
@@ -103,13 +103,15 @@ public class Handler : IHttpHandler
         string id = ParamsofEasyUI.RequstString("id");
         string account = ParamsofEasyUI.RequstForm("account");
         string name = ParamsofEasyUI.RequstForm("name");
-        string sunSKU = ParamsofEasyUI.RequstForm("sunSKU");
+        string sunSKUU = ParamsofEasyUI.RequstForm("sunSKU");
+        string sunSKU = sunSKUU.Replace("\'", "\'\'");
         string redundancy = ParamsofEasyUI.RequstForm("redundancy");
+        string time = ParamsofEasyUI.RequstForm("time");
         string sqlexe = string.Empty;
         if (id.Length > 0)
         {
-            sqlexe = string.Format("update Sale set account='{0}',name='{1}',sunSKU='{2}',redundancy='{3}' where id={4}",
-   account ,name, sunSKU, redundancy, Convert.ToInt32(id));
+            sqlexe = string.Format("update Sale set account='{0}',name='{1}',sunSKU='{2}',redundancy='{3}',time='{4}' where id={5}",
+   account ,name, sunSKU, redundancy, time, Convert.ToInt32(id));
             if (SqlHelper.ExecuteUpdate(sqlexe))
                 sReturnJson = "{success:true}";
             else
@@ -117,8 +119,8 @@ public class Handler : IHttpHandler
         }
         else
         {
-            sqlexe = string.Format("insert Into Sale (account ,name, sunSKU, redundancy) values ('{0}','{1}','{2}','{3}')",
-               account, name, sunSKU, redundancy);
+            sqlexe = string.Format("insert Into Sale (account ,name, sunSKU, redundancy, time) values ('{0}','{1}','{2}','{3}','{4}')",
+               account, name, sunSKU, redundancy, time);
             if (SqlHelper.ExecuteUpdate(sqlexe))
                 sReturnJson = "{success:true}";
             else

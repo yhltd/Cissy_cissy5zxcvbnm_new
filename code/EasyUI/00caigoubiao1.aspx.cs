@@ -78,6 +78,8 @@ namespace EasyUI
                 conn.Open();
                 SqlTransaction str = conn.BeginTransaction();//利用事务处理 防止中断  
                 int k = 0;
+                DateTime dt = DateTime.Now;
+                string time = dt.ToShortDateString().ToString();
                 sheet = workbook.GetSheet("Sheet1");
                 try
                 {
@@ -88,7 +90,7 @@ namespace EasyUI
                     for (int i = 0; i < sheet.LastRowNum; i++)
                     {
                         IRow row = sheet.GetRow(i + 1);
-                        string sqlStr = "insert into Product(no,grouping,name,cost,buyer,sale,length,width,high,weight,pack)values";
+                        string sqlStr = "insert into Product(no,grouping,name,cost,buyer,sale,length,width,high,weight,pack,time)values";
                         sqlStr += "('" + row.GetCell(0) + "',";
                         sqlStr += "'" + row.GetCell(1) + "',";
                         sqlStr += "'" + row.GetCell(2) + "',";
@@ -99,7 +101,8 @@ namespace EasyUI
                         sqlStr += "'" + row.GetCell(7) + "',";
                         sqlStr += "'" + row.GetCell(8) + "',";
                         sqlStr += "'" + row.GetCell(9) + "',";
-                        sqlStr += "'" + row.GetCell(10) + "')";
+                        sqlStr += "'" + row.GetCell(10) + "',";
+                        sqlStr += "'" + time + "')";
                         //sheet = workbook.GetSheet("sheet1") as HSSFSheet;
                         if (i == 0)
                         {

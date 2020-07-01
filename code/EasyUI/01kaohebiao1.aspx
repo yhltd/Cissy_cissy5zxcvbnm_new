@@ -25,13 +25,13 @@
     </div>
 
    
-   <div id="search-window" title="查询窗口" style="width: 350px; height: 200px;">
+   <div id="search-window" title="查询窗口" style="width: 455px; height: 200px;">
         <div style="padding: 20px 20px 40px 80px;">
             <form method="post">
             <table>
                 <tr>
                     <td>
-                        子sku：
+                        销售员姓名：
                     </td>
                     <td>
                         <input name="s_title" id="s_title" style="width: 150px;" />
@@ -74,19 +74,17 @@
                         <asp:BoundField DataField="销售员" HeaderText="销售员" SortExpression="销售员" />
                         <asp:BoundField DataField="净销售数量" HeaderText="净销售数量" SortExpression="净销售数量" ReadOnly="True" />
                         <asp:BoundField DataField="净销售额" HeaderText="净销售额" SortExpression="净销售额" ReadOnly="True" />
-                        <asp:BoundField DataField="利润" HeaderText="利润" SortExpression="利润" ReadOnly="True" />
+                        <asp:BoundField DataField="利润" HeaderText="利润" ReadOnly="True" SortExpression="利润" />
                         <asp:BoundField DataField="提成" HeaderText="提成" ReadOnly="True" SortExpression="提成" />
-                        <asp:BoundField DataField="无利润考核系数" HeaderText="无利润考核系数" ReadOnly="True" SortExpression="无利润考核系数" />
                         <asp:BoundField DataField="考评后应发提成" HeaderText="考评后应发提成" ReadOnly="True" SortExpression="考评后应发提成" />
                     </Columns>
                 </asp:GridView>
                 <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:CissyConnectionString %>" SelectCommand="SELECT
-	Sale.saler as '销售员',
+	Sale.saler AS 销售员,
 	SUM(aa.净销售数量) AS 净销售数量,
 	SUM(aa.[净销售额]) AS 净销售额,
 	SUM(aa.[利润]) AS 利润,
 	SUM(aa.[净销售额] * Sale.commission* Sale.rate )AS 提成,
-	( CASE WHEN SUM(aa.[利润]) &gt; 0 THEN 1 ELSE 0 END ) AS 无利润考核系数,
 	SUM((
 		CASE
 				
@@ -112,6 +110,7 @@
 			LEFT JOIN (
 			SELECT
 				Sales.sunSKU AS sunSKU,
+                Sales.account,
 				SUM ( CASE WHEN Sales.type= 'Order' THEN Sales.quantity WHEN Sales.type= 'Refund' THEN - Sales.quantity END ) AS 净销售数量,
 				SUM ( CASE WHEN Sales.type= 'Order' THEN Sales.sales * Sales.quantity END ) AS 销售额,
 				(
@@ -123,7 +122,7 @@
 								WHEN Sales.type = 'Transfer' THEN
 								0 
                                 WHEN Sales.type = 'Order' THEN
-								(Sales.total- ( Product.cost + Product.freight )) * Sales.quantity * Sale.rate ELSE Sales.total * Sales.quantity* Sale.rate  
+								(Sales.total- ( Product.cost + Freight.freight )) * Sales.quantity * Sale.rate ELSE Sales.total * Sales.quantity* Sale.rate  
 							END 
 							) 
 						)) AS 利润,
@@ -140,10 +139,13 @@
 					FROM
 						Sales
 						LEFT JOIN Sale ON Sale.sunSKU= Sales.sunSKU
+                    	AND Sale.account = Sales.account
 						LEFT JOIN Product ON Sale.name = Product.name 
+						LEFT JOIN Country ON Country.account = Sales.account
+			            LEFT JOIN Freight ON Freight.country = Country.country  
 					GROUP BY
-						Sales.sunSKU 
-					) AS aa ON aa.sunSKU = Sale.sunSKU
+						Sales.sunSKU,Sales.account 
+					) AS aa ON aa.sunSKU = Sale.sunSKU and aa.account = Sale.account
 LEFT JOIN Peizhi ON Peizhi.star = Sale.star
 GROUP BY Sale.saler"></asp:SqlDataSource>
 

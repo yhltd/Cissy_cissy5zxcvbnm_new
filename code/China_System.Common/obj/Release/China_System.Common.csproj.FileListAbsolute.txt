@@ -12,3 +12,10 @@ D:\yho117\Cissy_cissy5zxcvbnm\code\China_System.Common\bin\Release\SDZdb.pdb
 D:\yho117\Cissy_cissy5zxcvbnm\code\China_System.Common\obj\Release\China_System.Common.csprojResolveAssemblyReference.cache
 D:\yho117\Cissy_cissy5zxcvbnm\code\China_System.Common\obj\Release\China_System.Common.dll
 D:\yho117\Cissy_cissy5zxcvbnm\code\China_System.Common\obj\Release\China_System.Common.pdb
+D:\yho117\Cissy_new\Cissy_cissy5zxcvbnm_new\code\China_System.Common\bin\Release\China_System.Common.dll
+D:\yho117\Cissy_new\Cissy_cissy5zxcvbnm_new\code\China_System.Common\bin\Release\China_System.Common.pdb
+D:\yho117\Cissy_new\Cissy_cissy5zxcvbnm_new\code\China_System.Common\bin\Release\SDZdb.dll
+D:\yho117\Cissy_new\Cissy_cissy5zxcvbnm_new\code\China_System.Common\bin\Release\SDZdb.pdb
+D:\yho117\Cissy_new\Cissy_cissy5zxcvbnm_new\code\China_System.Common\obj\Release\China_System.Common.csprojResolveAssemblyReference.cache
+D:\yho117\Cissy_new\Cissy_cissy5zxcvbnm_new\code\China_System.Common\obj\Release\China_System.Common.dll
+D:\yho117\Cissy_new\Cissy_cissy5zxcvbnm_new\code\China_System.Common\obj\Release\China_System.Common.pdb

@@ -24,7 +24,7 @@
         </div>
     </div>
 
-    <div id="Dlg-Edit" title="编辑窗口" style="width: 800px; height: 400px;">
+    <div id="Dlg-Edit" title="编辑窗口" style="width: 568px; height: 223px;">
         <div style="padding: 20px 20px 40px 40px;">
             <form method="post">
             <table>
@@ -61,7 +61,7 @@
             </form>
         </div>
     </div>
-   <div id="search-window" title="查询窗口" style="width: 350px; height: 200px;">
+   <div id="search-window" title="查询窗口" style="width: 403px; height: 200px;">
         <div style="padding: 20px 20px 40px 80px;">
             <form method="post">
             <table>

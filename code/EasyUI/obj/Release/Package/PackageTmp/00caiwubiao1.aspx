@@ -14,8 +14,8 @@
     <script src="/dataPage/caiwubiao1.js" type="text/javascript"></script>
     <style type="text/css">
         #Button2 {
-            height: 38px;
-            width: 111px;
+            height: 51px;
+            width: 142px;
             margin-left: 0px;
         }
     </style>
@@ -26,7 +26,7 @@
         </div>
     </div>
 
-    <div id="Dlg-Edit" title="编辑窗口" style="width: 800px; height: 400px;">
+    <div id="Dlg-Edit" title="编辑窗口" style="width: 636px; height: 188px;">
         <div style="padding: 20px 20px 40px 40px;">
             <form method="post">
             <table>
@@ -63,7 +63,7 @@
             </form>
         </div>
     </div>
-   <div id="search-window" title="查询窗口" style="width: 350px; height: 200px;">
+   <div id="search-window" title="查询窗口" style="width: 422px; height: 200px;">
         <div style="padding: 20px 20px 40px 80px;">
             <form method="post">
             <table>
@@ -101,21 +101,23 @@
         </div>--%>
     </div>
 
-    <div id="excelWin1" title="导出预览" style="width: 744px; height: 300px;">
-        
+    <div id="excelWin1" title="导出预览" style="width: 1099px; height: 300px; margin-left: 5px;">
+
         <div style="padding: 20px 20px 40px 80px; text-align: center">
-                <form id="Form2" method="post" action="">
-                <input type="button" id="Button2" runat="server" value="下载表格" onserverclick="Export_Click1"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource1" style="margin-left: 108px; margin-top: 34px" Width="354px">
-                        <Columns>
-                            <asp:BoundField DataField="销售账户" HeaderText="销售账户" SortExpression="销售账户" />
-                            <asp:BoundField DataField="当月汇率" HeaderText="当月汇率" SortExpression="当月汇率" />
-                            <asp:BoundField DataField="产品名称" HeaderText="产品名称" SortExpression="产品名称" />
-                            <asp:BoundField DataField="单件运营提成比" HeaderText="单件运营提成比" SortExpression="单件运营提成比" />
-                        </Columns>
-                    </asp:GridView>
-                    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:CissyConnectionString %>" SelectCommand="select account as '销售账户',rate as '当月汇率',name as '产品名称',commission as '单件运营提成比'  from Sale where id in(select min(id) from Sale  group by name)"></asp:SqlDataSource>
-                </form>
+            <form id="Form2" method="post" action="">
+                <input type="button" id="Button2" runat="server" value="下载表格" onserverclick="Export_Click1" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;<asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource1" Height="135px" style="margin-left: 66px; margin-top: 49px" Width="746px">
+                    <Columns>
+                        <asp:BoundField DataField="销售账户" HeaderText="销售账户" SortExpression="销售账户" />
+                        <asp:BoundField DataField="当月汇率" HeaderText="当月汇率" SortExpression="当月汇率" />
+                        <asp:BoundField DataField="产品名称" HeaderText="产品名称" SortExpression="产品名称" />
+                        <asp:BoundField DataField="单件运营提成比" HeaderText="单件运营提成比" SortExpression="单件运营提成比" /> 
+                        <asp:BoundField DataField="备注" HeaderText="备注" SortExpression="备注" />     
+               
+                    </Columns>
+                </asp:GridView>
+                <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:CissyConnectionString %>" SelectCommand="select account as '销售账户',rate as '当月汇率',name as '产品名称',commission  as '单件运营提成比' ,returnCost as '备注' from Sale "></asp:SqlDataSource>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+            </form>
 
         </div>
     </div>

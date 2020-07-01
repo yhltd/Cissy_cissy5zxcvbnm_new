@@ -52,7 +52,7 @@ public class Json4EasyUI
         int end = page * rows;
         end = (end > dt.Rows.Count) ? dt.Rows.Count : end;
         StringBuilder jsonBuilder = new StringBuilder();
-        jsonBuilder.Append("{\"total\":" + dt.Rows.Count + ",\"rows\":[");
+        jsonBuilder.Append("{\"total\":" + dt.Rows.Count + ",\"rows\":[" + " ");
         for (int i = start; i < end; i++)
         {
             jsonBuilder.Append("{");

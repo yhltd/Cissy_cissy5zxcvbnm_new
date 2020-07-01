@@ -63,6 +63,10 @@ namespace EasyUI
                         sqlStr += "'" + row.GetCell(3) + "',";
                         sqlStr += "'" + row.GetCell(4) + "')";
                         //sheet = workbook.GetSheet("sheet1") as HSSFSheet;
+                        if (i == 0)
+                        {
+                            sqlStr = "truncate table Trial;" + sqlStr;
+                        }
                         SqlCommand cmd = new SqlCommand(sqlStr, conn, str);
                         cmd.Transaction = str;
                         k += cmd.ExecuteNonQuery();

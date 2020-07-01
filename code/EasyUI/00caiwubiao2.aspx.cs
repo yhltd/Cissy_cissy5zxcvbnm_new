@@ -87,7 +87,7 @@ namespace EasyUI
                     for (int i = 0; i < sheet.LastRowNum; i++)
                     {
                         IRow row = sheet.GetRow(i + 1);
-                        string sqlStr = "update Trial set sale='" + row.GetCell(0) + "',rate= '" + row.GetCell(1) + "',commission= '" + row.GetCell(3) + "',advertisment= '" + row.GetCell(4) + "',returnRate= '" + row.GetCell(5) + "',commissionRate= '" + row.GetCell(6) + "',price= '" + row.GetCell(7) + "' where name='" + row.GetCell(2) + "'";
+                        string sqlStr = "update Trial set sale='" + row.GetCell(0) + "',rate= '" + row.GetCell(1) + "',commission= '" + row.GetCell(3) + "',advertisment= '" + row.GetCell(4) + "',returnRate= '" + row.GetCell(5) + "',commissionRate= '" + row.GetCell(6) + "' where name='" + row.GetCell(2) + "'";
                         SqlCommand cmd = new SqlCommand(sqlStr, conn, str);
                         cmd.Transaction = str;
                         k += cmd.ExecuteNonQuery();

@@ -27,7 +27,7 @@
         <%--<button onclick=""><img src="file/1.jpg"></img></button>--%>
     </div>
 
-    <div id="Dlg-Edit" title="编辑窗口" style="width: 800px; height: 400px;">
+    <div id="Dlg-Edit" title="编辑窗口" style="width: 414px; height: 247px;">
         <div style="padding: 20px 20px 40px 40px;">
             <form method="post">
             <table>
@@ -43,13 +43,13 @@
             </form>
         </div>
     </div>
-   <div id="search-window" title="查询窗口" style="width: 350px; height: 200px;">
+   <div id="search-window" title="查询窗口" style="width: 425px; height: 200px;">
         <div style="padding: 20px 20px 40px 80px;">
             <form method="post">
             <table>
                 <tr>
                     <td>
-                        序号：
+                        产品子编号：
                     </td>
                     <td>
                         <input name="s_title" id="s_title" style="width: 150px;" />
@@ -106,7 +106,7 @@
                 <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:CissyConnectionString %>" SelectCommand="SELECT 
 	Trial.no as '产品编号',
 	Trial.num as '产品子编号',
-    Trial.name as '产品名称',
+              Trial.name as '产品名称',
 	Trial.price as '拟定产品售价',
 	Trial.cost as '采购成本',
 	Trial.rate as '产品汇率',
@@ -114,12 +114,12 @@
 	Trial.advertisment AS '广告费占比',
 	Trial.returnRate AS '退货率',
 	Trial.commissionRate AS '平台佣金占比',
-	Trial.price - Trial.price*Trial.commissionRate - Trial.price*Trial.advertisment - Sale.FBA - Sale.three - Sale.thirty as '实际到手价',
-	(Trial.price - Trial.price*Trial.commissionRate - Trial.price*Trial.advertisment - Sale.FBA - Sale.three - Sale.thirty)*Trial.rate - Trial.cost -  Product.freight - Trial.cost*Trial.returnRate - Trial.price*Trial.commission AS '利润'
+	Trial.price - Trial.price*Trial.commissionRate - Trial.price*Trial.advertisment - Trial.FBA - Trial.three - Trial.thirty as '实际到手价',
+	(Trial.price - Trial.price*Trial.commissionRate - Trial.price*Trial.advertisment - Trial.FBA - Trial.three - Trial.thirty)*Trial.rate - Trial.cost -  Freight.freight - Trial.cost*Trial.returnRate - Trial.price*Trial.commission AS '利润'
 FROM
 	[dbo].[Trial]
-	LEFT JOIN Sale on Sale.name = Trial.name
-	LEFT JOIN Product on Product.name = Trial.name"></asp:SqlDataSource>
+LEFT JOIN Country on Country.account = Trial.sale
+LEFT JOIN Freight on Freight.country = Country.country"></asp:SqlDataSource>
 
             </div>
         </div>

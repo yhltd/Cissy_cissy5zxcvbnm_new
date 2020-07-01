@@ -33,7 +33,12 @@
         closed: true,
         modal: true
     });
-
+    //img窗口
+    $('#hash').linkbutton();
+    imgWin = $('#imgWin').window({
+        closed: true,
+        modal: true
+    });
 
     $('#btn-search,#btn-search-cancel').linkbutton();
     //查询窗口
@@ -42,100 +47,148 @@
         modal: true
     });
 
-    
+
 
 
     searchForm = searchWin.find('form');
+    //单击事件写法
+
+    backID = function (id) {
+        //alert(id);
+        //document.cookie = "img_idd=" + id;
+        window.location.href = "ViewImage.aspx?id=" + id
 
 
 
-    grid = $('#grid').datagrid({
-        title: '设计部预录',
-        iconCls: 'icon-save',
-        methord: 'get', //请求远程数据的 method 类型
-        url: 'dataController/shejibiao.ashx?action=list&ran=' + Math.random(),  //从远程站点请求数据的 URL
-        sortName: 'id',  //定义可以排序的列
-        sortOrder: 'desc',
-        idField: 'id', //标识字段
-        pageSize: 30,   //初始化页码尺寸
-        frozenColumns: [[
-	                { field: 'ID', checkbox: true }//checkbox: true 表示显示 checkbox
-                    //,{ title: 'ID', field: 'ID', width: 80, sortable: true }
-        ]], //和列的特性一样，但是这些列将被冻结在左边。
-        columns: [[
-					{ field: 'no', title: '产品编号', width: 100, sortable: true, align: 'center' }, //fieldfield 列的字段名,title列的标题文字,sortable 是否允许此列被排序
-					{ field: 'num', title: '产品子编号', width: 100, sortable: true, align: 'center' },
-                    {
-                        field: 'opt1', title: '上传', width: 100, sortable: true, align: 'center',
-                        formatter: function (val, row, index) {
-                            var btn = '<button class="detail" onclick="ShowDetail1(\'' + row.id + '\')"  href="javascript:void(0)">点击上传图片</a>';
-                            return btn;
-                        }
-                    },
-                    {
-                        field: 'opt2', title: '下载', width: 100, align: 'center',
-                        formatter: function (val, row, index) {
-                            var btn = '<button class="detail" onclick="ShowDetail2(\'' + row.id + '\')"  href="javascript:void(0)">点击查看图片</a>';
-                            return btn;
-                        }
-                    }
-        ]], //datagrid 的 column 的配置对象
-        fit: true,
-        pagination: true, //True 就会在 datagrid 的底部显示分页栏
-        rownumbers: true, //True 就会显示行号的列
-        fitColumns: true,//True 就会自动扩大或缩小列的尺寸以适应表格的宽度并且防止水平滚动。
-        singleSelect: false, //True 就会只允许选中一行。
-        onLoadSuccess: function (data) {
-            $('.detail1').linkbutton({ text: '', plain: true, iconCls: 'icon-add' });
-        },
-        onLoadSuccess: function (data) {
-            $('.detail2').linkbutton({ text: '', plain: true, iconCls: 'icon-tip' });
-        },
+        //alert(id);
+        //$.ajax({
+        //    url: '01shejibiao.aspx/show_Image',
+        //    contentType: 'application/json; charset=utf-8',
+        //    datatype: 'json',
+        //    type: 'POST',
+        //    data: '{id:"' + id + '"}', //参数
+        //    success: function (result) {//成功后执行的方法
+        //        alert(result.d); // 后台返回值
+        //    },
+        //    error: function (result) {//失败执行的方法
+        //        alert("error:" + result.responseText);
+        //    }
+        //});
+    }
+    getLV()
 
-        toolbar: [{
-            text: '新增',
-            iconCls: 'icon-add',
-            handler: add    //为按钮添加方法
-        }, '-', {
-            text: '修改',
-            iconCls: 'icon-edit',
-            handler: edit
-        }, '-', {
-            text: '删除',
-            iconCls: 'icon-remove',
-            handler: del
-        }
-        , '-', {
-            text: '查找',
-            iconCls: 'icon-search',
-            handler: OpensearchWin
-        }, '-', {
-            text: '所有',
-            iconCls: 'icon-search',
-            handler: showAll
-        }, '-', {
-            text: '导入excel',
-            iconCls: 'icon-save',
-            handler: OpenExcelWin
-        }, '-', {
-            text: '导出excel',
-            iconCls: 'icon-print',
-            handler: OpenExcelWin1
-        }
-        ],
-        onHeaderContextMenu: function (e, field) {//当 datagrid 的头部被右键单击时触发
-            e.preventDefault();
-            if (!$('#tmenu').length) {
-                createColumnMenu();
-            }
-            $('#tmenu').menu('show', {
-                left: e.pageX,
-                top: e.pageY
-            });
-        }
-    });
+
+    
     $('body').layout();
 });
+
+function getLV() {
+    $.ajax({
+        url: 'dataController/selCon.ashx?operation=viewAccess&tableName=shejiyulu',
+        type: 'GET',
+        error: function () {
+            $.messager.alert('错误', 'error');
+        },
+        success: function (data) {
+            if (data != "") {
+                var arr = new Array(); //定义一数组
+                arr = data.split(",");
+                grid = $('#grid').datagrid({
+                    title: '设计部预录',
+                    iconCls: 'icon-save',
+                    methord: 'get', //请求远程数据的 method 类型
+                    url: 'dataController/shejibiao.ashx?action=list&ran=' + Math.random(),  //从远程站点请求数据的 URL
+                    sortName: 'id',  //定义可以排序的列
+                    sortOrder: 'desc',
+                    idField: 'id', //标识字段
+                    pageSize: 30,   //初始化页码尺寸
+                    frozenColumns: [[
+                                { field: 'ID', checkbox: true }//checkbox: true 表示显示 checkbox
+                                //,{ title: 'ID', field: 'ID', width: 80, sortable: true }
+                    ]], //和列的特性一样，但是这些列将被冻结在左边。
+                    columns: [[
+                                { field: 'no', title: '产品编号', width: 100, sortable: true, align: 'center' }, //fieldfield 列的字段名,title列的标题文字,sortable 是否允许此列被排序
+                                { field: 'num', title: '产品子编号', width: 100, sortable: true, align: 'center' },
+                                //{
+                                //    field: 'opt1', title: '图片预览', width: 100, align: 'center',
+                                //    formatter: function (val, row, index) {
+                                //        //return '<input type="button" value="点击查看" class="detail" onclick="backID(\'' + row.id + '\')"  href="javascript:void(0)"><a\>';
+                                //        return '<img style="width:50px;height:50px;" src="CQU_CHM_ShowImage.aspx?QiHao=' + row.id + '" href="javascript:void(0)"/>';
+                                //    }
+                                //},
+                                {
+                                    field: 'opt2', title: '查看图片', width: 100, align: 'center',
+                                    formatter: function (val, row, index) {
+                                        //return '<input type="button" value="点击查看" class="detail" onclick="backID(\'' + row.id + '\')"  href="javascript:void(0)"><a\>';
+                                        return '<button onclick="backID(\'' + row.id + '\')"  href="javascript:void(0)">点击查看<a\>';
+                                    }
+                                }
+                    ]], //datagrid 的 column 的配置对象
+                    fit: true,
+                    pagination: true, //True 就会在 datagrid 的底部显示分页栏
+                    rownumbers: true, //True 就会显示行号的列
+                    fitColumns: true,//True 就会自动扩大或缩小列的尺寸以适应表格的宽度并且防止水平滚动。
+                    singleSelect: false, //True 就会只允许选中一行。
+                    //onLoadSuccess: function (data) {
+                    //    $('.detail1').linkbutton({ text: '', plain: true, iconCls: 'icon-add' });
+                    //},
+                    toolbar: [{
+                        text: '新增',
+                        disabled: arr[0] == '1' ? false : true,
+                        iconCls: 'icon-add',
+                        handler: add    //为按钮添加方法
+                    }, '-', {
+                        text: '修改',
+                        disabled: arr[1] == '1' ? false : true,
+                        iconCls: 'icon-edit',
+                        handler: edit
+                    }, '-', {
+                        text: '删除',
+                        disabled: arr[2] == '1' ? false : true,
+                        iconCls: 'icon-remove',
+                        handler: del
+                    }
+                    , '-', {
+                        text: '查找',
+                        disabled: arr[3] == '1' ? false : true,
+                        iconCls: 'icon-search',
+                        handler: OpensearchWin
+                    }, '-', {
+                        text: '所有',
+                        disabled: arr[4] == '1' ? false : true,
+                        iconCls: 'icon-search',
+                        handler: showAll
+                        //}, '-', {
+                        //    text: '导入excel',
+                        //    iconCls: 'icon-save',
+                        //    handler: OpenExcelWin
+                        //}, '-', {
+                        //    text: '导出excel',
+                        //    iconCls: 'icon-print',
+                        //    handler: OpenExcelWin1
+                    }, '-', {
+                        text: '导入图片',
+                        disabled: arr[8] == '1' ? false : true,
+                        iconCls: 'icon-add',
+                        handler: load
+                        //LoadImgWin
+                    }
+                    ],
+                    onHeaderContextMenu: function (e, field) {//当 datagrid 的头部被右键单击时触发
+                        e.preventDefault();
+                        if (!$('#tmenu').length) {
+                            createColumnMenu();
+                        }
+                        $('#tmenu').menu('show', {
+                            left: e.pageX,
+                            top: e.pageY
+                        });
+                    }
+                });
+            }
+        }
+    });
+}
 
 function createColumnMenu() {
     var tmenu = $('<div id="tmenu" style="width:100px;"></div>').appendTo('body');
@@ -169,6 +222,7 @@ var searchWin;
 var searchForm;
 var excelWin;
 var excelWin1;
+var imgWin;
 
 
 //excel
@@ -190,6 +244,16 @@ function CloseExcelWindow() {
 }
 
 
+//img
+function LoadImgWin() {
+    imgWin.window('open');
+}
+
+function CloseImgWin() {
+    imgWin.window('close');
+}
+
+
 
 
 
@@ -208,6 +272,26 @@ function getSelectedID() {
 }
 function arr2str(arr) {
     return arr.join(',');
+}
+
+//添加图片
+function load() {
+    var rows = grid.datagrid('getSelections');
+    var num = rows.length;
+    if (num == 0) {
+        Msgslide('请选择一款产品添加图片!'); //$.messager.alert('提示', '请选择一条记录进行操作!', 'info');
+        return;
+    }
+    else if (num > 1) {
+        Msgfade('您选择了多款产品,只能选择一款产品添加图片!'); //$.messager.alert('提示', '您选择了多条记录,只能选择一条记录进行修改!', 'info');
+        return;
+    }
+    else {
+        document.cookie = "img_id=" + rows[0].id;
+        LoadImgWin();
+        //dlg_Edit_form.form('load', 'LoadImgWin' + rows[0].id);
+        //dlg_Edit_form.url = 'dataController/shejibiao.ashx?img=load&id=' + rows[0].id;
+    }
 }
 
 //添加
@@ -300,7 +384,7 @@ function OpensearchWin() {
     searchForm.form('clear');
 }
 
-保存数据
+//保存数据
 function saveData() {
     dlg_Edit_form.form('submit', {
         url: dlg_Edit_form.url,

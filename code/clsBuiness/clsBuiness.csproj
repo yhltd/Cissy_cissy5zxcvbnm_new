@@ -20,6 +20,8 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -50,6 +52,14 @@
     <ProjectReference Include="..\China_System.Common\China_System.Common.csproj">
       <Project>{6d44b559-6900-4076-b906-565d758f43b3}</Project>
       <Name>China_System.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\frmcstest\frmcstest.csproj">
+      <Project>{3f725c4b-b7ef-4ad8-b623-bc60060e01e2}</Project>
+      <Name>frmcstest</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\QRCodeLib\QRCodeLib.csproj">
+      <Project>{e98126b2-af17-4783-96b9-856d6744dca3}</Project>
+      <Name>QRCodeLib</Name>
     </ProjectReference>
     <ProjectReference Include="..\SDZdb\SDZdb.csproj">
       <Project>{0a37e57d-9e55-4378-935d-acd76fab4609}</Project>

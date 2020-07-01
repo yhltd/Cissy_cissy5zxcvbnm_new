@@ -14,6 +14,7 @@ public class Handler : IHttpHandler
         string sReturnJson = string.Empty;
         string sqlexe = string.Empty;
         string action = ParamsofEasyUI.RequstString("action");
+        string img = ParamsofEasyUI.RequstString("img");
         switch (action)
         {
             case "save":
@@ -33,6 +34,10 @@ public class Handler : IHttpHandler
             case "get":
             sReturnJson=getSingleData();
                 break;
+
+            ////图片上传
+            //case "load":
+            //    break;
             default:
                 break;
         }
@@ -50,6 +55,7 @@ public class Handler : IHttpHandler
         DataTable dt = SqlHelper.dataTable(sqlexe);
         return Json4EasyUI.onForm(dt);//{"ID":"25","Column1":"22221","Column2":"33331","Column3":"44441"}
     }
+    
     
     //查询
     private string getData(string action)
@@ -103,13 +109,12 @@ public class Handler : IHttpHandler
         string id = ParamsofEasyUI.RequstString("id");
         string no = ParamsofEasyUI.RequstForm("no");
         string num = ParamsofEasyUI.RequstForm("num");
-        string img = ParamsofEasyUI.RequstForm("img");
         
         string sqlexe = string.Empty;
         if (id.Length > 0)
         {
-            sqlexe = string.Format("update Detailed set no='{0}',num='{1}',img='{2}' where id={3}",
-   no, num, img, Convert.ToInt32(id));
+            sqlexe = string.Format("update Detailed set no='{0}',num='{1}' where id={2}",
+   no, num, Convert.ToInt32(id));
             if (SqlHelper.ExecuteUpdate(sqlexe))
                 sReturnJson = "{success:true}";
             else
@@ -117,8 +122,8 @@ public class Handler : IHttpHandler
         }
         else
         {
-            sqlexe = string.Format("insert Into Detailed (no, num, img) values ('{0}','{1}','{2}')",
-               no, num, img);
+            sqlexe = string.Format("insert Into Detailed (no, num) values ('{0}','{1}')",
+               no, num);
             if (SqlHelper.ExecuteUpdate(sqlexe))
                 sReturnJson = "{success:true}";
             else

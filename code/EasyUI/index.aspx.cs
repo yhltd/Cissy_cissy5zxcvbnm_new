@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -13,5 +13,20 @@ namespace EasyUI
         {
 
         }
+        public string backname()
+        {
+            string aa;
+            HttpCookie cookies1 = System.Web.HttpContext.Current.Request.Cookies["conCookie"];
+            if (cookies1 != null)
+            {
+                aa = cookies1["shengfen"];
+            }
+            else
+            {
+                aa = "δ֪";
+            }
+            return aa;
+        }
+        public int conCookie { get; set; }
     }
 }

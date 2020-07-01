@@ -6,6 +6,14 @@ using System.Threading.Tasks;
 
 namespace SDZdb
 {
+    public class picture 
+    {
+        public string no { get; set; }
+        public string num { get; set; }
+        public string FFileName { get; set; }
+        public string img { get; set; }
+    }
+
     public class clsuserinfo
     {
         public string Order_id { get; set; }

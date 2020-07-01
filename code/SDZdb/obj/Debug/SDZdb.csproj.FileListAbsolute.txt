@@ -11,3 +11,8 @@ D:\git_version\Cissy_cissy5zxcvbnm_new\code\SDZdb\bin\Debug\SDZdb.pdb
 D:\git_version\Cissy_cissy5zxcvbnm_new\code\SDZdb\obj\Debug\SDZdb.csprojResolveAssemblyReference.cache
 D:\git_version\Cissy_cissy5zxcvbnm_new\code\SDZdb\obj\Debug\SDZdb.dll
 D:\git_version\Cissy_cissy5zxcvbnm_new\code\SDZdb\obj\Debug\SDZdb.pdb
+D:\yho117\Cissy_new\Cissy_cissy5zxcvbnm_new\code\SDZdb\bin\Debug\SDZdb.dll
+D:\yho117\Cissy_new\Cissy_cissy5zxcvbnm_new\code\SDZdb\bin\Debug\SDZdb.pdb
+D:\yho117\Cissy_new\Cissy_cissy5zxcvbnm_new\code\SDZdb\obj\Debug\SDZdb.dll
+D:\yho117\Cissy_new\Cissy_cissy5zxcvbnm_new\code\SDZdb\obj\Debug\SDZdb.pdb
+D:\yho117\Cissy_new\Cissy_cissy5zxcvbnm_new\code\SDZdb\obj\Debug\SDZdb.csprojResolveAssemblyReference.cache

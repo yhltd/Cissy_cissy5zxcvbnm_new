@@ -24,7 +24,7 @@
         </div>
     </div>
 
-    <div id="Dlg-Edit" title="编辑窗口" style="width: 800px; height: 400px;">
+    <div id="Dlg-Edit" title="编辑窗口" style="width: 629px; height: 263px;">
         <div style="padding: 20px 20px 40px 40px;">
             <form method="post">
             <table>
@@ -57,11 +57,19 @@
                         <input name="redundancy" class="easyui-validatebox"  style="width: 150px;" />
                     </td>
                 </tr>
+                <tr>
+                    <td>
+                        提醒日期：
+                    </td>
+                    <td>
+                        <input name="time" class="easyui-validatebox"  style="width: 150px;" />
+                    </td>                
+                </tr>
             </table>
             </form>
         </div>
     </div>
-   <div id="search-window" title="查询窗口" style="width: 350px; height: 200px;">
+   <div id="search-window" title="查询窗口" style="width: 400px; height: 200px;">
         <div style="padding: 20px 20px 40px 80px;">
             <form method="post">
             <table>

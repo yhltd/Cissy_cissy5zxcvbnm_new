@@ -7,3 +7,12 @@ D:\Devlop\身份证阅读器二次开发软件说明\ewm\frmcstest\obj\Release\f
 D:\Devlop\身份证阅读器二次开发软件说明\ewm\frmcstest\obj\Release\frmcstest.csproj.GenerateResource.Cache
 D:\Devlop\身份证阅读器二次开发软件说明\ewm\frmcstest\obj\Release\frmcstest.exe
 D:\Devlop\身份证阅读器二次开发软件说明\ewm\frmcstest\obj\Release\frmcstest.pdb
+D:\yho117\Cissy_new\Cissy_cissy5zxcvbnm_new\code\frmcstest\bin\Release\frmcstest.exe.config
+D:\yho117\Cissy_new\Cissy_cissy5zxcvbnm_new\code\frmcstest\bin\Release\frmcstest.exe
+D:\yho117\Cissy_new\Cissy_cissy5zxcvbnm_new\code\frmcstest\bin\Release\frmcstest.pdb
+D:\yho117\Cissy_new\Cissy_cissy5zxcvbnm_new\code\frmcstest\obj\Release\frmcstest.csprojResolveAssemblyReference.cache
+D:\yho117\Cissy_new\Cissy_cissy5zxcvbnm_new\code\frmcstest\obj\Release\frmcstest.Form1.resources
+D:\yho117\Cissy_new\Cissy_cissy5zxcvbnm_new\code\frmcstest\obj\Release\frmcstest.Properties.Resources.resources
+D:\yho117\Cissy_new\Cissy_cissy5zxcvbnm_new\code\frmcstest\obj\Release\frmcstest.csproj.GenerateResource.Cache
+D:\yho117\Cissy_new\Cissy_cissy5zxcvbnm_new\code\frmcstest\obj\Release\frmcstest.exe
+D:\yho117\Cissy_new\Cissy_cissy5zxcvbnm_new\code\frmcstest\obj\Release\frmcstest.pdb
