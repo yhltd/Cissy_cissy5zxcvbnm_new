@@ -10,3 +10,7 @@ D:\yho117\Cissy_new\Cissy_cissy5zxcvbnm_new\code\SDZdb\bin\Release\SDZdb.dll
 D:\yho117\Cissy_new\Cissy_cissy5zxcvbnm_new\code\SDZdb\bin\Release\SDZdb.pdb
 D:\yho117\Cissy_new\Cissy_cissy5zxcvbnm_new\code\SDZdb\obj\Release\SDZdb.dll
 D:\yho117\Cissy_new\Cissy_cissy5zxcvbnm_new\code\SDZdb\obj\Release\SDZdb.pdb
+D:\yhocn123\gitHub_net_Cissy\Cissy_cissy5zxcvbnm_new\code\SDZdb\bin\Release\SDZdb.dll
+D:\yhocn123\gitHub_net_Cissy\Cissy_cissy5zxcvbnm_new\code\SDZdb\bin\Release\SDZdb.pdb
+D:\yhocn123\gitHub_net_Cissy\Cissy_cissy5zxcvbnm_new\code\SDZdb\obj\Release\SDZdb.dll
+D:\yhocn123\gitHub_net_Cissy\Cissy_cissy5zxcvbnm_new\code\SDZdb\obj\Release\SDZdb.pdb

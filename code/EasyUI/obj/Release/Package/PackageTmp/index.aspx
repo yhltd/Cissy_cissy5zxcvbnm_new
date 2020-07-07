@@ -134,7 +134,10 @@
                 },
                 success: function (data) {
                     if (data != undefined || data != "") {
-                        var look1 = data.split(":");
+                        var shenfen = data.split("?")[1];
+                        $("#shenfen_text").text(shenfen)
+                        var data2 = data.split("?")[0];
+                        var look1 = data2.split(":");
                         for (var i = 0; i < look1.length; i++) {
                             lookarr.dbid.push(look1[i].split(",")[1])
                             lookarr.look.push(look1[i].split(",")[0])
@@ -270,7 +273,7 @@
         </div>
     </noscript>
     <div region="north" split="true" border="false" style="overflow: hidden; height: 36px; background: url(images/layout-browser-hd-bg.gif) #7f99be repeat-x center 50%; line-height: 20px; color: #fff; font-family: Verdana, 微软雅黑,黑体">
-        <span style="float: right; padding-right: 20px;" class="head">欢迎，您的身份：<text style="color: #33ccff"><%=backname()%>&nbsp&nbsp</text><%--<a href="#" id="editpass">修改密码</a>--%><span>&nbsp&nbsp</span><a href="#" id="loginOut">安全退出</a></span>
+        <span style="float: right; padding-right: 20px;" class="head">欢迎，您的身份：<text style="color: #33ccff" id="shenfen_text"></text><%--<a href="#" id="editpass">修改密码</a>--%><span>&nbsp&nbsp</span><a href="#" id="loginOut">安全退出</a></span>
         <span style="padding-left: 10px; font-size: 16px;">
             <img src="images/tm_logo.png" width="40" height="30" align="absmiddle" />
             <text style="font-size: 20px; font-family: '楷体'">云合未来系统</text>

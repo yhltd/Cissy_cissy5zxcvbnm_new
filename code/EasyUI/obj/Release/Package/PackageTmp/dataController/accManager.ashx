@@ -5,6 +5,8 @@ using System.Web;
 using System.Text;
 using System.Data;
 using System.Data.SqlClient;
+using System.Web.Script.Serialization;
+using System.Collections.Generic;
 public class Handler : IHttpHandler 
 {
 
@@ -56,39 +58,63 @@ public class Handler : IHttpHandler
 
         return sReturnJson;
     }
+    
+    private class Arr{
+        public string viewName;
+        public string caozuo;
+        public string[] arr;
+        public bool isUpd;
+    }
 
     private string updAccess(string id)
     {
-        string table_name = ParamsofEasyUI.RequstString("tableName");
-        string caozuo = ParamsofEasyUI.RequstString("caozuo");
-        string arr = ParamsofEasyUI.RequstString("arr");
+        string arr = ParamsofEasyUI.RequstString("sqlarr");
+        JavaScriptSerializer js = new JavaScriptSerializer();
+        List<Arr> list = js.Deserialize<List<Arr>>(arr);
 
-        string[] newArr = arr.Split(',');
-
-        string sql = "";
-
-        if (caozuo.Equals("upd"))
-        {
-            sql = "update AccessManager set [add] = '" + newArr[0] + "',upd = '" + newArr[1] + "',del = '" + newArr[2] + "',sel = '" + newArr[3] + "',selAll='" + newArr[4] + "',exportExcel='" + newArr[5] + "'," +
-            "importExcel='" + newArr[6] + "',empty='" + newArr[7] + "',look='" + newArr[8] + "',importImage='" + newArr[9] + "' where con_id='" + id + "' and ViewName = (select id from viewNames where ViewName = '" + table_name + "')";
-        }
-        else {
-            sql = "insert into AccessManager(con_id,[add],del,upd,sel,selAll,exportExcel,importExcel,empty,look,importImage,ViewName) values(";
-            for (int i = 0; i < newArr.Length;i++ )
+        StringBuilder sql = new StringBuilder();
+        
+        for (int i = 0; i < list.Count; i++) {
+            Arr arrClass = new Arr();
+            arrClass = list[i];
+            if (arrClass.isUpd)
             {
-                if(i==0){
-                    sql += "'" + id + "',";
-                }
-                sql += "'" + newArr[i] + "',";
-
-                if (i == newArr.Length - 1)
+                if (arrClass.caozuo.Equals("upd"))
                 {
-                    sql += "(select id from viewNames where ViewName = '" + table_name + "'))";
+                    sql.Append("update AccessManager set [add] = '" + arrClass.arr[0] + "',upd = '" + arrClass.arr[1] + "',del = '" + arrClass.arr[2] + "',sel = '" + arrClass.arr[3] + "',selAll='" + arrClass.arr[4] + "',exportExcel='" + arrClass.arr[5] + "'," +
+                    "importExcel='" + arrClass.arr[6] + "',empty='" + arrClass.arr[7] + "',look='" + arrClass.arr[8] + "',importImage='" + arrClass.arr[9] + "' where con_id='" + id + "' and ViewName = (select id from viewNames where ViewName = '" + arrClass.viewName + "');");
+                }
+                else
+                {
+                    sql.Append("insert into AccessManager(con_id,[add],del,upd,sel,selAll,exportExcel,importExcel,empty,look,importImage,ViewName) values(");
+                    for (int j = 0; j < arrClass.arr.Length; j++)
+                    {
+                        if (j == 0)
+                        {
+                            sql.Append("'" + id + "',");
+                        }
+                            sql.Append("'" + arrClass.arr[j] + "',");
+
+                        if (j == arrClass.arr.Length - 1)
+                        {
+                            sql.Append("(select id from viewNames where ViewName = '" + arrClass.viewName + "'));");
+                        }
+                    }
                 }
             }
+            
         }
 
-        string result = SqlHelper.ExecuteUpdate(sql).ToString();
+        string result = "";
+        if (!sql.ToString().Equals(""))
+        {
+            result = SqlHelper.ExecuteUpdate(sql.ToString()).ToString();
+        }
+        else {
+            result = "isNotUpd";
+        }
+
+        
 
 
         return result;

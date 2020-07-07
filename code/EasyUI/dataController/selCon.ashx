@@ -26,7 +26,7 @@ public class Handler : IHttpHandler
                 sReturnJson = getViewAccess(id);
                 break;
             case "tableAccess":
-                sReturnJson = getTableAccess(id);
+                sReturnJson = getTableAccess(id, cookies1);
                 break;
         }
         
@@ -59,14 +59,14 @@ public class Handler : IHttpHandler
 
         if (sReturnJson=="")
         {
-            sReturnJson = "1,1,1,1,1,1,1,1,1,1";
+            sReturnJson = "0,0,0,0,0,0,0,0,0,0";
         }
 
 
         return sReturnJson;
     }
 
-    private string getTableAccess(string id)
+    private string getTableAccess(string id, HttpCookie cookies1)
     {
         string sql = "select look,ViewName from AccessManager where con_id = " + id;
         string sReturnJson = SqlHelper.sel(sql);
@@ -93,7 +93,9 @@ public class Handler : IHttpHandler
             
         }
 
-        return newResult;
+        string shenfen = cookies1.Values["shengfen"];
+
+        return newResult + "?" + shenfen;
     }
 
     public bool IsReusable

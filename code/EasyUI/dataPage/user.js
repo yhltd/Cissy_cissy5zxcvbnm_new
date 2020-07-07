@@ -25,7 +25,10 @@
     $('#btn-quanxian-canel').linkbutton();
     quanxian = $('#quanxian').window({
         closed: true,
-        modal: true
+        modal: true,
+        onBeforeClose: function () {
+            empty();
+        }
     });
 
     //excel窗口
@@ -49,132 +52,117 @@
     });
     searchForm = searchWin.find('form');
 
-    getLV()
-    
+
+    grid = $('#grid').datagrid({
+        title: '采购预录表',
+        iconCls: 'icon-save',
+        methord: 'get', //请求远程数据的 method 类型
+        url: 'dataController/user.ashx?action=list&ran=' + Math.random(),  //从远程站点请求数据的 URL
+        sortName: 'id',  //定义可以排序的列
+        sortOrder: 'desc',
+        idField: 'id', //标识字段
+        pageSize: 30,   //初始化页码尺寸
+        frozenColumns: [[
+	                { field: 'ID', checkbox: true }//checkbox: true 表示显示 checkbox
+                    //,{ title: 'ID', field: 'ID', width: 80, sortable: true }
+        ]], //和列的特性一样，但是这些列将被冻结在左边。
+        columns: [[
+					{ field: 'account', title: '用户名', width: 100, sortable: true, align: 'center' }, //fieldfield 列的字段名,title列的标题文字,sortable 是否允许此列被排序
+					{ field: 'pwd', title: '密码', width: 100, sortable: true, align: 'center' },
+                    { field: 'LV', title: '权限级别', width: 100, sortable: true, align: 'center' },
+
+        ]], //datagrid 的 column 的配置对象
+        fit: true,
+        pagination: true, //True 就会在 datagrid 的底部显示分页栏
+        rownumbers: true, //True 就会显示行号的列
+        fitColumns: true,//True 就会自动扩大或缩小列的尺寸以适应表格的宽度并且防止水平滚动。
+        singleSelect: false, //True 就会只允许选中一行。
+        toolbar: [{
+            text: '新增',
+            iconCls: 'icon-add',
+            handler: add    //为按钮添加方法
+        }, '-', {
+            text: '修改',
+            iconCls: 'icon-edit',
+            handler: edit
+        }, '-', {
+            text: '删除',
+            iconCls: 'icon-remove',
+            handler: del
+        }
+        , '-', {
+            text: '查找',
+            iconCls: 'icon-search',
+            handler: OpensearchWin
+        }, '-', {
+            text: '所有',
+            iconCls: 'icon-search',
+            handler: showAll
+            //}, '-', {
+            //    text: '导入excel',
+            //    iconCls: 'icon-save',
+            //    handler: OpenExcelWin
+            //}, '-', {
+            //    text: '导出excel',
+            //    iconCls: 'icon-print',
+            //    handler: OpenExcelWin1
+        }
+         , '-', {
+             text: '修改权限',
+             iconCls: 'icon-edit',
+             handler: lvv
+         }
+        ],
+        onHeaderContextMenu: function (e, field) {//当 datagrid 的头部被右键单击时触发
+            e.preventDefault();
+            if (!$('#tmenu').length) {
+                createColumnMenu();
+            }
+            $('#tmenu').menu('show', {
+                left: e.pageX,
+                top: e.pageY
+            });
+        }
+    });
     $('body').layout();
 
     InitLeftMenu1();
 
 });
 
-function getLV() {
-    $.ajax({
-        url: 'dataController/selCon.ashx?operation=viewAccess&tableName=xiaoshoushisuan',
-        type: 'GET',
-        error: function () {
-            $.messager.alert('错误', 'error');
-        },
-        success: function (data) {
-            if (data != "") {
-                var arr = new Array(); //定义一数组
-                arr = data.split(",");
-                grid = $('#grid').datagrid({
-                    title: '采购预录表',
-                    iconCls: 'icon-save',
-                    methord: 'get', //请求远程数据的 method 类型
-                    url: 'dataController/user.ashx?action=list&ran=' + Math.random(),  //从远程站点请求数据的 URL
-                    sortName: 'id',  //定义可以排序的列
-                    sortOrder: 'desc',
-                    idField: 'id', //标识字段
-                    pageSize: 30,   //初始化页码尺寸
-                    frozenColumns: [[
-                                { field: 'ID', checkbox: true }//checkbox: true 表示显示 checkbox
-                                //,{ title: 'ID', field: 'ID', width: 80, sortable: true }
-                    ]], //和列的特性一样，但是这些列将被冻结在左边。
-                    columns: [[
-                                { field: 'account', title: '用户名', width: 100, sortable: true, align: 'center' }, //fieldfield 列的字段名,title列的标题文字,sortable 是否允许此列被排序
-                                { field: 'pwd', title: '密码', width: 100, sortable: true, align: 'center' },
-                                { field: 'LV', title: '权限级别', width: 100, sortable: true, align: 'center' },
-
-                    ]], //datagrid 的 column 的配置对象
-                    fit: true,
-                    pagination: true, //True 就会在 datagrid 的底部显示分页栏
-                    rownumbers: true, //True 就会显示行号的列
-                    fitColumns: true,//True 就会自动扩大或缩小列的尺寸以适应表格的宽度并且防止水平滚动。
-                    singleSelect: false, //True 就会只允许选中一行。
-                    toolbar: [{
-                        text: '新增',
-                        disabled: arr[0] == '1' ? false : true,
-                        iconCls: 'icon-add',
-                        handler: add    //为按钮添加方法
-                    }, '-', {
-                        text: '修改',
-                        disabled: arr[1] == '1' ? false : true,
-                        iconCls: 'icon-edit',
-                        handler: edit
-                    }, '-', {
-                        text: '删除',
-                        disabled: arr[2] == '1' ? false : true,
-                        iconCls: 'icon-remove',
-                        handler: del
-                    }
-                    , '-', {
-                        text: '查找',
-                        disabled: arr[3] == '1' ? false : true,
-                        iconCls: 'icon-search',
-                        handler: OpensearchWin
-                    }, '-', {
-                        text: '所有',
-                        disabled: arr[4] == '1' ? false : true,
-                        iconCls: 'icon-search',
-                        handler: showAll
-                        //}, '-', {
-                        //    text: '导入excel',
-                        //    iconCls: 'icon-save',
-                        //    handler: OpenExcelWin
-                        //}, '-', {
-                        //    text: '导出excel',
-                        //    iconCls: 'icon-print',
-                        //    handler: OpenExcelWin1
-                    }
-                     , '-', {
-                         text: '修改权限',
-                         iconCls: 'icon-edit',
-                         handler: lvv
-                     }
-                    ],
-                    onHeaderContextMenu: function (e, field) {//当 datagrid 的头部被右键单击时触发
-                        e.preventDefault();
-                        if (!$('#tmenu').length) {
-                            createColumnMenu();
-                        }
-                        $('#tmenu').menu('show', {
-                            left: e.pageX,
-                            top: e.pageY
-                        });
-                    }
-                });
-            }
-        }
-    });
-}
-
 
 var choices = {
-    c: ['', '', '', '', '', '', '', '', '', ''],
+    sqlArr: [],
     dbName: ['add', 'upd', 'del', 'sel', 'selAll', 'exportExcel', 'importExcel', 'empty', 'look', 'importImage'],
     viewName: ['新增', '修改', '删除', '查询', '查询全部', '导入excel', '导出excel', '清空该表', '查看该表', '导入图片']
 }
-
-var tableFunctionArr = [];
 
 
 function init() {
     $(".check_boxs").html("");
     var insert = "";
+    var arr = [];
+
+    var sqlarr = []
+
+    for (var y = 0; y < choices.sqlArr.length; y++) {
+        if (viewName == choices.sqlArr[y].viewName) {
+            sqlarr = choices.sqlArr[y]
+        }
+    }
 
     for (var j = 0; j < _menus.menus.length; j++) {
         for (var x = 0; x < _menus.menus[j].menus.length; x++) {
             if (_menus.menus[j].menus[x].url == viewName) {
-                tableFunctionArr = _menus.menus[j].menus[x].operation;
+                arr = _menus.menus[j].menus[x].operation;
             }
         }
     }
-    for (var i = 0; i < tableFunctionArr.length; i++) {
-        if (choices.c[tableFunctionArr[i]] > 0) {
-            insert += "<div class='check_box' style='background-color:#E0ECFF'><a ref='" + tableFunctionArr[i] + "," + choices.dbName[tableFunctionArr[i]] + "' >" + choices.viewName[tableFunctionArr[i]] + "</a></div>";
+    for (var i = 0; i < arr.length; i++) {
+        if (sqlarr.arr[arr[i]] > 0) {
+            insert += "<div class='check_box' style='background-color:#E0ECFF'><a ref='" + arr[i] + "," + choices.dbName[arr[i]] + "' >" + choices.viewName[arr[i]] + "</a></div>";
         } else {
-            insert += "<div class='check_box' style='background-color:white;'><a ref='" + tableFunctionArr[i] + "," + choices.dbName[tableFunctionArr[i]] + "' >" + choices.viewName[tableFunctionArr[i]] + "</a></div>";
+            insert += "<div class='check_box' style='background-color:white;'><a ref='" + arr[i] + "," + choices.dbName[arr[i]] + "' >" + choices.viewName[arr[i]] + "</a></div>";
         }
     }
 
@@ -185,15 +173,36 @@ function init() {
         var check_id = result.split(",")[0]
         var dbName = result.split(",")[1]
 
-        if (choices.c[check_id] > '0') {
-            $(this).parent().css("background-color", "white")
-            choices.c[check_id] = '0'
-        } else {
-            $(this).parent().css("background-color", "#E0ECFF")
-            choices.c[check_id] = '1'
+        for (var i = 0; i < choices.sqlArr.length; i++) {
+            if (choices.sqlArr[i].viewName == viewName) {
+                choices.sqlArr[i].isUpd = true
+                if (choices.sqlArr[i].arr[check_id] > '0') {
+                    $(this).parent().css("background-color", "white")
+                    choices.sqlArr[i].arr[check_id] = '0'
+                } else {
+                    $(this).parent().css("background-color", "#E0ECFF")
+                    choices.sqlArr[i].arr[check_id] = '1'
+                }
+                if (compareArr(choices.sqlArr[i].oldSqlarr,choices.sqlArr[i].arr)) {
+                    choices.sqlArr[i].isUpd = false;
+                }
+            }
         }
-
     })
+}
+
+function compareArr(arr1,arr2) {
+    var num = 0;
+    for (var i = 0; i < arr1.length;i++){
+        if (arr1[i]==arr2[i]) {
+            num++
+        }
+    }
+    if (num == arr1.length) {
+        return true
+    } else {
+        return false
+    }
 }
 
 function InitLeftMenu1() {
@@ -216,30 +225,50 @@ function InitLeftMenu1() {
         $('.list li').not($(this).parent()).attr("class", "item_li_mouse_out");
         $(this).parent().attr("class", "item_li_choice");
         viewName = $(this).attr("rel");
-        $.ajax({
-            url: 'dataController/accManager.ashx?operation=viewAccess&tableName=' + viewName + '&access_id=' + access_id,
-            type: 'GET',
-            error: function () {
-                $.messager.alert('错误', 'error');
-            },
-            success: function (data) {
-                if (data == "") {
-                    alert("该用户对该表未设置规则！")
-                    caozuo = "add";
-                    for (var i = 0; i < choices.c.length; i++) {
-                        choices.c[i] = '1';
-                        init();
-                    }
-                } else {
-                    caozuo = "upd";
-                    var arr = data.split(",");
-                    for (var i = 0; i < choices.c.length; i++) {
-                        choices.c[i] = arr[i]
-                        init();
-                    }
-                }
+
+        var ishave = false;
+
+        for (var i = 0; i < choices.sqlArr.length;i++){
+            if (viewName==choices.sqlArr[i].viewName) {
+                ishave = true;
             }
-        })
+        }
+
+        if (ishave) {
+            init();
+            ishave = false;
+        } else {
+            $.ajax({
+                url: 'dataController/accManager.ashx?operation=viewAccess&tableName=' + viewName + '&access_id=' + access_id,
+                type: 'GET',
+                error: function () {
+                    $.messager.alert('错误', 'error');
+                },
+                success: function (data) {
+                    var sqlarr = { viewName: viewName, caozuo: "", arr: [] ,isUpd : false,oldSqlarr : []}
+                    if (data == "") {
+                        alert("该用户对该表未设置规则！将默认对该表无权限！")
+                        sqlarr.caozuo = "add";
+                        for (var i = 0; i < 10; i++) {
+                            sqlarr.arr[i] = '0';
+                        }
+                        
+                    } else {
+                        sqlarr.caozuo = "upd";
+                        var arr = data.split(",");
+                        for (var i = 0; i < 10; i++) {
+                            sqlarr.arr[i] = arr[i]
+                        }
+                    }
+                    for (var i = 0; i < sqlarr.arr.length;i++){
+                        sqlarr.oldSqlarr.push(sqlarr.arr[i])
+                    }
+                    choices.sqlArr.push(sqlarr)
+                    init();
+                    ishave = false;
+                }
+            })
+        }
     })
 
     $('.list li a').mouseover(function () {
@@ -298,37 +327,32 @@ function InitLeftMenu1() {
 }
 
 function accessSave() {
-    var arr = "";
-    for (var i = 0; i < choices.c.length; i++) {
-        if (i == choices.c.length - 1) {
-            arr += choices.c[i]
-            continue;
-        }
-        arr += choices.c[i] + ",";
-    }
+    var sqlarr = JSON.stringify(choices.sqlArr);
 
     $.ajax({
-        url: 'dataController/accManager.ashx?operation=updAccess&tableName=' + viewName + '&access_id=' + access_id + '&arr=' + arr + '&caozuo=' + caozuo,
+        url: 'dataController/accManager.ashx',
+        data: {
+            'sqlarr': sqlarr,
+            'operation': 'updAccess',
+            'access_id': access_id
+        },
         type: 'GET',
         error: function () {
             $.messager.alert('错误', 'error');
         },
         success: function (data) {
-            if (data) {
-                alert("保存成功")
+            if (data=="True") {
+                alert("保存成功！")
+                choices.sqlarr = [];
+                window.parent.location.reload(true);
+            } else if (data == "isNotUpd") {
+                alert("未修改！")
             }
         }
     })
 }
 function closeAccWindow() {
     CloseQuanxian();
-    $(".check_boxs").html("");
-    $(".item_ul").css("display", "none");
-    $(".item_header").css("font-weight", "normal")
-    for (var i = 0; i < _menus.menus.length; i++) {
-        _menus.menus[i].hid = "0"
-    }
-    $('.list li').attr("class", "item_li_mouse_out");
 }
 
 function createColumnMenu() {
@@ -356,8 +380,22 @@ function createColumnMenu() {
     });
 }
 
+function empty() {
+    $(".check_boxs").html("");
+    $(".item_ul").css("display", "none");
+    $(".item_header").css("font-weight", "normal")
+    for (var i = 0; i < _menus.menus.length; i++) {
+        _menus.menus[i].hid = "0"
+    }
+    $('.list li').attr("class", "item_li_mouse_out");
+
+    viewName = "";
+    access_id = "";
+    choices.sqlArr = [];
+    quanxian.window('close', true);
+}
+
 var viewName = "";
-var caozuo = "update";
 var access_id = "";
 var grid;
 var dlg_Edit;
@@ -375,7 +413,7 @@ function OpenQuanxian() {
 }
 
 function CloseQuanxian() {
-    quanxian.window('close');
+    empty();
 }
 
 

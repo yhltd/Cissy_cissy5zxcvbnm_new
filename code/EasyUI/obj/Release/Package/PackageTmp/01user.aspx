@@ -169,7 +169,7 @@
 
 
 
-    <div id="quanxian" title="权限编辑" style="height: 500px; width:700px">
+    <div id="quanxian" title="权限编辑" style="height: 550px; width:700px">
         <div class="list" style="float:left"></div>
 		<div class="check_boxs">
 				

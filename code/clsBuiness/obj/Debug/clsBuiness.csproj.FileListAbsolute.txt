@@ -48,3 +48,16 @@ D:\yho117\Cissy_new\Cissy_cissy5zxcvbnm_new\code\clsBuiness\bin\Debug\SDZdb.pdb
 D:\yho117\Cissy_new\Cissy_cissy5zxcvbnm_new\code\clsBuiness\obj\Debug\clsBuiness.csprojResolveAssemblyReference.cache
 D:\yho117\Cissy_new\Cissy_cissy5zxcvbnm_new\code\clsBuiness\obj\Debug\clsBuiness.dll
 D:\yho117\Cissy_new\Cissy_cissy5zxcvbnm_new\code\clsBuiness\obj\Debug\clsBuiness.pdb
+D:\yhocn123\gitHub_net_Cissy\Cissy_cissy5zxcvbnm_new\code\clsBuiness\bin\Debug\clsBuiness.dll
+D:\yhocn123\gitHub_net_Cissy\Cissy_cissy5zxcvbnm_new\code\clsBuiness\bin\Debug\clsBuiness.pdb
+D:\yhocn123\gitHub_net_Cissy\Cissy_cissy5zxcvbnm_new\code\clsBuiness\bin\Debug\China_System.Common.dll
+D:\yhocn123\gitHub_net_Cissy\Cissy_cissy5zxcvbnm_new\code\clsBuiness\bin\Debug\frmcstest.exe
+D:\yhocn123\gitHub_net_Cissy\Cissy_cissy5zxcvbnm_new\code\clsBuiness\bin\Debug\SDZdb.dll
+D:\yhocn123\gitHub_net_Cissy\Cissy_cissy5zxcvbnm_new\code\clsBuiness\bin\Debug\ThoughtWorks.QRCode.dll
+D:\yhocn123\gitHub_net_Cissy\Cissy_cissy5zxcvbnm_new\code\clsBuiness\bin\Debug\China_System.Common.pdb
+D:\yhocn123\gitHub_net_Cissy\Cissy_cissy5zxcvbnm_new\code\clsBuiness\bin\Debug\frmcstest.pdb
+D:\yhocn123\gitHub_net_Cissy\Cissy_cissy5zxcvbnm_new\code\clsBuiness\bin\Debug\ThoughtWorks.QRCode.pdb
+D:\yhocn123\gitHub_net_Cissy\Cissy_cissy5zxcvbnm_new\code\clsBuiness\bin\Debug\SDZdb.pdb
+D:\yhocn123\gitHub_net_Cissy\Cissy_cissy5zxcvbnm_new\code\clsBuiness\obj\Debug\clsBuiness.csprojResolveAssemblyReference.cache
+D:\yhocn123\gitHub_net_Cissy\Cissy_cissy5zxcvbnm_new\code\clsBuiness\obj\Debug\clsBuiness.dll
+D:\yhocn123\gitHub_net_Cissy\Cissy_cissy5zxcvbnm_new\code\clsBuiness\obj\Debug\clsBuiness.pdb

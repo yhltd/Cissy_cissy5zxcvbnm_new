@@ -29,3 +29,16 @@ D:\yho117\Cissy_new\Cissy_cissy5zxcvbnm_new\code\clsBuiness\bin\Release\China_Sy
 D:\yho117\Cissy_new\Cissy_cissy5zxcvbnm_new\code\clsBuiness\bin\Release\frmcstest.pdb
 D:\yho117\Cissy_new\Cissy_cissy5zxcvbnm_new\code\clsBuiness\bin\Release\ThoughtWorks.QRCode.pdb
 D:\yho117\Cissy_new\Cissy_cissy5zxcvbnm_new\code\clsBuiness\bin\Release\SDZdb.pdb
+D:\yhocn123\gitHub_net_Cissy\Cissy_cissy5zxcvbnm_new\code\clsBuiness\bin\Release\clsBuiness.dll
+D:\yhocn123\gitHub_net_Cissy\Cissy_cissy5zxcvbnm_new\code\clsBuiness\bin\Release\clsBuiness.pdb
+D:\yhocn123\gitHub_net_Cissy\Cissy_cissy5zxcvbnm_new\code\clsBuiness\bin\Release\China_System.Common.dll
+D:\yhocn123\gitHub_net_Cissy\Cissy_cissy5zxcvbnm_new\code\clsBuiness\bin\Release\frmcstest.exe
+D:\yhocn123\gitHub_net_Cissy\Cissy_cissy5zxcvbnm_new\code\clsBuiness\bin\Release\SDZdb.dll
+D:\yhocn123\gitHub_net_Cissy\Cissy_cissy5zxcvbnm_new\code\clsBuiness\bin\Release\ThoughtWorks.QRCode.dll
+D:\yhocn123\gitHub_net_Cissy\Cissy_cissy5zxcvbnm_new\code\clsBuiness\bin\Release\China_System.Common.pdb
+D:\yhocn123\gitHub_net_Cissy\Cissy_cissy5zxcvbnm_new\code\clsBuiness\bin\Release\frmcstest.pdb
+D:\yhocn123\gitHub_net_Cissy\Cissy_cissy5zxcvbnm_new\code\clsBuiness\bin\Release\ThoughtWorks.QRCode.pdb
+D:\yhocn123\gitHub_net_Cissy\Cissy_cissy5zxcvbnm_new\code\clsBuiness\bin\Release\SDZdb.pdb
+D:\yhocn123\gitHub_net_Cissy\Cissy_cissy5zxcvbnm_new\code\clsBuiness\obj\Release\clsBuiness.csprojResolveAssemblyReference.cache
+D:\yhocn123\gitHub_net_Cissy\Cissy_cissy5zxcvbnm_new\code\clsBuiness\obj\Release\clsBuiness.dll
+D:\yhocn123\gitHub_net_Cissy\Cissy_cissy5zxcvbnm_new\code\clsBuiness\obj\Release\clsBuiness.pdb

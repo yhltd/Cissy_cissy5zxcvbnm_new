@@ -88,7 +88,7 @@ public class Handler : IHttpHandler
     {
         string sReturnJson = string.Empty;
         string id = ParamsofEasyUI.RequstString("id");
-        string sqlexe = string.Format("delete from Account where id in ({0})", id);
+        string sqlexe = string.Format("delete from Account where id in ({0});delete from AccessManager where con_id = {1}", id,id);
         if (SqlHelper.ExecuteUpdate(sqlexe))
             sReturnJson = "{success:true}";
         else

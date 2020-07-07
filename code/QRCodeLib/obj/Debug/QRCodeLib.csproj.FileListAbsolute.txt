@@ -49,3 +49,11 @@ D:\yho117\Cissy_new\Cissy_cissy5zxcvbnm_new\code\QRCodeLib\obj\Debug\ThoughtWork
 D:\yho117\Cissy_new\Cissy_cissy5zxcvbnm_new\code\QRCodeLib\obj\Debug\ThoughtWorks.QRCode.pdb
 D:\yho117\Cissy_new\Cissy_cissy5zxcvbnm_new\code\QRCodeLib\ThoughtWorks.QRCode.dll
 D:\yho117\Cissy_new\Cissy_cissy5zxcvbnm_new\code\QRCodeLib\ThoughtWorks.QRCode.pdb
+D:\yhocn123\gitHub_net_Cissy\Cissy_cissy5zxcvbnm_new\code\QRCodeLib\obj\Debug\QRCodeLib.csprojResolveAssemblyReference.cache
+D:\yhocn123\gitHub_net_Cissy\Cissy_cissy5zxcvbnm_new\code\QRCodeLib\obj\Debug\ThoughtWorks.QRCode.frmtest.resources
+D:\yhocn123\gitHub_net_Cissy\Cissy_cissy5zxcvbnm_new\code\QRCodeLib\obj\Debug\ThoughtWorks.QRCode.Properties.Resources.resources
+D:\yhocn123\gitHub_net_Cissy\Cissy_cissy5zxcvbnm_new\code\QRCodeLib\obj\Debug\QRCodeLib.csproj.GenerateResource.Cache
+D:\yhocn123\gitHub_net_Cissy\Cissy_cissy5zxcvbnm_new\code\QRCodeLib\obj\Debug\ThoughtWorks.QRCode.dll
+D:\yhocn123\gitHub_net_Cissy\Cissy_cissy5zxcvbnm_new\code\QRCodeLib\obj\Debug\ThoughtWorks.QRCode.pdb
+D:\yhocn123\gitHub_net_Cissy\Cissy_cissy5zxcvbnm_new\code\QRCodeLib\ThoughtWorks.QRCode.dll
+D:\yhocn123\gitHub_net_Cissy\Cissy_cissy5zxcvbnm_new\code\QRCodeLib\ThoughtWorks.QRCode.pdb
