@@ -241,6 +241,7 @@ function InitLeftMenu1() {
             $.ajax({
                 url: 'dataController/accManager.ashx?operation=viewAccess&tableName=' + viewName + '&access_id=' + access_id,
                 type: 'GET',
+                async: false,
                 error: function () {
                     $.messager.alert('错误', 'error');
                 },

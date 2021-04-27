@@ -77,7 +77,7 @@ public class Handler : IHttpHandler
                 sWhere = " where no like '%" + stitle + "%'";
         }
         //sqlexe = @"select top 10 ID,title,addTime from (select top 20 * from product " + PID + " order by [addTime] DESC,ID desc) as a";
-        sqlexe = @"select no,name,country,freight,CONVERT(varchar(10), time,120)as time from Freight " + sWhere + " order by " + sort + " " + order;
+        sqlexe = @"select id,no,name,country,freight,CONVERT(varchar(10), time,120)as time from Freight " + sWhere + " order by " + sort + " " + order;
         DataTable dt = SqlHelper.dataTable(sqlexe);
         return Json4EasyUI.onDataGrid(dt, page, rows);
     }

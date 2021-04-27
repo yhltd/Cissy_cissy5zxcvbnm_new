@@ -58,12 +58,12 @@
                      ]
                  }, {
                      "menuid": "6", "icon": "icon-go", "menuname": "财务部出具", "hid": "0",
-                     "menus": [{ "menuid": "61", "menuname": "考核表", "icon": "icon-log", "url": "kaohe", "operation": ['3', '4', '5', '8'] },
-                                { "menuid": "62", "menuname": "考核汇总表", "icon": "icon-log", "url": "kaohehuizong", "operation": ['3', '4', '5', '8'] },
+                     "menus": [{ "menuid": "61", "menuname": "考核表", "icon": "icon-log", "url": "kaohe", "operation": ['3', '4', '6', '8'] },
+                                { "menuid": "62", "menuname": "考核汇总表", "icon": "icon-log", "url": "kaohehuizong", "operation": ['3', '4', '6', '8'] },
                                  { "menuid": "63", "menuname": "利润试算表", "icon": "icon-form_edit", "url": "lirunshixuan", "operation": ['1', '3', '4', '5', '6', '8'] },
-                                 { "menuid": "64", "menuname": "实际利润表", "icon": "icon-log", "url": "shijilirun", "operation": ['3', '4', '5', '8'] },
-                                 { "menuid": "65", "menuname": "实际利润汇总表", "icon": "icon-log", "url": "shijilirunhuizong", "operation": ['3', '4', '5', '8'] },
-                                 { "menuid": "66", "menuname": "平台利润汇总表", "icon": "icon-log", "url": "pingtailirunhuizong", "operation": ['3', '4', '5', '8'] },
+                                 { "menuid": "64", "menuname": "实际利润表", "icon": "icon-log", "url": "shijilirun", "operation": ['3', '4', '6', '8'] },
+                                 { "menuid": "65", "menuname": "实际利润汇总表", "icon": "icon-log", "url": "shijilirunhuizong", "operation": ['3', '4', '6', '8'] },
+                                 { "menuid": "66", "menuname": "平台利润汇总表", "icon": "icon-log", "url": "pingtailirunhuizong", "operation": ['3', '4', '6', '8'] },
                      ]
                  }, {
                      "menuid": "7", "icon": "icon-set", "menuname": "帮助和设置", "hid": "0",

@@ -85,7 +85,7 @@ function getLV() {
                     fit: true,
                     pagination: true, //True 就会在 datagrid 的底部显示分页栏
                     rownumbers: true, //True 就会显示行号的列
-                    fitColumns: true,//True 就会自动扩大或缩小列的尺寸以适应表格的宽度并且防止水平滚动。
+                    fitColumns: false,//True 就会自动扩大或缩小列的尺寸以适应表格的宽度并且防止水平滚动。
                     singleSelect: false, //True 就会只允许选中一行。
                     toolbar: [{
                         text: '查找',

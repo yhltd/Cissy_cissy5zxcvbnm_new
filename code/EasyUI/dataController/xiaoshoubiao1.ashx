@@ -94,6 +94,7 @@ public class Handler : IHttpHandler
         string sReturnJson = string.Empty;
         string id = ParamsofEasyUI.RequstString("ID");
         string sqlexe = string.Format("delete from Sale where id in ({0})", id);
+     
         if (SqlHelper.ExecuteUpdate(sqlexe))
             sReturnJson = "{success:true}";
         else
